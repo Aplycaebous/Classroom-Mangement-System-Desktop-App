@@ -1,4 +1,6 @@
 #include<bits/stdc++.h>
+#define room_no_size 3
+
 using namespace std;
 
 class Physical_location
@@ -9,26 +11,54 @@ private:
 public:
     Physical_location()
     {
-        set_building_no("0");
-        set_room_no("0");
+        set_building_no("1");
+        set_room_no("101");
     }
     Physical_location(string buildval, string roomval)
     {
         set_building_no(buildval);
         set_room_no(roomval);
     }
+    bool check_room(string s)
+    {
+        if(s.length()!=room_no_size)
+        {
+            return false;
+        }
+        else
+        {
+            for(int i=0;i<s.length();i++)
+            {
+                if(!isdigit(s[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
     void set_building_no(string val)
     {
-        building_no = val;
+        //Since IUT has 3 academic buildings only
+        if(val == "1" || val == "2" ||val == "3" )
+            building_no = val;
+        else
+        {
+            cout<<"Wrong building number"<<endl;
+            building_no = "1";
+        }
     }
     void set_room_no(string val)
     {
-        room_no = val;
-    }
-    void set_location(string buildval, string roomval)
-    {
-        set_building_no(buildval);
-        set_room_no(roomval);
+        if(check_room(val))
+        {
+            room_no = val;
+        }
+        else
+        {
+            cout<<"Invalid room number"<<endl;
+            room_no = "101";
+        }
     }
     string get_building_no(void)
     {
@@ -38,10 +68,6 @@ public:
     {
         return room_no;
     }
-    string get_location(void)
-    {
-        return building_no + " " + room_no;
-    }
 };
 
 class Time
@@ -50,9 +76,11 @@ private:
     int hour;
     int minute;
 public:
+    //Time is stored in 24 hour format to simplify calculations
+    //Input is taken in 12 hour format
     Time()
     {
-        set_hour(0);
+        set_hour(1);
         set_minute(0);
     }
     Time(int val_hour, int val_minute, string format)
@@ -63,11 +91,25 @@ public:
     }
     void set_hour(int val)
     {
-        hour = val;
+        if(val>0 && val<=12)
+        {
+            hour = val;
+        }
+        else
+        {
+            cout<<"Invalid hour for time"<<endl;
+            hour = 1;
+        }
     }
     void set_minute(int val)
     {
-        minute = val;
+        if(val>=0 && val<60)
+            minute = val;
+        else
+        {
+            cout<<"Invalid minute for time"<<endl;
+            minute = 0;
+        }
     }
     void set_format(string val)
     {
@@ -84,12 +126,6 @@ public:
             cout<<"Invalid input"<<endl;
         }
     }
-    void set_time(int val_hour, int val_minute, string format)
-    {
-        set_hour(val_hour);
-        set_minute(val_minute);
-        set_format(format);
-    }
     int get_hour()
     {
         return hour;
@@ -103,20 +139,23 @@ public:
 class User
 {
 private:
-    int userid;
+    string userid;
     string name;
+    string password;
 public:
     User()
     {
-        set_userid(0);
+        set_userid("0");
         set_name("");
+        set_password("dsf5438534");
     }
-    User(int idval, string nameval)
+    User(string idval, string nameval, string passval)
     {
         set_userid(idval);
         set_name(nameval);
+        set_password(passval);
     }
-    void set_userid(int value)
+    void set_userid(string value)
     {
         userid = value;
     }
@@ -124,18 +163,21 @@ public:
     {
         name = value;
     }
-    void set_user(int idval, string nameval)
+    void set_password(string val)
     {
-        set_userid(idval);
-        set_name(nameval);
+        password = val;
     }
-    int get_userid(void)
+    string get_userid(void)
     {
         return userid;
     }
     string get_name(void)
     {
         return name;
+    }
+    string get_password(void)
+    {
+        return password;
     }
 };
 
@@ -160,21 +202,34 @@ public:
     }
     void set_day(int val)
     {
-        day = val;
+        if(val<32 && val>0)
+            day = val;
+        else
+        {
+            cout<<"Invalid day for date"<<endl;
+            day = 1;
+        }
     }
     void set_month(int val)
     {
-        month = val;
+
+        if(val<13 && val>0)
+            month = val;
+        else
+        {
+            cout<<"Invalid month for date"<<endl;
+            month = 1;
+        }
     }
     void set_year(int val)
     {
-        year = val;
-    }
-    void set_date(int day_val, int month_val, int year_val)
-    {
-        set_day(day_val);
-        set_month(month_val);
-        set_year(year_val);
+        if(val>2019)
+            year = val;
+        else
+        {
+            cout<<"Invalid year for date"<<endl;
+            year = 1970;
+        }
     }
     int get_day()
     {
@@ -190,35 +245,41 @@ public:
     }
 };
 
-class Record
+class Record:public Physical_location, public Time, public Date
 {
 private:
-    Physical_location physical_location;
-    Time start_time;
     int duration;
-    Date date;
-    User user;
+    string user_ID;
 
 public:
-    void set_phy_loc(string build_val, string room_no)
+    Record(void)
     {
-        physical_location.set_location(build_val,room_no);
+        duration = 0;
+        user_ID = "";
     }
-    void set_st_time(int hour_val, int minute_val, string format_val)
+    Record(string user_val, string build_val, string room_val, int hour_val, int min_val, string form_val,
+    int dur_val, int day_val, int mon_val, int year_val)
+    :Physical_location(build_val, room_val),Time(hour_val, min_val, form_val),
+    Date(day_val,mon_val,year_val)
     {
-        start_time.set_time(hour_val,minute_val,format_val);
+        set_duration(dur_val);
+        set_user_ID(user_val);
     }
     void set_duration(int value)
     {
         duration = value;
     }
-    void set_user(int id_val, string name_val)
+    void set_user_ID(string val)
     {
-        user.set_user(id_val,name_val);
+        user_ID = val;
     }
-    void set_date(int day_val, int month_val, int year_val)
+    int get_duration(void)
     {
-        date.set_date(day_val, month_val, year_val);
+        return duration;
+    }
+    string get_user_ID(void)
+    {
+        return user_ID;
     }
 };
 
@@ -254,12 +315,6 @@ public:
     {
         projector = val;
     }
-    void set_equipments(bool ac_val, int boards_val, bool pro_val)
-    {
-        set_ac(ac_val);
-        set_boards(boards_val);
-        set_projector(pro_val);
-    }
     bool get_ac()
     {
         return AC;
@@ -274,43 +329,87 @@ public:
     }
 };
 
-
-class Room
+class Room: public Physical_location, public Equipments
 {
 private:
-    Physical_location physicallocation;
     int capacity;
-    Equipments equipments;
     vector<Record> record_vec;
+    //aita na korae class er array ba pointers use korte parish
+    //oita better hoi since sir classe koraise
 
 public:
-    void set_loc(string building_val, string room_val)
+    Room()
     {
-        physicallocation.set_location(building_val,room_val);
+        set_capacity(0);
+    }
+    Room(string build_val, string room_val, bool ac_val, int board_val, bool proj_val, int cap_val):
+    Physical_location(build_val, room_val),Equipments(ac_val, board_val, proj_val)
+    {
+        set_capacity(cap_val);
     }
     void set_capacity(int val)
     {
         capacity = val;
     }
-    void set_equipments(bool ac_val, int boards_val, bool projector_val)
+    int get_capacity(void)
     {
-        equipments.set_equipments(ac_val,boards_val, projector_val);
+        return capacity;
     }
-
-    string get_loc(void)
+    vector<Record> get_record_vec(void)
     {
-        return physicallocation.get_location();
+        return record_vec;
     }
     //show layout
     //find classroom/search
-    //edit log class
+    //log class
+    //book + delete entry
 };
-
-
-
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    int no_of_users = 1;
+    int val1,val2,val3;
+    string a,b;
+    User* user[no_of_users];
+    user[0] = new User("180041120","Farhan","farhan123");
+    cout<<"Enter your user ID:"<<endl;
+    cin>>a;
+    /*
+    for(int i=0;i<no_of_users;i++)
+    {
+        if(user[i]->get_userid()==a && user)
+        {
+            string user_id = a;
+            cout<<"Enter your password:"<<endl;
+            cin>>b;
+            if(user[i]->get_password()==b)
+            {
+                //add a record AFTER validating function
+                //just for testing, this won't be implemented in the actual program
+                //We will search considering factors like capacity, equipments, record time etc;
+                //After cross-checking the factors, if the classroom meets the given requirements
+                //we use this function to add the record
+                Record record;
+                record.set_user_ID(user_id);
+                cout<<"Enter the physical location (building number + room number)"<<endl;
+                cin>>a>>b;
+                record.set_phy_loc(a,b);
+                cout<<"Enter the Date(day,month,year)"<<endl;
+                cin>>val1>>val2>>val3;
+                record.set_date(val1,val2,val3);
+                cout<<"Enter the time(hour, min, format)"<<endl;
+                cin>>val1>>val2>>a;
+                record.set_st_time(val1,val2,a);
+                cout<<"Enter the duration"<<endl;
+                cin>>val1;
+                record.set_duration(val1);
+            }
+            else cout<<"Wrong password"<<endl;
+        }
+    }
+     */
+
+
+
+
 }
