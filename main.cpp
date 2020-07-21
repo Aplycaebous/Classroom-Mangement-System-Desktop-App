@@ -5,7 +5,7 @@ using namespace std;
 
 class Physical_location
 {
-private:
+protected:
     string building_no;
     string room_no;
 public:
@@ -75,6 +75,14 @@ class Time
 private:
     int hour;
     int minute;
+    void set_hour(int val)
+    {
+        hour = val;
+    }
+    void set_minute(int val)
+    {
+        minute = val;
+    }
 public:
     //Time is stored in 24 hour format to simplify calculations
     //Input is taken in 12 hour format
@@ -85,30 +93,30 @@ public:
     }
     Time(int val_hour, int val_minute, string format)
     {
-        set_hour(val_hour);
-        set_minute(val_minute);
+        set_hour_check(val_hour);
+        set_minute_check(val_minute);
         set_format(format);
     }
-    void set_hour(int val)
+    void set_hour_check(int val)
     {
         if(val>0 && val<=12)
         {
-            hour = val;
+            set_hour(val);
         }
         else
         {
             cout<<"Invalid hour for time"<<endl;
-            hour = 1;
+            set_hour(1);
         }
     }
-    void set_minute(int val)
+    void set_minute_check(int val)
     {
         if(val>=0 && val<60)
-            minute = val;
+            set_minute(val);
         else
         {
             cout<<"Invalid minute for time"<<endl;
-            minute = 0;
+            set_minute(0);
         }
     }
     void set_format(string val)
@@ -134,50 +142,33 @@ public:
     {
         return minute;
     }
-};
-
-class User
-{
-private:
-    string userid;
-    string name;
-    string password;
-public:
-    User()
+    Time operator+(Time val)
     {
-        set_userid("0");
-        set_name("");
-        set_password("dsf5438534");
-    }
-    User(string idval, string nameval, string passval)
+        Time temp;
+        int extra_hour = 0;
+        int total_min = this->get_minute()+val.get_minute();
+        int total_hour = this->get_hour()+val.get_hour();
+        if(total_min>=60)
+        {
+            temp.set_minute(total_min-60);
+            extra_hour++;
+        }
+        else
+        {
+            set_minute(total_min);
+        }
+        if(total_hour + extra_hour>=24)
+        {
+            temp.set_hour(total_hour + extra_hour - 24);
+        }
+        else
+            temp.set_hour(total_hour + extra_hour);
+        return temp;
+    };
+    Time convert_duration(int min)
     {
-        set_userid(idval);
-        set_name(nameval);
-        set_password(passval);
-    }
-    void set_userid(string value)
-    {
-        userid = value;
-    }
-    void set_name(string value)
-    {
-        name = value;
-    }
-    void set_password(string val)
-    {
-        password = val;
-    }
-    string get_userid(void)
-    {
-        return userid;
-    }
-    string get_name(void)
-    {
-        return name;
-    }
-    string get_password(void)
-    {
-        return password;
+        set_minute(min%60);
+        set_hour(min/60);
     }
 };
 
@@ -245,9 +236,165 @@ public:
     }
 };
 
-class Record:public Physical_location, public Time, public Date
+class Admin
 {
 private:
+    string username;
+    string password;
+public:
+    Admin()
+    {
+        set_username("system");
+        set_password("system123");
+    }
+    Admin(string user_val, string pass_val)
+    {
+        set_username(user_val);
+        set_password(pass_val);
+    }
+    void set_username(string val)
+    {
+        username = val;
+    }
+    void set_password(string val)
+    {
+        password = val;
+    }
+    string get_username(void)
+    {
+        return username;
+    }
+    string get_password(void)
+    {
+        return password;
+    }
+    bool login(string user_val, string pass_val)
+    {
+        if(user_val == get_username() && pass_val == get_password())
+        {
+            return true;
+        }
+        else return false;
+    }
+    //In main function we create admin with username and password
+    //read and load classrooms
+    //read and load user_list
+    //check log file
+};
+
+class User
+{
+protected:
+    string name;
+    string password;
+public:
+    User()
+    {
+        set_name("");
+        set_password("dsf5438534");
+    }
+    User(string nameval, string passval)
+    {
+        set_name(nameval);
+        set_password(passval);
+    }
+    void set_name(string value)
+    {
+        name = value;
+    }
+    void set_password(string val)
+    {
+        password = val;
+    }
+    string get_name(void)
+    {
+        return name;
+    }
+    string get_password(void)
+    {
+        return password;
+    }
+    virtual bool login() = 0;
+};
+
+class Student:public User
+{
+private:
+    string student_id;
+    //student ID theke year, dept derive korae store korar option porae implement kora jai
+    //staff der jonno similar kichu kora jai kintu porae korbo
+    bool cr; //if CR or not
+public:
+    Student()
+    {
+        set_student_id("0");
+        set_cr(0);
+    }
+    Student(string val_name, string val_pass, string val_std_id, bool val_cr):User(val_name,val_pass)
+    {
+        set_student_id(val_std_id);
+        set_cr(val_cr);
+    }
+    void set_student_id(string val)
+    {
+        student_id = val;
+    }
+    void set_cr(bool val)
+    {
+        cr = val;
+    }
+    string get_student_id(void)
+    {
+        return student_id;
+    }
+    bool get_cr(void)
+    {
+        return  cr;
+    }
+    bool login(string id_val, string pass_val)
+    {
+        if(id_val == get_student_id() && pass_val == get_password())
+        {
+            return true;
+        }
+        else return false;
+    }
+};
+
+class Staff:public User
+{
+private:
+    string staff_id;
+public:
+    Staff()
+    {
+        set_staff_id("0");
+    }
+    Staff(string val_name, string val_pass, string val_staff_id):User(val_name,val_pass)
+    {
+        set_staff_id(val_staff_id);
+    }
+    void set_staff_id(string val)
+    {
+        staff_id = val;
+    }
+    string get_staff_id(void)
+    {
+        return staff_id;
+    }
+    bool login(string id_val, string pass_val)
+    {
+        if(id_val == get_staff_id() && pass_val == get_password())
+        {
+            return true;
+        }
+        else return false;
+    }
+};
+
+class Record:public Physical_location, public Time, public Date
+{
+protected:
     int duration;
     string user_ID;
 
@@ -265,9 +412,11 @@ public:
         set_duration(dur_val);
         set_user_ID(user_val);
     }
-    void set_duration(int value)
+    void set_duration(int value) //In minutes
     {
-        duration = value;
+        if(duration<=360)
+            duration = value;
+        else cout<<"Invalid time duration: Can not book records longer than 6 hours"<<endl;
     }
     void set_user_ID(string val)
     {
@@ -285,7 +434,7 @@ public:
 
 class Equipments
 {
-private:
+protected:
     bool AC;
     int boards;
     bool projector;
@@ -367,6 +516,7 @@ public:
 
 int main()
 {
+    /*
     int no_of_users = 1;
     int val1,val2,val3;
     string a,b;
@@ -374,7 +524,7 @@ int main()
     user[0] = new User("180041120","Farhan","farhan123");
     cout<<"Enter your user ID:"<<endl;
     cin>>a;
-    /*
+
     for(int i=0;i<no_of_users;i++)
     {
         if(user[i]->get_userid()==a && user)
@@ -408,8 +558,4 @@ int main()
         }
     }
      */
-
-
-
-
 }
