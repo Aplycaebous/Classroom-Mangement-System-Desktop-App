@@ -1,8 +1,9 @@
 #include<bits/stdc++.h>
+#include<ctime>
 using namespace std;
 
-const int  room_no_size = 3; //Const int are used instead of macros because they ensure better type safety
-const int no_of_buildings = 3; //Macros are text replacers and can sometimes replace unwanted texts
+const int room_no_size = 3; //Const int are used instead of macros since they ensure better type safety
+const int no_of_buildings = 3; //Macros are text replacers which often replace unwanted texts
 
 class Physical_location
 {
@@ -251,9 +252,11 @@ protected:
 public:
     Date(void)
     {
-        set_day(1);
-        set_month(1);
-        set_year(1970);
+        time_t now = time(0);
+        tm *ltm = localtime(&now);
+        set_day(ltm->tm_mday);
+        set_month(1 + ltm->tm_mon);
+        set_year(1900 + ltm->tm_year);
     }
     Date(int day_val, int month_val, int year_val)
     {
@@ -270,7 +273,10 @@ public:
         else
         {
             cout<<"Invalid day for date"<<endl;
-            day = 1;
+            time_t now = time(0);
+            tm *ltm = localtime(&now);
+            set_day(ltm->tm_mday);
+            cout<<"Value set to current day by default"<<endl;
             return false;
         }
     }
@@ -284,13 +290,18 @@ public:
         else
         {
             cout<<"Invalid month for date"<<endl;
-            month = 1;
+            time_t now = time(0);
+            tm *ltm = localtime(&now);
+            set_month(1 + ltm->tm_mon);
+            cout<<"Value set to current month by default"<<endl;
             return false;
         }
     }
     bool set_year(int val)
     {
-        if(val>2019)
+        time_t now = time(0);
+        tm *ltm = localtime(&now);
+        if(val>=1900 + ltm->tm_year)
         {
             year = val;
             return true;
@@ -298,7 +309,8 @@ public:
         else
         {
             cout<<"Invalid year for date"<<endl;
-            year = 1970;
+            set_year(1900 + ltm->tm_year);
+            cout<<"Value set to current year by default"<<endl;
             return false;
         }
     }
@@ -366,27 +378,6 @@ public:
             return false;
         }
     }
-    bool check_password(string val)
-    {
-        if(val.length()>32)
-        {
-            cout<<"Password for "<<get_username()<<" is too long"<<endl;
-            cout<<"Password must not contain more than 32 characters"<<endl;
-            return false;
-        }
-        else if(val.length()<8)
-        {
-            cout<<"Password for "<<get_username()<<" is too short"<<endl;
-            cout<<"Password must contain 8 characters at least"<<endl;
-            return false;
-        }
-        else
-        {
-            //check password complexity here
-            //must contain at least one character and one digit
-            return true;
-        }
-    }
     bool set_password(string val)
     {
         if(check_password(val))
@@ -395,22 +386,6 @@ public:
             return true;
         }
         return false;
-    }
-    bool check_contact_no_validity(string val)
-    {
-        if(val.size()==11)
-        {
-            for(int i=0;i<val.size();i++)
-            {
-                if(!isdigit(val[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        else
-            return false;
     }
     bool set_contact_no(string val)
     {
@@ -437,6 +412,44 @@ public:
     string get_password(void)
     {
         return password;
+    }
+    bool check_password(string val)
+    {
+        if(val.length()>32)
+        {
+            cout<<"Password for "<<get_username()<<" is too long"<<endl;
+            cout<<"Admin password must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()<8)
+        {
+            cout<<"Password for "<<get_username()<<" is too short"<<endl;
+            cout<<"Admin password must contain 8 characters at least"<<endl;
+            return false;
+        }
+        else
+        {
+            //check password complexity
+            //must contain at least one character and one digit or something like that
+            //admin password must be stronger than user password; make sure of that
+            return true;
+        }
+    }
+    bool check_contact_no_validity(string val)
+    {
+        if(val.size()==11)
+        {
+            for(int i=0;i<val.size();i++)
+            {
+                if(!isdigit(val[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+            return false;
     }
     bool login(string user_val, string pass_val)
     {
@@ -465,7 +478,7 @@ public:
     User()
     {
         set_name("");
-        set_password("dsf5438534");
+        set_password("password123");
     }
     User(string nameval, string passval)
     {
@@ -476,9 +489,14 @@ public:
     {
         name = value;
     }
-    void set_password(string val)
+    bool set_password(string val)
     {
-        password = val;
+        if(check_password(val))
+        {
+            password = val;
+            return true;
+        }
+        return false;
     }
     string get_name(void)
     {
@@ -487,6 +505,27 @@ public:
     string get_password(void)
     {
         return password;
+    }
+    bool check_password(string val)
+    {
+        if(val.length()>32)
+        {
+            cout<<"Password for is too long"<<endl;
+            cout<<"User password must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()<6)
+        {
+            cout<<"Password is too short"<<endl;
+            cout<<"User password must contain 6 characters at least"<<endl;
+            return false;
+        }
+        else
+        {
+            //check password complexity
+            //must contain at least one character and one digit or something like that
+            return true;
+        }
     }
     virtual bool login() = 0;
 };
