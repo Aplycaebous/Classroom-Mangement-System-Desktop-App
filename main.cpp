@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
-#define room_no_size 3
-
 using namespace std;
+
+const int  room_no_size = 3; //Const int are used instead of macros because they ensure better type safety
+const int no_of_buildings = 3; //Macros are text replacers and can sometimes replace unwanted texts
 
 class Physical_location
 {
@@ -19,7 +20,7 @@ public:
         set_building_no(buildval);
         set_room_no(roomval);
     }
-    bool check_room(string s)
+    bool check_room_no(string s)
     {
         if(s.length()!=room_no_size)
         {
@@ -37,27 +38,43 @@ public:
             return true;
         }
     }
-    void set_building_no(string val)
+    bool check_build_no(string s)
     {
-        //Since IUT has 3 academic buildings only
-        if(val == "1" || val == "2" ||val == "3" )
+        if(s.size()==1)
+        {
+            char c = s[0];
+            int n = static_cast<int>(c);
+            if(n>0 && n<= no_of_buildings)
+                return true;
+        }
+        return false;
+    }
+    bool set_building_no(string val)
+    {
+        if(check_build_no(val))
+        {
             building_no = val;
+            return true;
+        }
         else
         {
             cout<<"Wrong building number"<<endl;
             building_no = "1";
+            return false;
         }
     }
-    void set_room_no(string val)
+    bool set_room_no(string val)
     {
-        if(check_room(val))
+        if(check_room_no(val))
         {
             room_no = val;
+            return true;
         }
         else
         {
             cout<<"Invalid room number"<<endl;
             room_no = "101";
+            return false;
         }
     }
     string get_building_no(void)
@@ -68,13 +85,19 @@ public:
     {
         return room_no;
     }
+    string get_physical_location(void)
+    {
+        string s = building_no + "-" + room_no;
+        return s;
+    }
 };
 
 class Time
 {
-private:
+protected:
     int hour;
     int minute;
+    //These two functions shouldn't be accessed by anyone outside this class to avoid storing undesirable values
     void set_hour(int val)
     {
         hour = val;
@@ -97,41 +120,56 @@ public:
         set_minute_check(val_minute);
         set_format(format);
     }
-    void set_hour_check(int val)
+    bool set_hour_check(int val)
     {
+        //sets the hour along with checking the validity
         if(val>0 && val<=12)
         {
             set_hour(val);
+            return true;
         }
         else
         {
             cout<<"Invalid hour for time"<<endl;
             set_hour(1);
+            return false;
         }
     }
-    void set_minute_check(int val)
+    bool set_minute_check(int val)
     {
+        //sets the minute along with checking the validity
         if(val>=0 && val<60)
+        {
             set_minute(val);
+            return true;
+        }
         else
         {
             cout<<"Invalid minute for time"<<endl;
             set_minute(0);
+            return false;
         }
     }
-    void set_format(string val)
+    bool set_format(string val)
     {
-        transform(val.begin(), val.end(), val.begin(), ::toupper);
+        transform(val.begin(), val.end(), val.begin(), ::toupper); //In case of lower case input
         if(val == "AM"||val=="PM")
         {
             if(val == "PM")
             {
                 set_hour(get_hour()+12);
             }
+            else
+            {
+                set_hour(get_hour());
+            }
+            return true;
         }
         else
         {
-            cout<<"Invalid input"<<endl;
+            cout<<"Invalid time format"<<endl;
+            cout<<"Please enter AM or PM only"<<endl;
+            return false;
         }
     }
     int get_hour()
@@ -167,19 +205,51 @@ public:
     };
     Time convert_duration(int min)
     {
-        set_minute(min%60);
-        set_hour(min/60);
+        //returns a Time object for the duration in the minutes
+        Time temp;
+        temp.set_minute(min%60);
+        temp.set_hour(min/60);
+        return temp;
+    }
+    string get_time(void)
+    {
+        // returns a time string in 12-hour format
+        string s;
+        if(hour>12)
+        {
+            s+=to_string(hour-12);
+        }
+        else if(hour==0)
+        {
+            s+=to_string(hour+12);
+        }
+        else
+        {
+            s+=to_string(hour);
+        }
+        s+=":";
+        s+=to_string(minute);
+        s+=" ";
+        if(hour>=12)
+        {
+            s+="PM";
+        }
+        else
+        {
+            s+="AM";
+        }
+        return s;
     }
 };
 
 class Date
 {
-private:
+protected:
     int day;
     int month;
     int year;
 public:
-    Date()
+    Date(void)
     {
         set_day(1);
         set_month(1);
@@ -191,35 +261,45 @@ public:
         set_month(month_val);
         set_year(year_val);
     }
-    void set_day(int val)
+    bool set_day(int val)
     {
-        if(val<32 && val>0)
+        if(val<32 && val>0) {
             day = val;
+            return true;
+        }
         else
         {
             cout<<"Invalid day for date"<<endl;
             day = 1;
+            return false;
         }
     }
-    void set_month(int val)
+    bool set_month(int val)
     {
-
         if(val<13 && val>0)
+        {
             month = val;
+            return true;
+        }
         else
         {
             cout<<"Invalid month for date"<<endl;
             month = 1;
+            return false;
         }
     }
-    void set_year(int val)
+    bool set_year(int val)
     {
         if(val>2019)
+        {
             year = val;
+            return true;
+        }
         else
         {
             cout<<"Invalid year for date"<<endl;
             year = 1970;
+            return false;
         }
     }
     int get_day()
@@ -234,6 +314,16 @@ public:
     {
         return year;
     }
+    string get_date() //returns date for displaying or file output
+    {
+        string s;
+        s += to_string(day);
+        s += "-";
+        s += to_string(month);
+        s += "-";
+        s += to_string(year);
+        return s;
+    }
 };
 
 class Admin
@@ -241,24 +331,104 @@ class Admin
 private:
     string username;
     string password;
+    string contact_no;
+    string email_address;
 public:
     Admin()
     {
         set_username("system");
         set_password("system123");
     }
-    Admin(string user_val, string pass_val)
+    Admin(string user_val, string pass_val, string cont_val,string email_val)
     {
         set_username(user_val);
         set_password(pass_val);
+        set_contact_no(cont_val);
+        set_email_address(email_val);
     }
-    void set_username(string val)
+    bool set_username(string val)
     {
-        username = val;
+        if(val.length()>32)
+        {
+            cout<<val<<" is an invalid username"<<endl;
+            cout<<"Username must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()>=6)
+        {
+            username = val;
+            return true;
+        }
+        else
+        {
+            cout<<val<<" is an invalid username"<<endl;
+            cout<<"Username must contain 6 characters at least"<<endl;
+            return false;
+        }
     }
-    void set_password(string val)
+    bool check_password(string val)
     {
-        password = val;
+        if(val.length()>32)
+        {
+            cout<<"Password for "<<get_username()<<" is too long"<<endl;
+            cout<<"Password must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()<8)
+        {
+            cout<<"Password for "<<get_username()<<" is too short"<<endl;
+            cout<<"Password must contain 8 characters at least"<<endl;
+            return false;
+        }
+        else
+        {
+            //check password complexity here
+            //must contain at least one character and one digit
+            return true;
+        }
+    }
+    bool set_password(string val)
+    {
+        if(check_password(val))
+        {
+            set_password(val);
+            return true;
+        }
+        return false;
+    }
+    bool check_contact_no_validity(string val)
+    {
+        if(val.size()==11)
+        {
+            for(int i=0;i<val.size();i++)
+            {
+                if(!isdigit(val[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+            return false;
+    }
+    bool set_contact_no(string val)
+    {
+        if(check_contact_no_validity(val))
+        {
+            contact_no = val;
+            return true;
+        }
+        else
+        {
+            cout << "Invalid contact number" << endl;
+            cout << "Make sure you DON'T write the country code before the number" << endl;
+            return false;
+        }
+    }
+    void set_email_address(string val)
+    {
+        email_address = val;
     }
     string get_username(void)
     {
@@ -274,12 +444,16 @@ public:
         {
             return true;
         }
-        else return false;
+        else
+        {
+            cout<<"Wrong username/password"<<endl;
+            return false;
+        }
     }
     //In main function we create admin with username and password
-    //read and load classrooms
-    //read and load user_list
-    //check log file
+    //Admin can read and load classrooms
+    //Admin can read and load user_list
+    //Admin can check log file
 };
 
 class User
@@ -319,7 +493,7 @@ public:
 
 class Student:public User
 {
-private:
+protected:
     string student_id;
     //student ID theke year, dept derive korae store korar option porae implement kora jai
     //staff der jonno similar kichu kora jai kintu porae korbo
@@ -328,7 +502,7 @@ public:
     Student()
     {
         set_student_id("0");
-        set_cr(0);
+        set_cr(false);
     }
     Student(string val_name, string val_pass, string val_std_id, bool val_cr):User(val_name,val_pass)
     {
@@ -363,7 +537,7 @@ public:
 
 class Staff:public User
 {
-private:
+protected:
     string staff_id;
 public:
     Staff()
@@ -412,11 +586,17 @@ public:
         set_duration(dur_val);
         set_user_ID(user_val);
     }
-    void set_duration(int value) //In minutes
+    bool set_duration(int value) //In minutes
     {
-        if(duration<=360)
+        if(duration<=360) {
             duration = value;
-        else cout<<"Invalid time duration: Can not book records longer than 6 hours"<<endl;
+            return true;
+        }
+        else
+        {
+            cout<<"Invalid time duration: Can not book records longer than 6 hours"<<endl;
+            return false;
+        }
     }
     void set_user_ID(string val)
     {
@@ -455,10 +635,18 @@ public:
     {
         AC = val;
     }
-    void set_boards(int val)
+    bool set_boards(int val)
     {
-        if(val<0) cout<<"Invalid no. of boards"<<endl;
-        else boards = val;
+        if(val<0 || val>=10)
+        {
+            cout<<"Invalid no. of boards"<<endl;
+            return false;
+        }
+        else
+        {
+            boards = val;
+            return true;
+        }
     }
     void set_projector(bool val)
     {
@@ -480,7 +668,7 @@ public:
 
 class Room: public Physical_location, public Equipments
 {
-private:
+protected:
     int capacity;
     vector<Record> record_vec;
     //aita na korae class er array ba pointers use korte parish
@@ -496,9 +684,18 @@ public:
     {
         set_capacity(cap_val);
     }
-    void set_capacity(int val)
+    bool set_capacity(int val)
     {
-        capacity = val;
+        if(val<0)
+        {
+            cout<<"Invalid capacity"<<endl;
+            return false;
+        }
+        else
+        {
+            capacity = val;
+            return true;
+        }
     }
     int get_capacity(void)
     {
