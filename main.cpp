@@ -2,37 +2,133 @@
 #include<ctime>
 using namespace std;
 
-const int room_no_size = 3; //Const int are used instead of macros since they ensure better type safety
-const int no_of_buildings = 3; //Macros are text replacers which often replace unwanted texts
+class Metadata
+{
+private:
+    static int room_no_size;
+    static int no_of_buildings;
+    static int student_id_size;
+    static int staff_id_size;
+    virtual void abstracter() = 0;//so that Metadata remains an abstract class
+protected:
+    bool set_room_no_size(int val)
+    {
+        if(val>=0 && val<8 )
+        {
+            room_no_size = val;
+            return true;
+        }
+        else
+        {
+            cout<<"Invalid room number size"<<endl;
+            cout<<"Value has to be positive and lesser than 8"<<endl;
+            return false;
+        }
+    }
+    bool set_no_of_buildings(int val)
+    {
+        if(val>=0 && val<1000)
+        {
+            no_of_buildings = val;
+            return true;
+        }
+        else
+        {
+            cout<<"Invalid number of buildings"<<endl;
+            cout<<"Value has to be positive and lesser than 1000"<<endl;
+            return false;
+        }
+    }
+    bool set_student_id_size(int val)
+    {
+        if(val>=0 && val<21)
+        {
+            student_id_size = val;
+            return true;
+        }
+        else
+        {
+            cout<<"Invalid size for student ID"<<endl;
+            cout<<"Value has to be positive and lesser than 21"<<endl;
+            return false;
+        }
+    }
+    bool set_staff_id_size(int val)
+    {
+        if(val>=0 && val<21)
+        {
+            staff_id_size = val;
+            return true;
+        }
+        else
+        {
+            cout<<"Invalid size for staff ID"<<endl;
+            cout<<"Value has to be positive and lesser than 21"<<endl;
+            return false;
+        }
+    }
+public:
+    static int get_room_no_size(void)
+    {
+        return room_no_size;
+    }
+    static int get_no_of_buildings(void)
+    {
+        return no_of_buildings;
+    }
+    static int get_student_id_size(void)
+    {
+        return student_id_size;
+    }
+    static int get_staff_id_size(void)
+    {
+        return staff_id_size;
+    }
+};
+int Metadata::room_no_size = 3;
+int Metadata::no_of_buildings = 3;
+int Metadata::student_id_size = 9;
+int Metadata::staff_id_size = 8;
 
 class Physical_location
 {
 protected:
     string building_no;
     string room_no;
+    void set_building_no_without_check(string val)
+    {
+        building_no = val;
+    }
+    void set_room_no_without_check (string val)
+    {
+        room_no = val;
+    }
 public:
     Physical_location()
     {
-        set_building_no("1");
-        set_room_no("101");
+        set_building_no_without_check("");
+        set_room_no_without_check("");
     }
     Physical_location(string buildval, string roomval)
     {
         set_building_no(buildval);
         set_room_no(roomval);
     }
-    bool check_room_no(string s)
+    bool check_room_no(string val)
     {
-        if(s.length()!=room_no_size)
+        if(val.length()!=Metadata::get_room_no_size())
         {
+            cout<<"Invalid room number"<<endl;
+            cout<<"Size must be "<<Metadata::get_room_no_size()<<" characters exactly"<<endl;
             return false;
         }
         else
         {
-            for(int i=0;i<s.length();i++)
+            for(int i=0;i<val.size();i++)
             {
-                if(!isdigit(s[i]))
+                if(!isdigit(val[i]))
                 {
+                    cout<<"Character number:"<<i+1<<" is not a digit"<<endl;
                     return false;
                 }
             }
@@ -45,7 +141,7 @@ public:
         {
             char c = s[0];
             int n = static_cast<int>(c);
-            if(n>0 && n<= no_of_buildings)
+            if(n>0 && n<= Metadata::get_no_of_buildings())
                 return true;
         }
         return false;
@@ -59,8 +155,7 @@ public:
         }
         else
         {
-            cout<<"Wrong building number"<<endl;
-            building_no = "1";
+            set_building_no_without_check("");
             return false;
         }
     }
@@ -73,8 +168,7 @@ public:
         }
         else
         {
-            cout<<"Invalid room number"<<endl;
-            room_no = "101";
+            set_room_no_without_check("");
             return false;
         }
     }
@@ -99,11 +193,11 @@ protected:
     int hour;
     int minute;
     //These two functions shouldn't be accessed by anyone outside this class to avoid storing undesirable values
-    void set_hour(int val)
+    void set_hour_without_check(int val)
     {
         hour = val;
     }
-    void set_minute(int val)
+    void set_minute_without_check(int val)
     {
         minute = val;
     }
@@ -112,42 +206,42 @@ public:
     //Input is taken in 12 hour format
     Time()
     {
-        set_hour(1);
-        set_minute(0);
+        set_hour_without_check(0);
+        set_minute_without_check(0);
     }
     Time(int val_hour, int val_minute, string format)
     {
-        set_hour_check(val_hour);
-        set_minute_check(val_minute);
+        set_hour(val_hour);
+        set_minute(val_minute);
         set_format(format);
     }
-    bool set_hour_check(int val)
+    bool set_hour(int val)
     {
         //sets the hour along with checking the validity
         if(val>0 && val<=12)
         {
-            set_hour(val);
+            set_hour_without_check(val);
             return true;
         }
         else
         {
-            cout<<"Invalid hour for time"<<endl;
-            set_hour(1);
+            cout<<"Invalid hour input for time"<<endl;
+            set_hour_without_check(0);
             return false;
         }
     }
-    bool set_minute_check(int val)
+    bool set_minute(int val)
     {
         //sets the minute along with checking the validity
         if(val>=0 && val<60)
         {
-            set_minute(val);
+            set_minute_without_check(val);
             return true;
         }
         else
         {
-            cout<<"Invalid minute for time"<<endl;
-            set_minute(0);
+            cout<<"Invalid minute input for time"<<endl;
+            set_minute_without_check(0);
             return false;
         }
     }
@@ -189,27 +283,27 @@ public:
         int total_hour = this->get_hour()+val.get_hour();
         if(total_min>=60)
         {
-            temp.set_minute(total_min-60);
+            temp.set_minute_without_check(total_min-60);
             extra_hour++;
         }
         else
         {
-            set_minute(total_min);
+            set_minute_without_check(total_min);
         }
         if(total_hour + extra_hour>=24)
         {
-            temp.set_hour(total_hour + extra_hour - 24);
+            temp.set_hour_without_check(total_hour + extra_hour - 24);
         }
         else
-            temp.set_hour(total_hour + extra_hour);
+            temp.set_hour_without_check(total_hour + extra_hour);
         return temp;
     };
     Time convert_duration(int min)
     {
         //returns a Time object for the duration in the minutes
         Time temp;
-        temp.set_minute(min%60);
-        temp.set_hour(min/60);
+        temp.set_minute_without_check(min%60);
+        temp.set_hour_without_check(min/60);
         return temp;
     }
     string get_time(void)
@@ -338,13 +432,51 @@ public:
     }
 };
 
-class Admin
+class Admin:private Metadata
 {
 private:
     string username;
     string password;
     string contact_no;
     string email_address;
+    bool check_password(string val)
+    {
+        if(val.length()>32)
+        {
+            cout<<"Password for "<<get_username()<<" is too long"<<endl;
+            cout<<"Admin password must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()<8)
+        {
+            cout<<"Password for "<<get_username()<<" is too short"<<endl;
+            cout<<"Admin password must contain 8 characters at least"<<endl;
+            return false;
+        }
+        else
+        {
+            //check password complexity
+            //must contain at least one character and one digit or something like that
+            //admin password must be stronger than user password; make sure of that
+            return true;
+        }
+    }
+    bool check_contact_no_validity(string val)
+    {
+        if(val.size()==11)
+        {
+            for(int i=0;i<val.size();i++)
+            {
+                if(!isdigit(val[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+            return false;
+    }
 public:
     Admin()
     {
@@ -413,44 +545,6 @@ public:
     {
         return password;
     }
-    bool check_password(string val)
-    {
-        if(val.length()>32)
-        {
-            cout<<"Password for "<<get_username()<<" is too long"<<endl;
-            cout<<"Admin password must not contain more than 32 characters"<<endl;
-            return false;
-        }
-        else if(val.length()<8)
-        {
-            cout<<"Password for "<<get_username()<<" is too short"<<endl;
-            cout<<"Admin password must contain 8 characters at least"<<endl;
-            return false;
-        }
-        else
-        {
-            //check password complexity
-            //must contain at least one character and one digit or something like that
-            //admin password must be stronger than user password; make sure of that
-            return true;
-        }
-    }
-    bool check_contact_no_validity(string val)
-    {
-        if(val.size()==11)
-        {
-            for(int i=0;i<val.size();i++)
-            {
-                if(!isdigit(val[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        else
-            return false;
-    }
     bool login(string user_val, string pass_val)
     {
         if(user_val == get_username() && pass_val == get_password())
@@ -467,6 +561,7 @@ public:
     //Admin can read and load classrooms
     //Admin can read and load user_list
     //Admin can check log file
+    //Admin can edit metadata (Done)
 };
 
 class User
@@ -474,6 +569,27 @@ class User
 protected:
     string name;
     string password;
+    bool check_password(string val)
+    {
+        if(val.length()>32)
+        {
+            cout<<"Password for is too long"<<endl;
+            cout<<"User password must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()<6)
+        {
+            cout<<"Password is too short"<<endl;
+            cout<<"User password must contain 6 characters at least"<<endl;
+            return false;
+        }
+        else
+        {
+            //check password complexity
+            //must contain at least one character and one digit or something like that
+            return true;
+        }
+    }
 public:
     User()
     {
@@ -506,27 +622,6 @@ public:
     {
         return password;
     }
-    bool check_password(string val)
-    {
-        if(val.length()>32)
-        {
-            cout<<"Password for is too long"<<endl;
-            cout<<"User password must not contain more than 32 characters"<<endl;
-            return false;
-        }
-        else if(val.length()<6)
-        {
-            cout<<"Password is too short"<<endl;
-            cout<<"User password must contain 6 characters at least"<<endl;
-            return false;
-        }
-        else
-        {
-            //check password complexity
-            //must contain at least one character and one digit or something like that
-            return true;
-        }
-    }
     virtual bool login() = 0;
 };
 
@@ -534,13 +629,15 @@ class Student:public User
 {
 protected:
     string student_id;
-    //student ID theke year, dept derive korae store korar option porae implement kora jai
-    //staff der jonno similar kichu kora jai kintu porae korbo
     bool cr; //if CR or not
+    void set_student_id_without_check(string val)
+    {
+        student_id = val;
+    }
 public:
     Student()
     {
-        set_student_id("0");
+        set_student_id_without_check("");
         set_cr(false);
     }
     Student(string val_name, string val_pass, string val_std_id, bool val_cr):User(val_name,val_pass)
@@ -548,9 +645,40 @@ public:
         set_student_id(val_std_id);
         set_cr(val_cr);
     }
-    void set_student_id(string val)
+    static bool check_student_id(string val)
     {
-        student_id = val;
+        if(val.length()!=Metadata::get_student_id_size())
+        {
+            cout<<"Invalid student ID"<<endl;
+            cout<<"Size must be "<<Metadata::get_student_id_size()<<" characters exactly"<<endl;
+            return false;
+        }
+        else
+        {
+            for(int i=0;i<val.size();i++)
+            {
+                if(!isdigit(val[i]))
+                {
+                    cout<<"Character number:"<<i+1<<" is not a digit"<<endl;
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    bool set_student_id(string val)
+    {
+        if(check_student_id(val))
+        {
+            set_student_id_without_check(val);
+            return true;
+        }
+        else
+        {
+            set_student_id_without_check("");
+            return false;
+        }
+
     }
     void set_cr(bool val)
     {
@@ -578,18 +706,52 @@ class Staff:public User
 {
 protected:
     string staff_id;
+    void set_staff_id_without_check(string val)
+    {
+        staff_id = val;
+    }
 public:
     Staff()
     {
-        set_staff_id("0");
+        set_staff_id_without_check("");
     }
     Staff(string val_name, string val_pass, string val_staff_id):User(val_name,val_pass)
     {
         set_staff_id(val_staff_id);
     }
-    void set_staff_id(string val)
+    static bool check_staff_id(string val)
     {
-        staff_id = val;
+        if(val.length()!=Metadata::get_staff_id_size())
+        {
+            cout<<"Invalid staff ID"<<endl;
+            cout<<"Size must be "<<Metadata::get_staff_id_size()<<" characters exactly"<<endl;
+            return false;
+        }
+        else
+        {
+            for(int i=0;i<val.size();i++)
+            {
+                if(!isdigit(val[i]))
+                {
+                    cout<<"Character number:"<<i+1<<" is not a digit"<<endl;
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    bool set_staff_id(string val)
+    {
+        if(check_staff_id(val))
+        {
+            set_staff_id_without_check(val);
+            return true;
+        }
+        else
+        {
+            set_staff_id_without_check("");
+            return false;
+        }
     }
     string get_staff_id(void)
     {
@@ -610,12 +772,15 @@ class Record:public Physical_location, public Time, public Date
 protected:
     int duration;
     string user_ID;
-
+    void set_user_id_without_check(string val)
+    {
+        user_ID = val;
+    }
 public:
     Record(void)
     {
         duration = 0;
-        user_ID = "";
+        set_user_id_without_check("");
     }
     Record(string user_val, string build_val, string room_val, int hour_val, int min_val, string form_val,
     int dur_val, int day_val, int mon_val, int year_val)
@@ -627,19 +792,33 @@ public:
     }
     bool set_duration(int value) //In minutes
     {
-        if(duration<=360) {
+        if(duration<=360 && duration>0) {
             duration = value;
             return true;
         }
-        else
+        else if(duration>360)
         {
             cout<<"Invalid time duration: Can not book records longer than 6 hours"<<endl;
             return false;
         }
+        else
+        {
+            cout<<"Invalid time duration: Must be a positive integer"<<endl;
+            return false;
+        }
     }
-    void set_user_ID(string val)
+    bool set_user_ID(string val)
     {
-        user_ID = val;
+        if(Student::check_student_id(val) || Staff::check_staff_id(val))
+        {
+            set_user_id_without_check(val);
+            return true;
+        }
+        else
+        {
+            set_user_id_without_check("0");
+            return false;
+        }
     }
     int get_duration(void)
     {
