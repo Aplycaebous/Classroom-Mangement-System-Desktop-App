@@ -1005,9 +1005,6 @@ public:
     {
         return capacity;
     }
-    
-        return record_vec;
-	} 
 };
 
 class System_intializer()
