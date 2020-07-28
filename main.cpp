@@ -584,7 +584,7 @@ public:
 		
 		//adds a room in the room.txt file
 	}
-	Student[] create_student_file(string path)
+	create_student_file(string path)
 	{
 		//same thing we did for rooms but for student users
 		//creates student.txt file 
@@ -594,7 +594,7 @@ public:
 		//checks the student doesn't prexist in the student.txt file
 		//appends a new student_user in the room.txt file
 	}
-	Staff[] create_staff_file(string path)
+	create_staff_file(string path)
 	{
 		//same thing we did for rooms but for staff users
 	}
@@ -1026,6 +1026,7 @@ class System_intializer()
 
 //create a log class
 {
+	//log.txt file
 	//log class will contain all functions that will append the log file whenever anything is done in the program
 	//all the functions should be accessed by User and Admin classes
 }
@@ -1034,4 +1035,5 @@ int main()
 {
 	//all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
 	//will be read and stored in memory (class arrays) in the beginning of the function
+	
 }
