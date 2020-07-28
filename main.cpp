@@ -558,10 +558,60 @@ public:
         }
     }
     //In main function we create admin with username and password
-    //Admin can read and load classrooms
-    //Admin can read and load user_list
-    //Admin can check log file
+    //Admin can read and load classrooms (written)
+    //Admin can read and load user_list (written)
+    //Admin can check log file (written)
     //Admin can edit metadata (Done)
+	
+	create_room_file(string path)
+	{
+		//the purpose of this function is to create our room file
+		//takes a file path as input and then reads data from that file (prefarably csv file)
+		//the file is the input for the room file stored in our system
+		//checks the validity of each entry of the file
+		//then each entry is appended in the room.txt file of our program
+		//preferable to append serially for easier access of other functions and readability
+		//there are multiple ways to take input serially
+		//firstly we can store all the validated data in the memory 
+		//then we write the whole array in the file
+	}
+	void add_room()//paramenter list for rooms 
+	{
+		//checks the room doesn't prexist. Physical_location is primary key, so check that
+		//for this we can pass a room[] array to this function
+		//then we search that array for that particular room
+		//finally we update the changed_array using create_room_file
+		
+		//adds a room in the room.txt file
+	}
+	Student[] create_student_file(string path)
+	{
+		//same thing we did for rooms but for student users
+		//creates student.txt file 
+	}
+	void add_student()
+	{
+		//checks the student doesn't prexist in the student.txt file
+		//appends a new student_user in the room.txt file
+	}
+	Staff[] create_staff_file(string path)
+	{
+		//same thing we did for rooms but for staff users
+	}
+	void add_staff(){}
+	void add_admin(){}
+	//for the remove functions we pass an array of rooms. Then we remove from array of rooms 
+	//and then upload that array in the file 
+	remove_student()
+	remove_staff()
+	remove_admin()
+	remove_room()
+	void read_log(void)
+	{
+		//shows the log_file on the screen
+		//Present the data in a user friendly way (optional)
+	}
+	
 };
 
 class User
@@ -623,6 +673,45 @@ public:
         return password;
     }
     virtual bool login() = 0;
+	void add_record()//parameter list phy_loc, date, time, dur, record_array
+	//Friend class Record
+    {
+		//The booking functions appends a record at the record file while information of rooms and records are stored
+		//Before booking a record at a particular physical_location make sure that the entries don't overlap
+		//
+		//Search the whole record array to see that the records don't overlap
+		//If it doesn't overlap... add the record and update the file(record.txt)
+		//If it overlaps show an error message 
+		//to make it easier for you to work with these data I made some functions in date 
+		//and time for easier calculations and comparison
+		//call those functions when necessary 
+	}
+	void delete_record()
+	{
+		//sem thing, you understand, right? 
+	}
+	void show_layout(void)
+	{
+		//Room and record are two seperated entities 
+		//They have one to many relationship
+		//Physical_location is the foreign key in records 
+		//There will be two seperate files for rooms and records 
+		//
+		//basically a display function which shows a list of all buildings (reads input from files)
+		//you can then select a particular building and it will show all the rooms in that building
+		//in our program, physical location is a combination of building number and room number
+		//hence, if you want you can show the list of building no + room number at a time, provided that the list isn't too long
+		//Remember to show them SERIALLY 
+		//you can then select a room and then it will show all the records in that room
+		//you should make at least 2 seperate functions for this, one to show physical_locations
+		//and another one to show all the records in a particular physical location
+		//the second function will be like this 
+		//void display_records(Physical_location phy_loc_val)				
+	}
+    //find classroom/search
+	{
+		returns a physical_location after searching
+	}
 };
 
 class Student:public User
@@ -888,9 +977,6 @@ class Room: public Physical_location, public Equipments
 {
 protected:
     int capacity;
-    vector<Record> record_vec;
-    //aita na korae class er array ba pointers use korte parish
-    //oita better hoi since sir classe koraise
 
 public:
     Room()
@@ -919,58 +1005,36 @@ public:
     {
         return capacity;
     }
-    vector<Record> get_record_vec(void)
-    {
+    
         return record_vec;
-    }
-    //show layout
-    //find classroom/search
-    //log class
-    //book + delete entry
+	} 
 };
+
+class System_intializer()
+{
+	//Add a function which adds an empty Admin object if the Admin.txt file doesn't exist
+	//It can show a pop-up like first time use 
+	//New default admin created. Username: system. Password system123
+	//i.e. for first time use only
+	
+	static Room[] read_room()
+	{
+		//reads the room array from room.txt and returns it
+	}
+	static Student[] read_student()
+	static Staff[] read_staff()
+	static Admin[] read_admin()
+	static Record[] read_record()
+}
+
+//create a log class
+{
+	//log class will contain all functions that will append the log file whenever anything is done in the program
+	//all the functions should be accessed by User and Admin classes
+}
 
 int main()
 {
-    /*
-    int no_of_users = 1;
-    int val1,val2,val3;
-    string a,b;
-    User* user[no_of_users];
-    user[0] = new User("180041120","Farhan","farhan123");
-    cout<<"Enter your user ID:"<<endl;
-    cin>>a;
-
-    for(int i=0;i<no_of_users;i++)
-    {
-        if(user[i]->get_userid()==a && user)
-        {
-            string user_id = a;
-            cout<<"Enter your password:"<<endl;
-            cin>>b;
-            if(user[i]->get_password()==b)
-            {
-                //add a record AFTER validating function
-                //just for testing, this won't be implemented in the actual program
-                //We will search considering factors like capacity, equipments, record time etc;
-                //After cross-checking the factors, if the classroom meets the given requirements
-                //we use this function to add the record
-                Record record;
-                record.set_user_ID(user_id);
-                cout<<"Enter the physical location (building number + room number)"<<endl;
-                cin>>a>>b;
-                record.set_phy_loc(a,b);
-                cout<<"Enter the Date(day,month,year)"<<endl;
-                cin>>val1>>val2>>val3;
-                record.set_date(val1,val2,val3);
-                cout<<"Enter the time(hour, min, format)"<<endl;
-                cin>>val1>>val2>>a;
-                record.set_st_time(val1,val2,a);
-                cout<<"Enter the duration"<<endl;
-                cin>>val1;
-                record.set_duration(val1);
-            }
-            else cout<<"Wrong password"<<endl;
-        }
-    }
-     */
+	//all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
+	//will be read and stored in memory (class arrays) in the beginning of the function
 }
