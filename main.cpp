@@ -142,9 +142,8 @@ public:
     {
         if(s.size()==1)
         {
-            char c = s[0];
-            int n = static_cast<int>(c);
-            if(n>0 && n<= Metadata::get_no_of_buildings())
+            int num=stoi(s);// THE PREVIOUS WAY DOESNT WORK< SO I CONVERTED INTO THE STOI FUCNTION
+            if(num>0 && num<= Metadata::get_no_of_buildings())
                 return true;
         }
         return false;
@@ -153,11 +152,13 @@ public:
     {
         if(check_build_no(val))
         {
+
             building_no = val;
             return true;
         }
         else
         {
+
             set_building_no_without_check("");
             return false;
         }
@@ -1076,9 +1077,9 @@ public:
 
 
         }
-        //cout<<username<<" "<<password<<" "<<contact_no<<" "<<email_address<<endl;
+
         f_list[counti]=new Admin(username,password,contact_no,email_address) ;
-        //f_list[counti]->abstracter();
+
         counti++;
 
     }
@@ -1089,10 +1090,138 @@ public:
         return f_list;
 
 	}
-	//static Room[] read_room()
-	//{
-		//reads the room array from room.txt and returns it
-	//}
+
+
+
+
+	static vector<Room> read_room()
+	{
+
+		vector<Room>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
+		fstream fin;
+	     int counti=0;
+    fin.open("Room.csv", ios::in);
+    string line,word;;
+    string building_val,room_val;
+    bool ac_val,proj_val;
+    int board_no,capacity;
+    int number_of_room=0;
+
+    while (fin.good()) {
+
+        getline(fin, line);
+        stringstream s(line);
+        number_of_room++;
+        int second_count=0;
+        while (getline(s, word, ',')) {
+            if(second_count==0)
+            {
+                   building_val=word;
+                second_count++;
+            }
+            else if(second_count==1)
+            {
+                room_val=word;
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                if(word=="YES")
+                {
+                    ac_val=true;
+                }
+                else
+                {
+                    ac_val=false;
+                }
+                second_count++;
+            }
+            else if(second_count==3)
+            {
+
+                board_no=stoi(word);
+                second_count++;
+            }
+            else if(second_count==4)
+            {
+
+                if(word=="YES")
+                {
+                    proj_val=true;
+                }
+                else
+                {
+                    proj_val=false;
+                }
+
+                second_count++;
+            }
+            else if(second_count==5)
+            {
+                capacity=stoi(word);
+                second_count++;
+            }
+
+        }
+
+        r.push_back(Room(building_val,room_val,ac_val,board_no,proj_val,capacity)) ;
+        counti++;
+
+    }
+
+
+        number_of_room--;
+        r.pop_back();
+
+        
+        //ALL THE CASES IN THE UPPER LOOP ARE THE INPUT TAKEN FROM THE FILE
+        
+
+        
+        
+        //ALSO, WE DON'T NEED TO WORRY ABOUT THE SORT ANYMORE, BECAUSE WHATEVER THE ORDER IS IN THE FILE, THE SYSTEM TAKES IT IN A SORTED ORDER.
+        //SORT PROCESS IS GIVEN BELOW
+    for (int i = 0; i < number_of_room-1; i++)
+   {
+     bool swapped = false;
+     for (int j = 0; j < number_of_room-i-1; j++)
+     {
+         int one=stoi(r[j].get_building_no());
+         int two=stoi(r[j+1].get_building_no());
+        if (one>two)
+        {
+           swap(r[j],r[j+1]);
+           swapped = true;
+        }
+        else if(one==two)
+        {
+            int three=stoi(r[j].get_room_no());
+            int four=stoi(r[j].get_room_no());
+            if(three>four)
+            {
+                swap(r[j],r[j+1]);
+                swapped=true;
+            }
+        }
+     }
+
+     // IF no two elements were swapped by inner loop, then break
+     if (swapped == false)
+        break;
+   }
+
+   for(int i=0;i<number_of_room;i++)
+   {
+       cout<<r[i].get_building_no()<<endl;
+   }
+
+
+
+        return r;
+
+
+
+	}
 	//static Student[] read_student()
 	//static Staff[] read_staff()
 	//static Record[] read_record()
@@ -1110,6 +1239,9 @@ int main()
 
     Admin **ad;
     ad=System_intializer::read_admin();
+    vector<Room>r;
+    r=System_intializer::read_room();
+
 
 	//all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
 	//will be read and stored in memory (class arrays) in the beginning of the function
