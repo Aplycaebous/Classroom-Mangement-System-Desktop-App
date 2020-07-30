@@ -33,8 +33,8 @@ protected:
         }
         else
         {
-            cout<<"Invalid number of buildings"<<endl;
             cout<<"Value has to be positive and lesser than 1000"<<endl;
+            cout<<"Invalid number of buildings"<<endl;
             return false;
         }
     }
@@ -680,7 +680,7 @@ public:
     {
         return password;
     }
-    virtual bool login() = 0;
+    virtual bool login(string id_val, string pass_val) = 0;// YOU NEED TO SEND SOME PARAMETERS BECAUSE YOU DID IT FOR STUDENT AND STAFF,
     void add_record()//parameter list phy_loc, date, time, dur, record_array
     //Friend class Record
     {
@@ -1022,9 +1022,9 @@ class System_intializer
     //New default admin created. Username: system. Password system123
     //i.e. for first time use only
 public:
-    static Admin** read_admin()
+    static vector<Admin> read_admin()
     {
-        Admin* f_list[100];
+        vector<Admin>f_list;
         fstream fin;
         int counti=0;
 
@@ -1061,11 +1061,11 @@ public:
                 }
             }
 
-            f_list[counti]=new Admin(username,password,contact_no,email_address) ;
+            f_list.push_back( Admin(username,password,contact_no,email_address) ) ;
             counti++;
         }
         counti--;
-        delete f_list[counti];
+       // delete f_list[counti];
         return f_list;
     }
 
@@ -1086,7 +1086,7 @@ public:
             stringstream s(line);
             number_of_room++;
             int second_count=0;
-            while (getline(s, word, ',')) 
+            while (getline(s, word, ','))
 	    {
                 if(second_count==0)
                 {
@@ -1146,42 +1146,125 @@ public:
 
         //ALSO, WE DON'T NEED TO WORRY ABOUT THE SORT ANYMORE, BECAUSE WHATEVER THE ORDER IS IN THE FILE, THE SYSTEM TAKES IT IN A SORTED ORDER.
         //SORT PROCESS IS GIVEN BELOW
-        for (int i = 0; i < number_of_room-1; i++)
-        {
-            bool swapped = false;
-            for (int j = 0; j < number_of_room-i-1; j++)
-            {
-                int one=stoi(r[j].get_building_no());
-                int two=stoi(r[j+1].get_building_no());
-                if (one>two)
-                {
-                    swap(r[j],r[j+1]);
-                    swapped = true;
-                }
-                else if(one==two)
-                {
-                    int three=stoi(r[j].get_room_no());
-                    int four=stoi(r[j].get_room_no());
-                    if(three>four)
-                    {
-                        swap(r[j],r[j+1]);
-                        swapped=true;
-                    }
-                }
-            }
-            // IF no two elements were swapped by inner loop, then break
-            if (swapped == false)
-                break;
-        }
 
-        for(int i=0;i<number_of_room;i++)
-        {
-            cout<<r[i].get_building_no()<<endl;
-        }
+
+
         return r;
     }
-    //static Student[] read_student()
-    //static Staff[] read_staff()
+    static vector<Student> read_student()
+	{
+
+	     vector<Student>f_list;
+	     fstream fin;
+	     int counti=0;
+
+    fin.open("Student.csv", ios::in);
+    string line,word;;
+    string username,password,student_id;
+    bool cr;
+
+    while (fin.good()) {
+           // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+
+        while (getline(s, word, ',')) {
+            if(second_count==0)
+            {
+                   username=word;
+                second_count++;
+            }
+            else if(second_count==1)
+            {
+                    password=word;
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                student_id=word;
+                second_count++;
+            }
+            else if(second_count==3)
+            {
+                if(word=="YES")
+                {
+                    cr=true;
+                }
+                else
+                {
+                    cr=false;
+                }
+                second_count++;
+            }
+
+
+        }
+
+        f_list.push_back(Student(username,password,student_id,cr) );
+
+        counti++;
+
+    }
+
+
+        counti--;
+        //delete f_list[counti];
+        return f_list;
+
+
+	}
+
+    static vector<Staff> read_staff()
+    {
+       vector<Staff>f_list;
+	     fstream fin;
+	     int counti=0;
+
+    fin.open("Staff.csv", ios::in);
+    string line,word;;
+    string username,password,student_id;
+
+
+    while (fin.good()) {
+           // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+
+        while (getline(s, word, ',')) {
+            if(second_count==0)
+            {
+                   username=word;
+                second_count++;
+            }
+            else if(second_count==1)
+            {
+                    password=word;
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                student_id=word;
+                second_count++;
+            }
+
+        }
+
+        f_list.push_back(Staff(username,password,student_id) );
+
+        counti++;
+
+    }
+
+
+        counti--;
+        //delete f_list[counti];
+        return f_list;
+
+
+
+    }
     //static Record[] read_record()
 };
 
@@ -1195,10 +1278,14 @@ public:
 int main()
 {
 
-    Admin **ad;
+    vector<Admin>ad;
     ad=System_intializer::read_admin();
     vector<Room>r;
     r=System_intializer::read_room();
+    vector<Student>student;
+    student=System_intializer::read_student();
+    vector<Staff>staff;
+    staff=System_intializer::read_staff();
 
     //all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
     //will be read and stored in memory (class arrays) in the beginning of the function
