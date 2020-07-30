@@ -211,16 +211,17 @@ public:
     }
     Time(int val_hour, int val_minute, string format)
     {
-        set_hour(val_hour);
+        check_hour_value(val_hour);// First checks hour if it is more than 12 or not.
         set_minute(val_minute);
         set_format(format);
     }
-    bool set_hour(int val)
+    bool check_hour_value(int val)
     {
         //sets the hour along with checking the validity
         if(val>0 && val<=12)
         {
-            set_hour_without_check(val);
+            set_hour(val);// Then it sets the hour value. Whether it is 24 hour or not, we will then set it to the format part.
+
             return true;
         }
         else
@@ -229,6 +230,10 @@ public:
             set_hour_without_check(0);
             return false;
         }
+    }
+    bool set_hour(int val)
+    {
+        set_hour_without_check(val);
     }
     bool set_minute(int val)
     {
@@ -889,7 +894,7 @@ public:
     }
     bool set_duration(int value) //In minutes
     {
-        if(duration<=360 && duration>0) {
+        if(value<=360 && value>0) { // it was written duration, it should be value.
             duration = value;
             return true;
         }
@@ -1065,7 +1070,7 @@ public:
             counti++;
         }
         counti--;
-       // delete f_list[counti];
+       f_list.pop_back();
         return f_list;
     }
 
@@ -1144,9 +1149,6 @@ public:
 
         //ALL THE CASES IN THE UPPER LOOP ARE THE INPUT TAKEN FROM THE FILE
 
-        //ALSO, WE DON'T NEED TO WORRY ABOUT THE SORT ANYMORE, BECAUSE WHATEVER THE ORDER IS IN THE FILE, THE SYSTEM TAKES IT IN A SORTED ORDER.
-        //SORT PROCESS IS GIVEN BELOW
-
 
 
         return r;
@@ -1209,7 +1211,7 @@ public:
 
 
         counti--;
-        //delete f_list[counti];
+        f_list.pop_back();
         return f_list;
 
 
@@ -1259,13 +1261,106 @@ public:
 
 
         counti--;
-        //delete f_list[counti];
+        f_list.pop_back();
         return f_list;
 
 
 
     }
-    //static Record[] read_record()
+    static vector<Record>read_record()
+    {
+         vector<Record>f_list;
+	     fstream fin;
+	     int counti=0;
+
+    fin.open("Record.csv", ios::in);
+    string line,word;;
+    string user_val,build_val,room_val,format;
+    int hour,minute,duration,day,month,year;
+
+
+    while (fin.good()) {
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+
+        while (getline(s, word, ',')) {
+            if(second_count==0)
+            {
+                   user_val=word;
+
+                second_count++;
+            }
+            else if(second_count==1)
+            {
+                    build_val=word;
+
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                room_val=word;
+
+                second_count++;
+            }
+            else if(second_count==3)
+            {
+                hour=stoi(word);
+
+                second_count++;
+            }
+            else if(second_count==4)
+            {
+                minute=stoi(word);
+
+                second_count++;
+            }
+            else if(second_count==5)
+            {
+                format=word;
+
+                second_count++;
+            }
+            else if(second_count==6)
+            {
+                duration=stoi(word);
+
+                second_count++;
+            }
+            else if(second_count==7)
+            {
+                day=stoi(word);
+
+                second_count++;
+            }
+            else if(second_count==8)
+            {
+                month=stoi(word);
+
+                second_count++;
+            }
+            else if(second_count==9)
+            {
+                year=stoi(word);
+
+                second_count++;
+            }
+
+
+        }
+        f_list.push_back(Record(user_val,build_val,room_val,hour,minute,format,duration,day,month,year) );
+
+        counti++;
+
+    }
+
+
+        counti--;
+        f_list.pop_back();
+        return f_list;
+
+
+    }
 };
 
 //create a log class
@@ -1286,6 +1381,8 @@ int main()
     student=System_intializer::read_student();
     vector<Staff>staff;
     staff=System_intializer::read_staff();
+    vector<Record>record;
+    record=System_intializer::read_record();
 
     //all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
     //will be read and stored in memory (class arrays) in the beginning of the function
