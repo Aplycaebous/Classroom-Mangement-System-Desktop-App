@@ -9,7 +9,6 @@ private:
     static int no_of_buildings;
     static int student_id_size;
     static int staff_id_size;
- //   virtual void abstracter() = 0;//so that Metadata remains an abstract class, PRIVATE VIRTUAL FUCNTIONS DONT WORK
 protected:
     bool set_room_no_size(int val)
     {
@@ -84,9 +83,7 @@ public:
     {
         return staff_id_size;
     }
-
-    virtual void abstracter()=0;// MADE A VIRTUAL CLASS
-
+    virtual bool login(string user_val, string pass_val) = 0;// To make Metadata an abstract class
 };
 int Metadata::room_no_size = 3;
 int Metadata::no_of_buildings = 3;
@@ -158,7 +155,6 @@ public:
         }
         else
         {
-
             set_building_no_without_check("");
             return false;
         }
@@ -518,8 +514,8 @@ public:
     {
         if(check_password(val))
         {
-           // set_password(val); INFINITE LOOP
-           password=val;
+            // set_password(val); INFINITE LOOP
+            password=val;
             return true;
         }
         return false;
@@ -576,62 +572,54 @@ public:
     //Admin can check log file (written)
     //Admin can edit metadata (Done)
 
-	create_room_file(string path)
-	{
-		//the purpose of this function is to create our room file
-		//takes a file path as input and then reads data from that file (prefarably csv file)
-		//the file is the input for the room file stored in our system
-		//checks the validity of each entry of the file
-		//then each entry is appended in the room.txt file of our program
-		//preferable to append serially for easier access of other functions and readability
-		//there are multiple ways to take input serially
-		//firstly we can store all the validated data in the memory
-		//then we write the whole array in the file
-	}
-	void add_room()//paramenter list for rooms
-	{
-		//checks the room doesn't prexist. Physical_location is primary key, so check that
-		//for this we can pass a room[] array to this function
-		//then we search that array for that particular room
-		//finally we update the changed_array using create_room_file
+    void create_room_file(string path)
+    {
+        //the purpose of this function is to create our room file
+        //takes a file path as input and then reads data from that file (prefarably csv file)
+        //the file is the input for the room file stored in our system
+        //checks the validity of each entry of the file
+        //then each entry is appended in the room.txt file of our program
+        //preferable to append serially for easier access of other functions and readability
+        //there are multiple ways to take input serially
+        //firstly we can store all the validated data in the memory
+        //then we write the whole array in the file
+    }
+    void add_room()//paramenter list for rooms
+    {
+        //checks the room doesn't prexist. Physical_location is primary key, so check that
+        //for this we can pass a room[] array to this function
+        //then we search that array for that particular room
+        //finally we update the changed_array using create_room_file
 
-		//adds a room in the room.txt file
-	}
-	create_student_file(string path)
-	{
-		//same thing we did for rooms but for student users
-		//creates student.txt file
-	}
-	void add_student()
-	{
-		//checks the student doesn't prexist in the student.txt file
-		//appends a new student_user in the room.txt file
-	}
-	create_staff_file(string path)
-	{
-		//same thing we did for rooms but for staff users
-	}
-	void add_staff(){}
-	void add_admin(){}
-	//for the remove functions we pass an array of rooms. Then we remove from array of rooms
-	//and then upload that array in the file
-	//remove_student()
-	//remove_staff()
-	//remove_admin()
-	//remove_room()
-	void read_log(void)
-	{
-		//shows the log_file on the screen
-		//Present the data in a user friendly way (optional)
-	}
-
-	void abstracter()
-	{
-
-
-
-	}
-
+        //adds a room in the room.txt file
+    }
+    void create_student_file(string path)
+    {
+        //same thing we did for rooms but for student users
+        //creates student.txt file
+    }
+    void add_student()
+    {
+        //checks the student doesn't prexist in the student.txt file
+        //appends a new student_user in the room.txt file
+    }
+    void create_staff_file(string path)
+    {
+        //same thing we did for rooms but for staff users
+    }
+    void add_staff(){}
+    void add_admin(){}
+    //for the remove functions we pass an array of rooms. Then we remove from array of rooms
+    //and then upload that array in the file
+    //remove_student()
+    //remove_staff()
+    //remove_admin()
+    //remove_room()
+    void read_log(void)
+    {
+        //shows the log_file on the screen
+        //Present the data in a user friendly way (optional)
+    }
 };
 
 class User
@@ -693,45 +681,45 @@ public:
         return password;
     }
     virtual bool login() = 0;
-	void add_record()//parameter list phy_loc, date, time, dur, record_array
-	//Friend class Record
+    void add_record()//parameter list phy_loc, date, time, dur, record_array
+    //Friend class Record
     {
-		//The booking functions appends a record at the record file while information of rooms and records are stored
-		//Before booking a record at a particular physical_location make sure that the entries don't overlap
-		//
-		//Search the whole record array to see that the records don't overlap
-		//If it doesn't overlap... add the record and update the file(record.txt)
-		//If it overlaps show an error message
-		//to make it easier for you to work with these data I made some functions in date
-		//and time for easier calculations and comparison
-		//call those functions when necessary
-	}
-	void delete_record()
-	{
-		//sem thing, you understand, right?
-	}
-	void show_layout(void)
-	{
-		//Room and record are two seperated entities
-		//They have one to many relationship
-		//Physical_location is the foreign key in records
-		//There will be two seperate files for rooms and records
-		//
-		//basically a display function which shows a list of all buildings (reads input from files)
-		//you can then select a particular building and it will show all the rooms in that building
-		//in our program, physical location is a combination of building number and room number
-		//hence, if you want you can show the list of building no + room number at a time, provided that the list isn't too long
-		//Remember to show them SERIALLY
-		//you can then select a room and then it will show all the records in that room
-		//you should make at least 2 seperate functions for this, one to show physical_locations
-		//and another one to show all the records in a particular physical location
-		//the second function will be like this
-		//void display_records(Physical_location phy_loc_val)
-	}
+        //The booking functions appends a record at the record file while information of rooms and records are stored
+        //Before booking a record at a particular physical_location make sure that the entries don't overlap
+        //
+        //Search the whole record array to see that the records don't overlap
+        //If it doesn't overlap... add the record and update the file(record.txt)
+        //If it overlaps show an error message
+        //to make it easier for you to work with these data I made some functions in date
+        //and time for easier calculations and comparison
+        //call those functions when necessary
+    }
+    void delete_record()
+    {
+        //sem thing, you understand, right?
+    }
+    void show_layout(void)
+    {
+        //Room and record are two seperated entities
+        //They have one to many relationship
+        //Physical_location is the foreign key in records
+        //There will be two seperate files for rooms and records
+        //
+        //basically a display function which shows a list of all buildings (reads input from files)
+        //you can then select a particular building and it will show all the rooms in that building
+        //in our program, physical location is a combination of building number and room number
+        //hence, if you want you can show the list of building no + room number at a time, provided that the list isn't too long
+        //Remember to show them SERIALLY
+        //you can then select a room and then it will show all the records in that room
+        //you should make at least 2 seperate functions for this, one to show physical_locations
+        //and another one to show all the records in a particular physical location
+        //the second function will be like this
+        //void display_records(Physical_location phy_loc_val)
+    }
     //find classroom/search
-	//{
-	//	returns a physical_location after searching
-	//}
+    //{
+    //	returns a physical_location after searching
+    //}
 };
 
 class Student:public User
@@ -892,9 +880,9 @@ public:
         set_user_id_without_check("");
     }
     Record(string user_val, string build_val, string room_val, int hour_val, int min_val, string form_val,
-    int dur_val, int day_val, int mon_val, int year_val)
-    :Physical_location(build_val, room_val),Time(hour_val, min_val, form_val),
-    Date(day_val,mon_val,year_val)
+           int dur_val, int day_val, int mon_val, int year_val)
+            :Physical_location(build_val, room_val),Time(hour_val, min_val, form_val),
+             Date(day_val,mon_val,year_val)
     {
         set_duration(dur_val);
         set_user_ID(user_val);
@@ -1004,7 +992,7 @@ public:
         set_capacity(0);
     }
     Room(string build_val, string room_val, bool ac_val, int board_val, bool proj_val, int cap_val):
-    Physical_location(build_val, room_val),Equipments(ac_val, board_val, proj_val)
+            Physical_location(build_val, room_val),Equipments(ac_val, board_val, proj_val)
     {
         set_capacity(cap_val);
     }
@@ -1029,209 +1017,179 @@ public:
 
 class System_intializer
 {
-	//Add a function which adds an empty Admin object if the Admin.txt file doesn't exist
-	//It can show a pop-up like first time use
-	//New default admin created. Username: system. Password system123
-	//i.e. for first time use only
-
+    //Add a function which adds an empty Admin object if the Admin.txt file doesn't exist
+    //It can show a pop-up like first time use
+    //New default admin created. Username: system. Password system123
+    //i.e. for first time use only
 public:
+    static Admin** read_admin()
+    {
+        Admin* f_list[100];
+        fstream fin;
+        int counti=0;
 
+        fin.open("Admin.csv", ios::in);
+        string line,word;;
+        string username,password,contact_no,email_address;
 
-	static Admin** read_admin()
-	{
-	     Admin* f_list[100];
-	     fstream fin;
-	     int counti=0;
+        while (fin.good()) {
+            // cout<<"nana"<<endl;
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
 
-    fin.open("Admin.csv", ios::in);
-    string line,word;;
-    string username,password,contact_no,email_address;
-
-    while (fin.good()) {
-           // cout<<"nana"<<endl;
-        getline(fin, line);
-        stringstream s(line);
-        int second_count=0;
-
-        while (getline(s, word, ',')) {
-            if(second_count==0)
-            {
-                   username=word;
-                second_count++;
-            }
-            else if(second_count==1)
-            {
+            while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+                    username=word;
+                    second_count++;
+                }
+                else if(second_count==1)
+                {
                     password=word;
-                second_count++;
-            }
-            else if(second_count==2)
-            {
+                    second_count++;
+                }
+                else if(second_count==2)
+                {
                     contact_no=word;
-                second_count++;
-            }
-            else if(second_count==3)
-            {
+                    second_count++;
+                }
+                else if(second_count==3)
+                {
                     email_address=word;
-                second_count++;
+                    second_count++;
+                }
             }
 
-
+            f_list[counti]=new Admin(username,password,contact_no,email_address) ;
+            counti++;
         }
-
-        f_list[counti]=new Admin(username,password,contact_no,email_address) ;
-
-        counti++;
-
-    }
-
-
         counti--;
         delete f_list[counti];
         return f_list;
-
-	}
-
-
-
-
-	static vector<Room> read_room()
-	{
-
-		vector<Room>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
-		fstream fin;
-	     int counti=0;
-    fin.open("Room.csv", ios::in);
-    string line,word;;
-    string building_val,room_val;
-    bool ac_val,proj_val;
-    int board_no,capacity;
-    int number_of_room=0;
-
-    while (fin.good()) {
-
-        getline(fin, line);
-        stringstream s(line);
-        number_of_room++;
-        int second_count=0;
-        while (getline(s, word, ',')) {
-            if(second_count==0)
-            {
-                   building_val=word;
-                second_count++;
-            }
-            else if(second_count==1)
-            {
-                room_val=word;
-                second_count++;
-            }
-            else if(second_count==2)
-            {
-                if(word=="YES")
-                {
-                    ac_val=true;
-                }
-                else
-                {
-                    ac_val=false;
-                }
-                second_count++;
-            }
-            else if(second_count==3)
-            {
-
-                board_no=stoi(word);
-                second_count++;
-            }
-            else if(second_count==4)
-            {
-
-                if(word=="YES")
-                {
-                    proj_val=true;
-                }
-                else
-                {
-                    proj_val=false;
-                }
-
-                second_count++;
-            }
-            else if(second_count==5)
-            {
-                capacity=stoi(word);
-                second_count++;
-            }
-
-        }
-
-        r.push_back(Room(building_val,room_val,ac_val,board_no,proj_val,capacity)) ;
-        counti++;
-
     }
 
+    static vector<Room> read_room()
+    {
+        vector<Room>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
+        fstream fin;
+        int counti=0;
+        fin.open("Room.csv", ios::in);
+        string line,word;;
+        string building_val,room_val;
+        bool ac_val,proj_val;
+        int board_no,capacity;
+        int number_of_room=0;
+        while (fin.good())
+ 	{
+            getline(fin, line);
+            stringstream s(line);
+            number_of_room++;
+            int second_count=0;
+            while (getline(s, word, ',')) 
+	    {
+                if(second_count==0)
+                {
+                    building_val=word;
+                    second_count++;
+                }
+                else if(second_count==1)
+                {
+                    room_val=word;
+                    second_count++;
+                }
+                else if(second_count==2)
+                {
+                    if(word=="YES")
+                    {
+                        ac_val=true;
+                    }
+                    else
+                    {
+                        ac_val=false;
+                    }
+                    second_count++;
+                }
+                else if(second_count==3)
+                {
 
+                    board_no=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==4)
+                {
+
+                    if(word=="YES")
+                    {
+                        proj_val=true;
+                    }
+                    else
+                    {
+                        proj_val=false;
+                    }
+
+                    second_count++;
+                }
+                else if(second_count==5)
+                {
+                    capacity=stoi(word);
+                    second_count++;
+                }
+            }
+            r.push_back(Room(building_val,room_val,ac_val,board_no,proj_val,capacity)) ;
+            counti++;
+        }
         number_of_room--;
         r.pop_back();
 
-        
         //ALL THE CASES IN THE UPPER LOOP ARE THE INPUT TAKEN FROM THE FILE
-        
 
-        
-        
         //ALSO, WE DON'T NEED TO WORRY ABOUT THE SORT ANYMORE, BECAUSE WHATEVER THE ORDER IS IN THE FILE, THE SYSTEM TAKES IT IN A SORTED ORDER.
         //SORT PROCESS IS GIVEN BELOW
-    for (int i = 0; i < number_of_room-1; i++)
-   {
-     bool swapped = false;
-     for (int j = 0; j < number_of_room-i-1; j++)
-     {
-         int one=stoi(r[j].get_building_no());
-         int two=stoi(r[j+1].get_building_no());
-        if (one>two)
+        for (int i = 0; i < number_of_room-1; i++)
         {
-           swap(r[j],r[j+1]);
-           swapped = true;
-        }
-        else if(one==two)
-        {
-            int three=stoi(r[j].get_room_no());
-            int four=stoi(r[j].get_room_no());
-            if(three>four)
+            bool swapped = false;
+            for (int j = 0; j < number_of_room-i-1; j++)
             {
-                swap(r[j],r[j+1]);
-                swapped=true;
+                int one=stoi(r[j].get_building_no());
+                int two=stoi(r[j+1].get_building_no());
+                if (one>two)
+                {
+                    swap(r[j],r[j+1]);
+                    swapped = true;
+                }
+                else if(one==two)
+                {
+                    int three=stoi(r[j].get_room_no());
+                    int four=stoi(r[j].get_room_no());
+                    if(three>four)
+                    {
+                        swap(r[j],r[j+1]);
+                        swapped=true;
+                    }
+                }
             }
+            // IF no two elements were swapped by inner loop, then break
+            if (swapped == false)
+                break;
         }
-     }
 
-     // IF no two elements were swapped by inner loop, then break
-     if (swapped == false)
-        break;
-   }
-
-   for(int i=0;i<number_of_room;i++)
-   {
-       cout<<r[i].get_building_no()<<endl;
-   }
-
-
-
+        for(int i=0;i<number_of_room;i++)
+        {
+            cout<<r[i].get_building_no()<<endl;
+        }
         return r;
-
-
-
-	}
-	//static Student[] read_student()
-	//static Staff[] read_staff()
-	//static Record[] read_record()
+    }
+    //static Student[] read_student()
+    //static Staff[] read_staff()
+    //static Record[] read_record()
 };
 
 //create a log class
 //{
-	//log.txt file
-	//log class will contain all functions that will append the log file whenever anything is done in the program
-	//all the functions should be accessed by User and Admin classes
+//log.txt file
+//log class will contain all functions that will append the log file whenever anything is done in the program
+//all the functions should be accessed by User and Admin classes
 //}
 
 int main()
@@ -1242,8 +1200,7 @@ int main()
     vector<Room>r;
     r=System_intializer::read_room();
 
-
-	//all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
-	//will be read and stored in memory (class arrays) in the beginning of the function
+    //all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
+    //will be read and stored in memory (class arrays) in the beginning of the function
 
 }
