@@ -437,196 +437,6 @@ public:
     }
 };
 
-class Admin:public Metadata
-{
-private:
-    string username;
-    string password;
-    string contact_no;
-    string email_address;
-    bool check_password(string val)
-    {
-        if(val.length()>32)
-        {
-            cout<<"Password for "<<get_username()<<" is too long"<<endl;
-            cout<<"Admin password must not contain more than 32 characters"<<endl;
-            return false;
-        }
-        else if(val.length()<8)
-        {
-            cout<<"Password for "<<get_username()<<" is too short"<<endl;
-            cout<<"Admin password must contain 8 characters at least"<<endl;
-            return false;
-        }
-        else
-        {
-            //check password complexity
-            //must contain at least one character and one digit or something like that
-            //admin password must be stronger than user password; make sure of that
-            return true;
-        }
-    }
-    bool check_contact_no_validity(string val)
-    {
-        if(val.size()==11)
-        {
-            for(int i=0;i<val.size();i++)
-            {
-                if(!isdigit(val[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        else
-            return false;
-    }
-public:
-    Admin()
-    {
-        set_username("system");
-        set_password("system123");
-    }
-    Admin(string user_val, string pass_val, string cont_val,string email_val)
-    {
-        set_username(user_val);
-        set_password(pass_val);
-        set_contact_no(cont_val);
-        set_email_address(email_val);
-    }
-    bool set_username(string val)
-    {
-        if(val.length()>32)
-        {
-            cout<<val<<" is an invalid username"<<endl;
-            cout<<"Username must not contain more than 32 characters"<<endl;
-            return false;
-        }
-        else if(val.length()>=6)
-        {
-            username = val;
-            return true;
-        }
-        else
-        {
-            cout<<val<<" is an invalid username"<<endl;
-            cout<<"Username must contain 6 characters at least"<<endl;
-            return false;
-        }
-    }
-    bool set_password(string val)
-    {
-        if(check_password(val))
-        {
-            // set_password(val); INFINITE LOOP
-            password=val;
-            return true;
-        }
-        return false;
-    }
-    bool set_contact_no(string val)
-    {
-        if(check_contact_no_validity(val))
-        {
-            contact_no = val;
-            return true;
-        }
-        else
-        {
-            cout << "Invalid contact number" << endl;
-            cout << "Make sure you DON'T write the country code before the number" << endl;
-            return false;
-        }
-    }
-    void set_email_address(string val)
-    {
-        email_address = val;
-    }
-    string get_username(void)
-    {
-        return username;
-    }
-    string get_password(void)
-    {
-        return password;
-    }
-    string get_email(void)
-    {
-        return email_address;
-    }
-    string get_contact_no(void)
-    {
-        return contact_no;
-    }
-    bool login(string user_val, string pass_val)
-    {
-        if(user_val == get_username() && pass_val == get_password())
-        {
-            return true;
-        }
-        else
-        {
-            cout<<"Wrong username/password"<<endl;
-            return false;
-        }
-    }
-    //In main function we create admin with username and password
-    //Admin can read and load classrooms (written)
-    //Admin can read and load user_list (written)
-    //Admin can check log file (written)
-    //Admin can edit metadata (Done)
-
-    void create_room_file(string path)
-    {
-        //the purpose of this function is to create our room file
-        //takes a file path as input and then reads data from that file (prefarably csv file)
-        //the file is the input for the room file stored in our system
-        //checks the validity of each entry of the file
-        //then each entry is appended in the room.txt file of our program
-        //preferable to append serially for easier access of other functions and readability
-        //there are multiple ways to take input serially
-        //firstly we can store all the validated data in the memory
-        //then we write the whole array in the file
-    }
-    void add_room()//paramenter list for rooms
-    {
-        //checks the room doesn't prexist. Physical_location is primary key, so check that
-        //for this we can pass a room[] array to this function
-        //then we search that array for that particular room
-        //finally we update the changed_array using create_room_file
-
-        //adds a room in the room.txt file
-    }
-    void create_student_file(string path)
-    {
-        //same thing we did for rooms but for student users
-        //creates student.txt file
-    }
-    void add_student()
-    {
-        //checks the student doesn't prexist in the student.txt file
-        //appends a new student_user in the room.txt file
-    }
-    void create_staff_file(string path)
-    {
-        //same thing we did for rooms but for staff users
-    }
-    void add_staff(){}
-    void add_admin(){}
-    //for the remove functions we pass an array of rooms. Then we remove from array of rooms
-    //and then upload that array in the file
-    //remove_student()
-    //remove_staff()
-    //remove_admin()
-    //remove_room()
-    void read_log(void)
-    {
-        //shows the log_file on the screen
-        //Present the data in a user friendly way (optional)
-    }
-};
-
 class User
 {
 protected:
@@ -1019,6 +829,419 @@ public:
         return capacity;
     }
 };
+
+class Admin:public Metadata
+{
+private:
+    string username;
+    string password;
+    string contact_no;
+    string email_address;
+    bool check_password(string val)
+    {
+        if(val.length()>32)
+        {
+            cout<<"Password for "<<get_username()<<" is too long"<<endl;
+            cout<<"Admin password must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()<8)
+        {
+            cout<<"Password for "<<get_username()<<" is too short"<<endl;
+            cout<<"Admin password must contain 8 characters at least"<<endl;
+            return false;
+        }
+        else
+        {
+            //check password complexity
+            //must contain at least one character and one digit or something like that
+            //admin password must be stronger than user password; make sure of that
+            return true;
+        }
+    }
+    bool check_contact_no_validity(string val)
+    {
+        if(val.size()==11)
+        {
+            for(int i=0;i<val.size();i++)
+            {
+                if(!isdigit(val[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+            return false;
+    }
+public:
+    Admin()
+    {
+        set_username("system");
+        set_password("system123");
+    }
+    Admin(string user_val, string pass_val, string cont_val,string email_val)
+    {
+        set_username(user_val);
+        set_password(pass_val);
+        set_contact_no(cont_val);
+        set_email_address(email_val);
+    }
+    bool set_username(string val)
+    {
+        if(val.length()>32)
+        {
+            cout<<val<<" is an invalid username"<<endl;
+            cout<<"Username must not contain more than 32 characters"<<endl;
+            return false;
+        }
+        else if(val.length()>=6)
+        {
+            username = val;
+            return true;
+        }
+        else
+        {
+            cout<<val<<" is an invalid username"<<endl;
+            cout<<"Username must contain 6 characters at least"<<endl;
+            return false;
+        }
+    }
+    bool set_password(string val)
+    {
+        if(check_password(val))
+        {
+            // set_password(val); INFINITE LOOP
+            password=val;
+            return true;
+        }
+        return false;
+    }
+    bool set_contact_no(string val)
+    {
+        if(check_contact_no_validity(val))
+        {
+            contact_no = val;
+            return true;
+        }
+        else
+        {
+            cout << "Invalid contact number" << endl;
+            cout << "Make sure you DON'T write the country code before the number" << endl;
+            return false;
+        }
+    }
+    void set_email_address(string val)
+    {
+        email_address = val;
+    }
+    string get_username(void)
+    {
+        return username;
+    }
+    string get_password(void)
+    {
+        return password;
+    }
+    string get_email(void)
+    {
+        return email_address;
+    }
+    string get_contact_no(void)
+    {
+        return contact_no;
+    }
+    bool login(string user_val, string pass_val)
+    {
+        if(user_val == get_username() && pass_val == get_password())
+        {
+            return true;
+        }
+        else
+        {
+            cout<<"Wrong username/password"<<endl;
+            return false;
+        }
+    }
+    //In main function we create admin with username and password
+    //Admin can read and load classrooms (written)
+    //Admin can read and load user_list (written)
+    //Admin can check log file (written)
+    //Admin can edit metadata (Done)
+
+    void create_room_file(string path)
+    {
+        //the purpose of this function is to create our room file
+        //takes a file path as input and then reads data from that file (prefarably csv file)
+        //the file is the input for the room file stored in our system
+        //checks the validity of each entry of the file
+        //then each entry is appended in the room.txt file of our program
+        //preferable to append serially for easier access of other functions and readability
+        //there are multiple ways to take input serially
+        //firstly we can store all the validated data in the memory
+        //then we write the whole array in the file
+    }
+    void add_room(vector<Room>&room,string build_val,string room_val,bool ac_val,int board_val,bool project,int capacity)//paramenter list for rooms
+    {
+        int cross=0;
+        for(int i=0;i<room.size();i++)
+        {
+            if( stoi(room[i].get_building_no()) >stoi(build_val))
+            {
+                break;
+            }
+            else if(stoi(room[i].get_building_no() ) <stoi(build_val))
+            {
+                cross++;
+            }
+            else if(stoi(room[i].get_building_no())==stoi(build_val))
+            {
+                if(stoi(room[i].get_room_no()) >stoi(room_val))
+                {
+                    break;
+                }
+                else
+                {
+                    cross++;
+                }
+            }
+        }
+        room.insert(room.begin()+cross,Room(build_val,room_val,ac_val, board_val, project,capacity));
+        std::ofstream ofs;
+        ofs.open("Room.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+        myFile.open("Room.csv");
+        for(int i=0;i<room.size();i++)
+        {
+            string temp_ac,temp_project;
+            if(room[i].get_ac())
+            {
+                temp_ac="YES";
+            }
+            else
+            {
+                temp_ac="NO";
+            }
+            if(room[i].get_projector())
+            {
+                temp_project="YES";
+            }
+            else
+            {
+                temp_project="NO";
+            }
+            myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
+        }
+    }
+    void create_student_file(string path)
+    {
+        //same thing we did for rooms but for student users
+        //creates student.txt file
+    }
+    void add_student(vector<Student>&student,string val_name,string val_pass,string val_std_id,bool val_cr)
+    {
+        //checks the student doesn't prexist in the student.txt file
+        //appends a new student_user in the room.txt file
+        int check_exist=0;
+        for(int i=0;i<student.size();i++)
+        {
+            if(stoi(student[i].get_student_id() )==stoi(val_std_id))
+            {
+                check_exist=1;
+                break;
+            }
+        }
+        if(check_exist)
+        {
+            return ;
+        }
+
+        std::ofstream file;
+        file.open("Student.csv",std::ios_base::app);
+        string temp_cr;
+        if(val_cr)
+        {
+            temp_cr="YES";
+        }
+        else
+        {
+            temp_cr="NO";
+        }
+        file<<val_name<<","<<val_pass<<","<<val_std_id<<","<<temp_cr<<endl;
+        student.push_back( Student(val_name,val_pass,val_std_id,val_cr) );
+    }
+    void create_staff_file(string path)
+    {
+        //same thing we did for rooms but for staff users
+    }
+    void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
+    {
+
+    int check_exist=0;
+        for(int i=0;i<staff.size();i++)
+        {
+            if(stoi(staff[i].get_staff_id() )==stoi(val_staff_id))
+            {
+                check_exist=1;
+                break;
+            }
+        }
+        if(check_exist)
+        {
+            return ;
+        }
+
+        std::ofstream file;
+        file.open("Staff.csv",std::ios_base::app);
+        file<<val_name<<","<<val_pass<<","<<val_staff_id<<endl;
+        staff.push_back( Staff(val_name,val_pass,val_staff_id) );
+
+    }
+    void add_admin(vector<Admin>&admin,string user,string pass,string contact,string email)
+    {
+
+        std::ofstream file;
+        file.open("Admin.csv",std::ios_base::app);
+        string temp_ac;
+
+        file<<user<<","<<pass<<","<<contact<<","<<email<<endl;
+        admin.push_back( Admin(user,pass,contact,email));
+
+    }
+    //for the remove functions we pass an array of rooms. Then we remove from array of rooms
+    //and then upload that array in the file
+    void remove_student(vector<Student>student,string val_std_id)
+    {
+        int value;
+        for(int i=0;i<student.size();i++)
+        {
+            if(student[i].get_student_id()==val_std_id)
+            {
+                value=i;
+                break;
+            }
+        }
+        student.erase(student.begin()+value);
+        std::ofstream ofs;
+        ofs.open("Student.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+        myFile.open("Student.csv");
+        for(int i=0;i<student.size();i++)
+        {
+            string temp_cr;
+            if(student[i].get_cr())
+            {
+                temp_cr="YES";
+            }
+            else
+            {
+                temp_cr="NO";
+            }
+
+            myFile<<student[i].get_name()<<","<<student[i].get_password()<<","<<student[i].get_student_id()<<","<<temp_cr<<endl;
+        }
+    }
+    void remove_staff(vector<Staff>&staff ,string val_staff_id  )
+    {
+        int value;
+        for(int i=0;i<staff.size();i++)
+        {
+            if(staff[i].get_staff_id()==val_staff_id)
+            {
+                value=i;
+                break;
+            }
+        }
+        staff.erase(staff.begin()+value);
+        std::ofstream ofs;
+        ofs.open("Staff.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+        myFile.open("Staff.csv");
+        for(int i=0;i<staff.size();i++)
+        {
+            myFile<<staff[i].get_name()<<","<<staff[i].get_password()<<","<<staff[i].get_staff_id()<<endl;
+        }
+
+
+    }
+    void remove_admin(vector<Admin>admin,string user_val)
+    {
+        int value;
+        for(int i=0;i<admin.size();i++)
+        {
+            if(admin[i].get_username()==user_val)
+            {
+                value=i;
+                break;
+            }
+        }
+        admin.erase(admin.begin()+value);
+        std::ofstream ofs;
+        ofs.open("Admin.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+        myFile.open("Admin.csv");
+        for(int i=0;i<admin.size();i++)
+        {
+            myFile<<admin[i].get_username()<<","<<admin[i].get_password()<<","<<admin[i].get_contact_no()<<","<<admin[i].get_email()<<endl;
+        }
+    }
+    void remove_room(vector<Room>room,string building_no,string room_no)
+    {
+
+        int value;
+        for(int i=0;i<room.size();i++)
+        {
+
+            if(room[i].get_building_no()==building_no && room[i].get_room_no()==room_no)
+            {
+                value=i;
+                break;
+            }
+        }
+
+        room.erase(room.begin()+value);
+
+        std::ofstream ofs;
+        ofs.open("Room.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+
+        myFile.open("Room.csv");
+        for(int i=0;i<room.size();i++)
+        {
+            string temp_ac,temp_project;
+            if(room[i].get_ac())
+            {
+                temp_ac="YES";
+            }
+            else
+            {
+                temp_ac="NO";
+            }
+            if(room[i].get_projector())
+            {
+                temp_project="YES";
+            }
+            else
+            {
+                temp_project="NO";
+            }
+            myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
+        }
+
+    }
+    void read_log(void)
+    {
+        //shows the log_file on the screen
+        //Present the data in a user friendly way (optional)
+    }
+};
+
 
 class System_intializer
 {
