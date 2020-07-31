@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include<ctime>
+#include<fstream>
 using namespace std;
 
 class Metadata
@@ -805,6 +806,10 @@ void add_record(vector<Student>&student,vector<Record>&record,int student_number
             myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
         }
 
+        fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was added by the Student"<<endl;
+
 
 }
 
@@ -861,6 +866,11 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
 
             myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
         }
+
+         fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was removed by the Student"<<endl;
+
 
 
 }
@@ -1160,6 +1170,13 @@ public:
             }
             myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
         }
+
+        fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Room "<<build_val<<" "<<room_val<<" was added by the Admin"<<endl;
+
+
+
     }
     void create_student_file(string path)
     {
@@ -1197,6 +1214,10 @@ public:
         }
         file<<val_name<<","<<val_pass<<","<<val_std_id<<","<<temp_cr<<endl;
         student.push_back( Student(val_name,val_pass,val_std_id,val_cr) );
+
+        fstream myfile("log.txt",ios::in | ios::out | ios::app );
+
+        myfile<<"Student "<<val_std_id<<" was added by the Admin"<<endl;
     }
     void create_staff_file(string path)
     {
@@ -1224,6 +1245,10 @@ public:
         file<<val_name<<","<<val_pass<<","<<val_staff_id<<endl;
         staff.push_back( Staff(val_name,val_pass,val_staff_id) );
 
+        fstream myfile("log.txt",ios::in|ios::out|ios::app );
+
+        myfile<<"Staff "<<val_staff_id<<" was added by the Admin"<<endl;
+
     }
     void add_admin(vector<Admin>&admin,string user,string pass,string contact,string email)
     {
@@ -1234,6 +1259,9 @@ public:
 
         file<<user<<","<<pass<<","<<contact<<","<<email<<endl;
         admin.push_back( Admin(user,pass,contact,email));
+        fstream myfile("log.txt",ios::in|ios::out|ios::app );
+
+        myfile<<"Admin "<<user<<" was added by the Admin"<<endl;
 
     }
     //for the remove functions we pass an array of rooms. Then we remove from array of rooms
@@ -1269,6 +1297,10 @@ public:
 
             myFile<<student[i].get_name()<<","<<student[i].get_password()<<","<<student[i].get_student_id()<<","<<temp_cr<<endl;
         }
+
+        fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Student "<<val_std_id<<" was removed by the Admin"<<endl;
     }
     void remove_staff(vector<Staff>&staff ,string val_staff_id  )
     {
@@ -1291,6 +1323,9 @@ public:
         {
             myFile<<staff[i].get_name()<<","<<staff[i].get_password()<<","<<staff[i].get_staff_id()<<endl;
         }
+        fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Staff "<<val_staff_id<<" was removed by the Admin"<<endl;
 
 
     }
@@ -1315,6 +1350,11 @@ public:
         {
             myFile<<admin[i].get_username()<<","<<admin[i].get_password()<<","<<admin[i].get_contact_no()<<","<<admin[i].get_email()<<endl;
         }
+
+        fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Admin "<<user_val<<" was removed by the Admin"<<endl;
+
     }
     void remove_room(vector<Room>room,string building_no,string room_no)
     {
@@ -1359,6 +1399,10 @@ public:
             }
             myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
         }
+
+        fstream file("log.txt",ios::in|ios::out|ios::app );
+
+        file<<"Room "<<building_no<<" "<<room_no<<" was removed by the Admin"<<endl;
 
     }
     void read_log(void)
@@ -1710,6 +1754,7 @@ public:
 
 
     }
+
 };
 
 //create a log class
