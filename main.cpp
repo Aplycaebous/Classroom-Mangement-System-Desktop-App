@@ -192,6 +192,7 @@ class Time
 protected:
     int hour;
     int minute;
+    string format;
     //These two functions shouldn't be accessed by anyone outside this class to avoid storing undesirable values
     void set_hour_without_check(int val)
     {
@@ -253,6 +254,8 @@ public:
     bool set_format(string val)
     {
         transform(val.begin(), val.end(), val.begin(), ::toupper); //In case of lower case input
+        format=val;
+
         if(val == "AM"||val=="PM")
         {
             if(val == "PM")
@@ -279,6 +282,10 @@ public:
     int get_minute()
     {
         return minute;
+    }
+    string get_format()
+    {
+        return format;
     }
     Time operator+(Time val)
     {
@@ -537,6 +544,8 @@ public:
     //}
 };
 
+class Record;// I need forward declaration for the friend function
+
 class Student:public User
 {
 protected:
@@ -612,6 +621,8 @@ public:
         }
         else return false;
     }
+    friend void add_room(vector<Student>&student,vector<Record>&record,int number);
+
 };
 
 class Staff:public User
@@ -740,7 +751,122 @@ public:
     {
         return user_ID;
     }
+
+    friend void add_room(vector<Student>&student,vector<Record>&record,int number);
 };
+
+
+void add_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
+           int dur_val, int day_val, int mon_val, int year_val)
+{
+
+        int cross=0;
+        for(int i=0;i<record.size();i++)
+        {
+            if( stoi(record[i].get_building_no()) >stoi(build_val))
+            {
+                break;
+            }
+            else if(stoi(record[i].get_building_no() ) <stoi(build_val))
+            {
+                cross++;
+            }
+            else if(stoi(record[i].get_building_no())==stoi(build_val))
+            {
+                if(stoi(record[i].get_room_no()) >stoi(room_val))
+                {
+                    break;
+                }
+                else
+                {
+                    cross++;
+                }
+            }
+        }
+        record.insert(record.begin()+cross,Record(student[student_number].get_student_id(), build_val,room_val,hour_val,min_val,form_val,
+            dur_val,day_val,mon_val,year_val));
+        std::ofstream ofs;
+        ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+        myFile.open("Record.csv");
+        for(int i=0;i<record.size();i++)
+        {
+            int hour;
+            if(record[i].get_format()=="PM")
+            {
+                hour=record[i].get_hour()-12;
+            }
+            else
+            {
+                hour=record[i].get_hour();
+            }
+
+            myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+        }
+
+
+}
+
+
+void delete_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
+           int dur_val, int day_val, int mon_val, int year_val)
+{
+
+        int cross=0;
+        for(int i=0;i<record.size();i++)
+        {
+            int hour;
+            if(record[i].get_format()=="PM")
+            {
+                hour=record[i].get_hour()-12;
+            }
+            else
+            {
+                hour=record[i].get_hour();
+            }
+
+
+           if( record[i].get_user_ID() == student[student_number].get_student_id() &&
+            record[i].get_building_no()==build_val &&
+            record[i].get_room_no()==room_val &&
+            hour==hour_val &&
+            record[i].get_minute()==min_val&&
+            record[i].get_format()==form_val &&
+            record[i].get_duration()==dur_val &&
+            record[i].get_day() == day_val &&
+            record[i].get_month() == mon_val &&
+            record[i].get_year() == year_val )
+            {
+                record.erase(record.begin()+i);
+                break;
+            }
+        }
+        std::ofstream ofs;
+        ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
+        ofs.close();
+        ofstream myFile;
+        myFile.open("Record.csv");
+        for(int i=0;i<record.size();i++)
+        {
+            int hour;
+            if(record[i].get_format()=="PM")
+            {
+                hour=record[i].get_hour()-12;
+            }
+            else
+            {
+                hour=record[i].get_hour();
+            }
+
+            myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+        }
+
+
+}
+
+
+
 
 class Equipments
 {
