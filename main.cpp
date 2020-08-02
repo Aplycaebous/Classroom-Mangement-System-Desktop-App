@@ -556,6 +556,7 @@ protected:
     {
         student_id = val;
     }
+
 public:
     Student()
     {
@@ -1106,17 +1107,10 @@ public:
     //Admin can check log file (written)
     //Admin can edit metadata (Done)
 
-    void create_room_file(string path)
+    vector<Room> create_room_file(string path)
     {
-        //the purpose of this function is to create our room file
-        //takes a file path as input and then reads data from that file (prefarably csv file)
-        //the file is the input for the room file stored in our system
-        //checks the validity of each entry of the file
-        //then each entry is appended in the room.txt file of our program
-        //preferable to append serially for easier access of other functions and readability
-        //there are multiple ways to take input serially
-        //firstly we can store all the validated data in the memory
-        //then we write the whole array in the file
+
+
     }
     void add_room(vector<Room>&room,string build_val,string room_val,bool ac_val,int board_val,bool project,int capacity)//paramenter list for rooms
     {
@@ -1178,10 +1172,186 @@ public:
 
 
     }
-    void create_student_file(string path)
+    vector<Admin>create_admin(string path)
     {
-        //same thing we did for rooms but for student users
-        //creates student.txt file
+        vector<Admin>f_list;
+        fstream fin;
+        fin.open(path);
+        string line,word;
+        string Username, Password, Contact_no, Email_address;
+        while (fin.good()) {
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
+            Admin temp;
+            int valid_flag=0;
+
+            while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+                  if( temp.set_username(word) )
+                  {
+                        Username=word;
+                  }
+                  else
+                  {
+                      valid_flag=1;
+                      cout<<"UserName "<<word<<" is invalid"<<endl;
+                      break;
+                  }
+                }
+                else if(second_count==1)
+                {
+                    if( temp.set_password(word) )
+                  {
+                        Password=word;
+                  }
+                  else
+                  {
+                      valid_flag=1;
+                      cout<<"Password "<<word<<" is invalid"<<endl;
+                      break;
+                  }
+                }
+                else if(second_count==2)
+                {
+                     if( temp.set_contact_no(word) )
+                  {
+                        Contact_no=word;
+                  }
+                  else
+                  {
+                      valid_flag=1;
+                      cout<<"Contact No "<<word<<" is invalid"<<endl;
+                      break;
+                  }
+                }
+                else if(second_count==3)
+                {
+                    Email_address=word;
+                }
+            }
+            if(valid_flag==1)
+            {
+                continue;
+            }
+
+            f_list.push_back( Admin(Username,Password,Contact_no,Email_address) ) ;
+
+        }
+
+        std::ofstream file;
+        file.open("Admin.csv",std::ios_base::app);
+        string temp_ac;
+        for(int i=0;i<f_list.size();i++)
+        {
+            file<<f_list[i].get_username()<<","<<f_list[i].get_password()<<","<<f_list[i].get_contact_no()<<","<<f_list[i].get_email()<<endl;
+        }
+
+        return f_list;
+    }
+
+    vector<Student>create_student_file(string path)
+    {
+        vector<Student>f_list;
+	     fstream fin;
+	     int counti=0;
+
+    fin.open(path);
+    string line,word;;
+    string username,password,student_id;
+    bool cr;
+
+    while (fin.good()) {
+           // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+        Student temp;
+        int valid_flag=0;
+
+        while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+                        username=word;
+                        second_count++;
+                }
+            else if(second_count==1)
+            {
+                    if(temp.set_password(word))
+                    {
+                        password=word;
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"Password "<<word<<" is not valid"<<endl;
+                        break;
+                    }
+
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                if(temp.set_student_id(word))
+                    {
+
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"Student ID "<<word<<" is not valid"<<endl;
+                        break;
+                    }
+                second_count++;
+            }
+            else if(second_count==3)
+            {
+                if(word=="YES")
+                {
+                    cr=true;
+                }
+                else
+                {
+                    cr=false;
+                }
+            }
+
+        }
+        if(valid_flag)
+        {
+            continue;
+        }
+
+        f_list.push_back(Student(username,password,student_id,cr) );
+
+        //counti++;
+
+    }
+
+
+       // counti--;
+     //   f_list.pop_back();
+      std::ofstream file;
+        file.open("Student.csv",std::ios_base::app);
+        string temp_ac;
+        for(int i=0;i<f_list.size();i++)
+        {
+            string temp;
+            if(f_list[i].get_cr())
+            {
+                temp="YES";
+            }
+            else
+            {
+                temp="NO";
+            }
+
+            file<<f_list[i].get_name()<<","<<f_list[i].get_password()<<","<<f_list[i].get_student_id()<<","<<temp<<endl;
+        }
+
+
+        return f_list;
     }
     void add_student(vector<Student>&student,string val_name,string val_pass,string val_std_id,bool val_cr)
     {
@@ -1219,9 +1389,85 @@ public:
 
         myfile<<"Student "<<val_std_id<<" was added by the Admin"<<endl;
     }
-    void create_staff_file(string path)
+    vector<Staff>create_staff_file(string path)
     {
-        //same thing we did for rooms but for staff users
+        vector<Staff>f_list;
+	     fstream fin;
+	     int counti=0;
+
+    fin.open(path);
+    string line,word;;
+    string username,password,student_id;
+
+
+    while (fin.good()) {
+           // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+        Staff temp;
+        int valid_flag=0;
+
+        while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+
+                     username=word;
+
+                }
+            else if(second_count==1)
+            {
+                    if(temp.set_password(word))
+                    {
+
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"Password "<<word<<" is not valid"<<endl;
+                        break;
+                    }
+
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                if(temp.set_staff_id(word))
+                    {
+
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"Staff ID "<<word<<" is not valid"<<endl;
+                        break;
+                    }
+                second_count++;
+            }
+
+        }
+        if(valid_flag)
+        {
+            continue;
+        }
+
+        f_list.push_back(Staff(username,password,student_id) );
+
+        //counti++;
+
+    }
+
+
+       // counti--;
+     //   f_list.pop_back();
+      std::ofstream file;
+        file.open("Staff.csv",std::ios_base::app);
+        string temp_ac;
+        for(int i=0;i<f_list.size();i++)
+        {
+            file<<f_list[i].get_name()<<","<<f_list[i].get_password()<<","<<f_list[i].get_staff_id()<<endl;
+        }
+        return f_list;
     }
     void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
     {
