@@ -11,6 +11,7 @@ private:
     static int student_id_size;
     static int staff_id_size;
 protected:
+    /*
     bool set_room_no_size(int val)
     {
         if(val>=0 && val<8 )
@@ -67,6 +68,7 @@ protected:
             return false;
         }
     }
+     */
 public:
     static int get_room_no_size(void)
     {
@@ -150,7 +152,6 @@ public:
     {
         if(check_build_no(val))
         {
-
             building_no = val;
             return true;
         }
@@ -373,7 +374,8 @@ public:
     }
     bool set_day(int val)
     {
-        if(val<32 && val>0) {
+        if(val<32 && val>0)
+        {
             day = val;
             return true;
         }
@@ -757,83 +759,81 @@ public:
     friend void add_room(vector<Student>&student,vector<Record>&record,int number);
 };
 
-
 void add_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
-           int dur_val, int day_val, int mon_val, int year_val)
+                int dur_val, int day_val, int mon_val, int year_val)
 {
 
-        int cross=0;
-        for(int i=0;i<record.size();i++)
+    int cross=0;
+    for(int i=0;i<record.size();i++)
+    {
+        if( stoi(record[i].get_building_no()) >stoi(build_val))
         {
-            if( stoi(record[i].get_building_no()) >stoi(build_val))
+            break;
+        }
+        else if(stoi(record[i].get_building_no() ) <stoi(build_val))
+        {
+            cross++;
+        }
+        else if(stoi(record[i].get_building_no())==stoi(build_val))
+        {
+            if(stoi(record[i].get_room_no()) >stoi(room_val))
             {
                 break;
             }
-            else if(stoi(record[i].get_building_no() ) <stoi(build_val))
+            else
             {
                 cross++;
             }
-            else if(stoi(record[i].get_building_no())==stoi(build_val))
-            {
-                if(stoi(record[i].get_room_no()) >stoi(room_val))
-                {
-                    break;
-                }
-                else
-                {
-                    cross++;
-                }
-            }
         }
-        record.insert(record.begin()+cross,Record(student[student_number].get_student_id(), build_val,room_val,hour_val,min_val,form_val,
-            dur_val,day_val,mon_val,year_val));
-        std::ofstream ofs;
-        ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
-        ofs.close();
-        ofstream myFile;
-        myFile.open("Record.csv");
-        for(int i=0;i<record.size();i++)
+    }
+    record.insert(record.begin()+cross,Record(student[student_number].get_student_id(), build_val,room_val,hour_val,min_val,form_val,
+                                              dur_val,day_val,mon_val,year_val));
+    std::ofstream ofs;
+    ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
+    ofstream myFile;
+    myFile.open("Record.csv");
+    for(int i=0;i<record.size();i++)
+    {
+        int hour;
+        if(record[i].get_format()=="PM")
         {
-            int hour;
-            if(record[i].get_format()=="PM")
-            {
-                hour=record[i].get_hour()-12;
-            }
-            else
-            {
-                hour=record[i].get_hour();
-            }
-
-            myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+            hour=record[i].get_hour()-12;
+        }
+        else
+        {
+            hour=record[i].get_hour();
         }
 
-        fstream file("log.txt",ios::in|ios::out|ios::app );
+        myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+    }
 
-        file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was added by the Student"<<endl;
+    fstream file("log.txt",ios::in|ios::out|ios::app );
+
+    file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was added by the Student"<<endl;
 
 
 }
 
-
 void delete_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
-           int dur_val, int day_val, int mon_val, int year_val)
+                   int dur_val, int day_val, int mon_val, int year_val)
 {
 
-        int cross=0;
-        for(int i=0;i<record.size();i++)
+    int cross=0;
+    for(int i=0;i<record.size();i++)
+    {
+        int hour;
+        if(record[i].get_format()=="PM")
         {
-            int hour;
-            if(record[i].get_format()=="PM")
-            {
-                hour=record[i].get_hour()-12;
-            }
-            else
-            {
-                hour=record[i].get_hour();
-            }
+            hour=record[i].get_hour()-12;
+        }
+        else
+        {
+            hour=record[i].get_hour();
+        }
 
 
-           if( record[i].get_user_ID() == student[student_number].get_student_id() &&
+        if( record[i].get_user_ID() == student[student_number].get_student_id() &&
             record[i].get_building_no()==build_val &&
             record[i].get_room_no()==room_val &&
             hour==hour_val &&
@@ -843,40 +843,38 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
             record[i].get_day() == day_val &&
             record[i].get_month() == mon_val &&
             record[i].get_year() == year_val )
-            {
-                record.erase(record.begin()+i);
-                break;
-            }
-        }
-        std::ofstream ofs;
-        ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
-        ofs.close();
-        ofstream myFile;
-        myFile.open("Record.csv");
-        for(int i=0;i<record.size();i++)
         {
-            int hour;
-            if(record[i].get_format()=="PM")
-            {
-                hour=record[i].get_hour()-12;
-            }
-            else
-            {
-                hour=record[i].get_hour();
-            }
-
-            myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+            record.erase(record.begin()+i);
+            break;
+        }
+    }
+    std::ofstream ofs;
+    ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
+    ofstream myFile;
+    myFile.open("Record.csv");
+    for(int i=0;i<record.size();i++)
+    {
+        int hour;
+        if(record[i].get_format()=="PM")
+        {
+            hour=record[i].get_hour()-12;
+        }
+        else
+        {
+            hour=record[i].get_hour();
         }
 
-         fstream file("log.txt",ios::in|ios::out|ios::app );
+        myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_format()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+    }
 
-        file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was removed by the Student"<<endl;
+    fstream file("log.txt",ios::in|ios::out|ios::app );
+
+    file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was removed by the Student"<<endl;
 
 
 
 }
-
-
 
 
 class Equipments
@@ -1189,42 +1187,42 @@ public:
             while (getline(s, word, ',')) {
                 if(second_count==0)
                 {
-                  if( temp.set_username(word) )
-                  {
+                    if( temp.set_username(word) )
+                    {
                         Username=word;
-                  }
-                  else
-                  {
-                      valid_flag=1;
-                      cout<<"UserName "<<word<<" is invalid"<<endl;
-                      break;
-                  }
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"UserName "<<word<<" is invalid"<<endl;
+                        break;
+                    }
                 }
                 else if(second_count==1)
                 {
                     if( temp.set_password(word) )
-                  {
+                    {
                         Password=word;
-                  }
-                  else
-                  {
-                      valid_flag=1;
-                      cout<<"Password "<<word<<" is invalid"<<endl;
-                      break;
-                  }
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"Password "<<word<<" is invalid"<<endl;
+                        break;
+                    }
                 }
                 else if(second_count==2)
                 {
-                     if( temp.set_contact_no(word) )
-                  {
+                    if( temp.set_contact_no(word) )
+                    {
                         Contact_no=word;
-                  }
-                  else
-                  {
-                      valid_flag=1;
-                      cout<<"Contact No "<<word<<" is invalid"<<endl;
-                      break;
-                  }
+                    }
+                    else
+                    {
+                        valid_flag=1;
+                        cout<<"Contact No "<<word<<" is invalid"<<endl;
+                        break;
+                    }
                 }
                 else if(second_count==3)
                 {
@@ -1254,30 +1252,30 @@ public:
     vector<Student>create_student_file(string path)
     {
         vector<Student>f_list;
-	     fstream fin;
-	     int counti=0;
+        fstream fin;
+        int counti=0;
 
-    fin.open(path);
-    string line,word;;
-    string username,password,student_id;
-    bool cr;
+        fin.open(path);
+        string line,word;;
+        string username,password,student_id;
+        bool cr;
 
-    while (fin.good()) {
-           // cout<<"nana"<<endl;
-        getline(fin, line);
-        stringstream s(line);
-        int second_count=0;
-        Student temp;
-        int valid_flag=0;
+        while (fin.good()) {
+            // cout<<"nana"<<endl;
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
+            Student temp;
+            int valid_flag=0;
 
-        while (getline(s, word, ',')) {
+            while (getline(s, word, ',')) {
                 if(second_count==0)
                 {
-                        username=word;
-                        second_count++;
+                    username=word;
+                    second_count++;
                 }
-            else if(second_count==1)
-            {
+                else if(second_count==1)
+                {
                     if(temp.set_password(word))
                     {
                         password=word;
@@ -1289,11 +1287,11 @@ public:
                         break;
                     }
 
-                second_count++;
-            }
-            else if(second_count==2)
-            {
-                if(temp.set_student_id(word))
+                    second_count++;
+                }
+                else if(second_count==2)
+                {
+                    if(temp.set_student_id(word))
                     {
 
                     }
@@ -1303,36 +1301,36 @@ public:
                         cout<<"Student ID "<<word<<" is not valid"<<endl;
                         break;
                     }
-                second_count++;
+                    second_count++;
+                }
+                else if(second_count==3)
+                {
+                    if(word=="YES")
+                    {
+                        cr=true;
+                    }
+                    else
+                    {
+                        cr=false;
+                    }
+                }
+
             }
-            else if(second_count==3)
+            if(valid_flag)
             {
-                if(word=="YES")
-                {
-                    cr=true;
-                }
-                else
-                {
-                    cr=false;
-                }
+                continue;
             }
 
+            f_list.push_back(Student(username,password,student_id,cr) );
+
+            //counti++;
+
         }
-        if(valid_flag)
-        {
-            continue;
-        }
-
-        f_list.push_back(Student(username,password,student_id,cr) );
-
-        //counti++;
-
-    }
 
 
-       // counti--;
-     //   f_list.pop_back();
-      std::ofstream file;
+        // counti--;
+        //   f_list.pop_back();
+        std::ofstream file;
         file.open("Student.csv",std::ios_base::app);
         string temp_ac;
         for(int i=0;i<f_list.size();i++)
@@ -1392,31 +1390,31 @@ public:
     vector<Staff>create_staff_file(string path)
     {
         vector<Staff>f_list;
-	     fstream fin;
-	     int counti=0;
+        fstream fin;
+        int counti=0;
 
-    fin.open(path);
-    string line,word;;
-    string username,password,student_id;
+        fin.open(path);
+        string line,word;;
+        string username,password,student_id;
 
 
-    while (fin.good()) {
-           // cout<<"nana"<<endl;
-        getline(fin, line);
-        stringstream s(line);
-        int second_count=0;
-        Staff temp;
-        int valid_flag=0;
+        while (fin.good()) {
+            // cout<<"nana"<<endl;
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
+            Staff temp;
+            int valid_flag=0;
 
-        while (getline(s, word, ',')) {
+            while (getline(s, word, ',')) {
                 if(second_count==0)
                 {
 
-                     username=word;
+                    username=word;
 
                 }
-            else if(second_count==1)
-            {
+                else if(second_count==1)
+                {
                     if(temp.set_password(word))
                     {
 
@@ -1428,11 +1426,11 @@ public:
                         break;
                     }
 
-                second_count++;
-            }
-            else if(second_count==2)
-            {
-                if(temp.set_staff_id(word))
+                    second_count++;
+                }
+                else if(second_count==2)
+                {
+                    if(temp.set_staff_id(word))
                     {
 
                     }
@@ -1442,25 +1440,25 @@ public:
                         cout<<"Staff ID "<<word<<" is not valid"<<endl;
                         break;
                     }
-                second_count++;
+                    second_count++;
+                }
+
+            }
+            if(valid_flag)
+            {
+                continue;
             }
 
+            f_list.push_back(Staff(username,password,student_id) );
+
+            //counti++;
+
         }
-        if(valid_flag)
-        {
-            continue;
-        }
-
-        f_list.push_back(Staff(username,password,student_id) );
-
-        //counti++;
-
-    }
 
 
-       // counti--;
-     //   f_list.pop_back();
-      std::ofstream file;
+        // counti--;
+        //   f_list.pop_back();
+        std::ofstream file;
         file.open("Staff.csv",std::ios_base::app);
         string temp_ac;
         for(int i=0;i<f_list.size();i++)
@@ -1472,7 +1470,7 @@ public:
     void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
     {
 
-    int check_exist=0;
+        int check_exist=0;
         for(int i=0;i<staff.size();i++)
         {
             if(stoi(staff[i].get_staff_id() )==stoi(val_staff_id))
@@ -1709,10 +1707,9 @@ public:
             counti++;
         }
         counti--;
-       f_list.pop_back();
+        f_list.pop_back();
         return f_list;
     }
-
     static vector<Room> read_room()
     {
         vector<Room>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
@@ -1725,13 +1722,13 @@ public:
         int board_no,capacity;
         int number_of_room=0;
         while (fin.good())
- 	{
+        {
             getline(fin, line);
             stringstream s(line);
             number_of_room++;
             int second_count=0;
             while (getline(s, word, ','))
-	    {
+            {
                 if(second_count==0)
                 {
                     building_val=word;
@@ -1793,60 +1790,60 @@ public:
         return r;
     }
     static vector<Student> read_student()
-	{
+    {
 
-	     vector<Student>f_list;
-	     fstream fin;
-	     int counti=0;
+        vector<Student>f_list;
+        fstream fin;
+        int counti=0;
 
-    fin.open("Student.csv", ios::in);
-    string line,word;;
-    string username,password,student_id;
-    bool cr;
+        fin.open("Student.csv", ios::in);
+        string line,word;;
+        string username,password,student_id;
+        bool cr;
 
-    while (fin.good()) {
-           // cout<<"nana"<<endl;
-        getline(fin, line);
-        stringstream s(line);
-        int second_count=0;
+        while (fin.good()) {
+            // cout<<"nana"<<endl;
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
 
-        while (getline(s, word, ',')) {
-            if(second_count==0)
-            {
-                   username=word;
-                second_count++;
-            }
-            else if(second_count==1)
-            {
+            while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+                    username=word;
+                    second_count++;
+                }
+                else if(second_count==1)
+                {
                     password=word;
-                second_count++;
-            }
-            else if(second_count==2)
-            {
-                student_id=word;
-                second_count++;
-            }
-            else if(second_count==3)
-            {
-                if(word=="YES")
-                {
-                    cr=true;
+                    second_count++;
                 }
-                else
+                else if(second_count==2)
                 {
-                    cr=false;
+                    student_id=word;
+                    second_count++;
                 }
-                second_count++;
+                else if(second_count==3)
+                {
+                    if(word=="YES")
+                    {
+                        cr=true;
+                    }
+                    else
+                    {
+                        cr=false;
+                    }
+                    second_count++;
+                }
+
+
             }
 
+            f_list.push_back(Student(username,password,student_id,cr) );
+
+            counti++;
 
         }
-
-        f_list.push_back(Student(username,password,student_id,cr) );
-
-        counti++;
-
-    }
 
 
         counti--;
@@ -1854,49 +1851,48 @@ public:
         return f_list;
 
 
-	}
-
+    }
     static vector<Staff> read_staff()
     {
-       vector<Staff>f_list;
-	     fstream fin;
-	     int counti=0;
+        vector<Staff>f_list;
+        fstream fin;
+        int counti=0;
 
-    fin.open("Staff.csv", ios::in);
-    string line,word;;
-    string username,password,student_id;
+        fin.open("Staff.csv", ios::in);
+        string line,word;;
+        string username,password,student_id;
 
 
-    while (fin.good()) {
-           // cout<<"nana"<<endl;
-        getline(fin, line);
-        stringstream s(line);
-        int second_count=0;
+        while (fin.good()) {
+            // cout<<"nana"<<endl;
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
 
-        while (getline(s, word, ',')) {
-            if(second_count==0)
-            {
-                   username=word;
-                second_count++;
-            }
-            else if(second_count==1)
-            {
+            while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+                    username=word;
+                    second_count++;
+                }
+                else if(second_count==1)
+                {
                     password=word;
-                second_count++;
+                    second_count++;
+                }
+                else if(second_count==2)
+                {
+                    student_id=word;
+                    second_count++;
+                }
+
             }
-            else if(second_count==2)
-            {
-                student_id=word;
-                second_count++;
-            }
+
+            f_list.push_back(Staff(username,password,student_id) );
+
+            counti++;
 
         }
-
-        f_list.push_back(Staff(username,password,student_id) );
-
-        counti++;
-
-    }
 
 
         counti--;
@@ -1908,90 +1904,90 @@ public:
     }
     static vector<Record>read_record()
     {
-         vector<Record>f_list;
-	     fstream fin;
-	     int counti=0;
+        vector<Record>f_list;
+        fstream fin;
+        int counti=0;
 
-    fin.open("Record.csv", ios::in);
-    string line,word;;
-    string user_val,build_val,room_val,format;
-    int hour,minute,duration,day,month,year;
+        fin.open("Record.csv", ios::in);
+        string line,word;;
+        string user_val,build_val,room_val,format;
+        int hour,minute,duration,day,month,year;
 
 
-    while (fin.good()) {
-        getline(fin, line);
-        stringstream s(line);
-        int second_count=0;
+        while (fin.good()) {
+            getline(fin, line);
+            stringstream s(line);
+            int second_count=0;
 
-        while (getline(s, word, ',')) {
-            if(second_count==0)
-            {
-                   user_val=word;
+            while (getline(s, word, ',')) {
+                if(second_count==0)
+                {
+                    user_val=word;
 
-                second_count++;
-            }
-            else if(second_count==1)
-            {
+                    second_count++;
+                }
+                else if(second_count==1)
+                {
                     build_val=word;
 
-                second_count++;
-            }
-            else if(second_count==2)
-            {
-                room_val=word;
+                    second_count++;
+                }
+                else if(second_count==2)
+                {
+                    room_val=word;
 
-                second_count++;
-            }
-            else if(second_count==3)
-            {
-                hour=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==3)
+                {
+                    hour=stoi(word);
 
-                second_count++;
-            }
-            else if(second_count==4)
-            {
-                minute=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==4)
+                {
+                    minute=stoi(word);
 
-                second_count++;
-            }
-            else if(second_count==5)
-            {
-                format=word;
+                    second_count++;
+                }
+                else if(second_count==5)
+                {
+                    format=word;
 
-                second_count++;
-            }
-            else if(second_count==6)
-            {
-                duration=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==6)
+                {
+                    duration=stoi(word);
 
-                second_count++;
-            }
-            else if(second_count==7)
-            {
-                day=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==7)
+                {
+                    day=stoi(word);
 
-                second_count++;
-            }
-            else if(second_count==8)
-            {
-                month=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==8)
+                {
+                    month=stoi(word);
 
-                second_count++;
-            }
-            else if(second_count==9)
-            {
-                year=stoi(word);
+                    second_count++;
+                }
+                else if(second_count==9)
+                {
+                    year=stoi(word);
 
-                second_count++;
-            }
+                    second_count++;
+                }
 
+
+            }
+            f_list.push_back(Record(user_val,build_val,room_val,hour,minute,format,duration,day,month,year) );
+
+            counti++;
 
         }
-        f_list.push_back(Record(user_val,build_val,room_val,hour,minute,format,duration,day,month,year) );
-
-        counti++;
-
-    }
 
 
         counti--;
@@ -2000,7 +1996,6 @@ public:
 
 
     }
-
 };
 
 //create a log class
@@ -2014,15 +2009,19 @@ int main()
 {
 
     vector<Admin>ad;
-    ad=System_intializer::read_admin();
+    ad = System_intializer::read_admin();
+
     vector<Room>r;
-    r=System_intializer::read_room();
+    r = System_intializer::read_room();
+
     vector<Student>student;
-    student=System_intializer::read_student();
+    student = System_intializer::read_student();
+
     vector<Staff>staff;
-    staff=System_intializer::read_staff();
+    staff = System_intializer::read_staff();
+
     vector<Record>record;
-    record=System_intializer::read_record();
+    record = System_intializer::read_record();
 
     //all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
     //will be read and stored in memory (class arrays) in the beginning of the function
