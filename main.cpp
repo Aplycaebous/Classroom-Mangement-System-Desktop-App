@@ -625,7 +625,10 @@ public:
         }
         else return false;
     }
-    friend void add_room(vector<Student>&student,vector<Record>&record,int number);
+  friend void add_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
+                int dur_val, int day_val, int mon_val, int year_val);
+friend void delete_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
+                   int dur_val, int day_val, int mon_val, int year_val);
 
 };
 
@@ -756,7 +759,7 @@ public:
         return user_ID;
     }
 
-    friend void add_room(vector<Student>&student,vector<Record>&record,int number);
+
 };
 
 void add_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
@@ -786,7 +789,7 @@ void add_record(vector<Student>&student,vector<Record>&record,int student_number
             }
         }
     }
-    record.insert(record.begin()+cross,Record(student[student_number].get_student_id(), build_val,room_val,hour_val,min_val,form_val,
+    record.insert(record.begin()+cross,Record(student[student_number].student_id, build_val,room_val,hour_val,min_val,form_val,
                                               dur_val,day_val,mon_val,year_val));
     std::ofstream ofs;
     ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
@@ -833,7 +836,7 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
         }
 
 
-        if( record[i].get_user_ID() == student[student_number].get_student_id() &&
+        if( record[i].get_user_ID() == student[student_number].student_id &&
             record[i].get_building_no()==build_val &&
             record[i].get_room_no()==room_val &&
             hour==hour_val &&
@@ -1110,7 +1113,7 @@ public:
 
 
     }
-    void add_room(vector<Room>&room,string build_val,string room_val,bool ac_val,int board_val,bool project,int capacity)//paramenter list for rooms
+   void add_room(vector<Room>&room,string build_val,string room_val,bool ac_val,int board_val,bool project,int capacity)//paramenter list for rooms
     {
         int cross=0;
         for(int i=0;i<room.size();i++)
@@ -1170,7 +1173,7 @@ public:
 
 
     }
-    vector<Admin>create_admin(string path)
+    vector<Admin>create_admin_file(string path)
     {
         vector<Admin>f_list;
         fstream fin;
@@ -1187,46 +1190,51 @@ public:
             while (getline(s, word, ',')) {
                 if(second_count==0)
                 {
-                    if( temp.set_username(word) )
-                    {
+                  if( temp.set_username(word) )
+                  {
                         Username=word;
-                    }
-                    else
-                    {
-                        valid_flag=1;
-                        cout<<"UserName "<<word<<" is invalid"<<endl;
-                        break;
-                    }
+                        second_count++;
+
+                  }
+                  else
+                  {
+                      valid_flag=1;
+                      cout<<"UserName "<<word<<" is invalid"<<endl;
+                      break;
+                  }
                 }
                 else if(second_count==1)
                 {
                     if( temp.set_password(word) )
-                    {
+                  {
                         Password=word;
-                    }
-                    else
-                    {
-                        valid_flag=1;
-                        cout<<"Password "<<word<<" is invalid"<<endl;
-                        break;
-                    }
+                        second_count++;
+                  }
+                  else
+                  {
+                      valid_flag=1;
+                      cout<<"Password "<<word<<" is invalid"<<endl;
+                      break;
+                  }
                 }
                 else if(second_count==2)
                 {
-                    if( temp.set_contact_no(word) )
-                    {
+                     if( temp.set_contact_no(word) )
+                  {
                         Contact_no=word;
-                    }
-                    else
-                    {
-                        valid_flag=1;
-                        cout<<"Contact No "<<word<<" is invalid"<<endl;
-                        break;
-                    }
+                        second_count++;
+                  }
+                  else
+                  {
+                      valid_flag=1;
+                      cout<<"Contact No "<<word<<" is invalid"<<endl;
+                      break;
+                  }
                 }
                 else if(second_count==3)
                 {
                     Email_address=word;
+                    second_count++;
                 }
             }
             if(valid_flag==1)
@@ -1252,30 +1260,30 @@ public:
     vector<Student>create_student_file(string path)
     {
         vector<Student>f_list;
-        fstream fin;
-        int counti=0;
+	     fstream fin;
+	     int counti=0;
 
-        fin.open(path);
-        string line,word;;
-        string username,password,student_id;
-        bool cr;
+    fin.open(path);
+    string line,word;;
+    string username,password,student_id;
+    bool cr;
 
-        while (fin.good()) {
-            // cout<<"nana"<<endl;
-            getline(fin, line);
-            stringstream s(line);
-            int second_count=0;
-            Student temp;
-            int valid_flag=0;
+    while (fin.good()) {
+           // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+        Student temp;
+        int valid_flag=0;
 
-            while (getline(s, word, ',')) {
+        while (getline(s, word, ',')) {
                 if(second_count==0)
                 {
-                    username=word;
-                    second_count++;
+                        username=word;
+                        second_count++;
                 }
-                else if(second_count==1)
-                {
+            else if(second_count==1)
+            {
                     if(temp.set_password(word))
                     {
                         password=word;
@@ -1287,13 +1295,13 @@ public:
                         break;
                     }
 
-                    second_count++;
-                }
-                else if(second_count==2)
-                {
-                    if(temp.set_student_id(word))
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                if(temp.set_student_id(word))
                     {
-
+                        student_id=word;
                     }
                     else
                     {
@@ -1301,36 +1309,36 @@ public:
                         cout<<"Student ID "<<word<<" is not valid"<<endl;
                         break;
                     }
-                    second_count++;
-                }
-                else if(second_count==3)
-                {
-                    if(word=="YES")
-                    {
-                        cr=true;
-                    }
-                    else
-                    {
-                        cr=false;
-                    }
-                }
-
+                second_count++;
             }
-            if(valid_flag)
+            else if(second_count==3)
             {
-                continue;
+                if(word=="YES")
+                {
+                    cr=true;
+                }
+                else
+                {
+                    cr=false;
+                }
             }
-
-            f_list.push_back(Student(username,password,student_id,cr) );
-
-            //counti++;
 
         }
+        if(valid_flag)
+        {
+            continue;
+        }
+
+        f_list.push_back(Student(username,password,student_id,cr) );
+
+        //counti++;
+
+    }
 
 
-        // counti--;
-        //   f_list.pop_back();
-        std::ofstream file;
+       // counti--;
+     //   f_list.pop_back();
+      std::ofstream file;
         file.open("Student.csv",std::ios_base::app);
         string temp_ac;
         for(int i=0;i<f_list.size();i++)
@@ -1390,34 +1398,35 @@ public:
     vector<Staff>create_staff_file(string path)
     {
         vector<Staff>f_list;
-        fstream fin;
-        int counti=0;
+	     fstream fin;
+	     int counti=0;
 
-        fin.open(path);
-        string line,word;;
-        string username,password,student_id;
+    fin.open(path);
+    string line,word;;
+    string username,password,staff_id;
 
 
-        while (fin.good()) {
-            // cout<<"nana"<<endl;
-            getline(fin, line);
-            stringstream s(line);
-            int second_count=0;
-            Staff temp;
-            int valid_flag=0;
+    while (fin.good()) {
+           // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+        Staff temp;
+        int valid_flag=0;
 
-            while (getline(s, word, ',')) {
+        while (getline(s, word, ',')) {
                 if(second_count==0)
                 {
 
-                    username=word;
+                     username=word;
+                     second_count++;
 
                 }
-                else if(second_count==1)
-                {
+            else if(second_count==1)
+            {
                     if(temp.set_password(word))
                     {
-
+                        password=word;
                     }
                     else
                     {
@@ -1426,13 +1435,13 @@ public:
                         break;
                     }
 
-                    second_count++;
-                }
-                else if(second_count==2)
-                {
-                    if(temp.set_staff_id(word))
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                if(temp.set_staff_id(word))
                     {
-
+                        staff_id=word;
                     }
                     else
                     {
@@ -1440,25 +1449,25 @@ public:
                         cout<<"Staff ID "<<word<<" is not valid"<<endl;
                         break;
                     }
-                    second_count++;
-                }
-
+                second_count++;
             }
-            if(valid_flag)
-            {
-                continue;
-            }
-
-            f_list.push_back(Staff(username,password,student_id) );
-
-            //counti++;
 
         }
+        if(valid_flag)
+        {
+            continue;
+        }
+
+        f_list.push_back(Staff(username,password,staff_id) );
+
+        //counti++;
+
+    }
 
 
-        // counti--;
-        //   f_list.pop_back();
-        std::ofstream file;
+       // counti--;
+     //   f_list.pop_back();
+      std::ofstream file;
         file.open("Staff.csv",std::ios_base::app);
         string temp_ac;
         for(int i=0;i<f_list.size();i++)
