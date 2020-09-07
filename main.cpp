@@ -1,3 +1,6 @@
+#include "mainwindow.h"
+
+#include <QApplication>
 #include<bits/stdc++.h>
 #include<ctime>
 #include<fstream>
@@ -119,7 +122,8 @@ public:
     }
     bool check_room_no(string val)
     {
-        if(val.length()!=Metadata::get_room_no_size())
+        int vsize=val.size(), mrsize=Metadata::get_room_no_size();
+        if(vsize!=mrsize)
         {
             cout<<"Invalid room number"<<endl;
             cout<<"Size must be "<<Metadata::get_room_no_size()<<" characters exactly"<<endl;
@@ -127,7 +131,7 @@ public:
         }
         else
         {
-            for(int i=0;i<val.size();i++)
+            for(int i=0;i<vsize;i++)
             {
                 if(!isdigit(val[i]))
                 {
@@ -223,7 +227,7 @@ public:
         //sets the hour along with checking the validity
         if(val>0 && val<=12)
         {
-            set_hour(val);// Then it sets the hour value. Whether it is 24 hour or not, we will then set it to the format part.
+            set_hour_without_check(val);// Then it sets the hour value. Whether it is 24 hour or not, we will then set it to the format part.
 
             return true;
         }
@@ -234,10 +238,10 @@ public:
             return false;
         }
     }
-    bool set_hour(int val)
+    /*bool set_hour(int val)
     {
         set_hour_without_check(val);
-    }
+    }*/
     bool set_minute(int val)
     {
         //sets the minute along with checking the validity
@@ -262,11 +266,11 @@ public:
         {
             if(val == "PM")
             {
-                set_hour(get_hour()+12);
+                set_hour_without_check(get_hour()+12);
             }
             else
             {
-                set_hour(get_hour());
+                set_hour_without_check(get_hour());
             }
             return true;
         }
@@ -572,7 +576,8 @@ public:
     }
     static bool check_student_id(string val)
     {
-        if(val.length()!=Metadata::get_student_id_size())
+        int vsize=val.size(), mssize=Metadata::get_student_id_size();
+        if(vsize!=mssize)
         {
             cout<<"Invalid student ID"<<endl;
             cout<<"Size must be "<<Metadata::get_student_id_size()<<" characters exactly"<<endl;
@@ -580,7 +585,7 @@ public:
         }
         else
         {
-            for(int i=0;i<val.size();i++)
+            for(int i=0;i<vsize;i++)
             {
                 if(!isdigit(val[i]))
                 {
@@ -651,7 +656,8 @@ public:
     }
     static bool check_staff_id(string val)
     {
-        if(val.length()!=Metadata::get_staff_id_size())
+        int vsize=val.size(), mssize=Metadata::get_staff_id_size();
+        if(vsize!=mssize)
         {
             cout<<"Invalid staff ID"<<endl;
             cout<<"Size must be "<<Metadata::get_staff_id_size()<<" characters exactly"<<endl;
@@ -659,7 +665,7 @@ public:
         }
         else
         {
-            for(int i=0;i<val.size();i++)
+            for(int i=0;i<vsize;i++)
             {
                 if(!isdigit(val[i]))
                 {
@@ -766,8 +772,8 @@ void add_record(vector<Student>&student,vector<Record>&record,int student_number
                 int dur_val, int day_val, int mon_val, int year_val)
 {
 
-    int cross=0;
-    for(int i=0;i<record.size();i++)
+    int cross=0, rsize=record.size();
+    for(int i=0;i<rsize;i++)
     {
         if( stoi(record[i].get_building_no()) >stoi(build_val))
         {
@@ -796,7 +802,7 @@ void add_record(vector<Student>&student,vector<Record>&record,int student_number
     ofs.close();
     ofstream myFile;
     myFile.open("Record.csv");
-    for(int i=0;i<record.size();i++)
+    for(int i=0;i<rsize;i++)
     {
         int hour;
         if(record[i].get_format()=="PM")
@@ -822,8 +828,9 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
                    int dur_val, int day_val, int mon_val, int year_val)
 {
 
-    int cross=0;
-    for(int i=0;i<record.size();i++)
+    //int cross=0;
+    int rsize=record.size();
+    for(int i=0;i<rsize;i++)
     {
         int hour;
         if(record[i].get_format()=="PM")
@@ -856,7 +863,7 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
     ofs.close();
     ofstream myFile;
     myFile.open("Record.csv");
-    for(int i=0;i<record.size();i++)
+    for(int i=0;i<rsize;i++)
     {
         int hour;
         if(record[i].get_format()=="PM")
@@ -999,9 +1006,10 @@ private:
     }
     bool check_contact_no_validity(string val)
     {
-        if(val.size()==11)
+        int vsize=val.size();
+        if(vsize==11)
         {
-            for(int i=0;i<val.size();i++)
+            for(int i=0;i<vsize;i++)
             {
                 if(!isdigit(val[i]))
                 {
@@ -1108,15 +1116,15 @@ public:
     //Admin can check log file (written)
     //Admin can edit metadata (Done)
 
-    vector<Room> create_room_file(string path)
+    /*vector<Room> create_room_file(string path)
     {
 
 
-    }
+    }*/
    void add_room(vector<Room>&room,string build_val,string room_val,bool ac_val,int board_val,bool project,int capacity)//paramenter list for rooms
     {
-        int cross=0;
-        for(int i=0;i<room.size();i++)
+        int cross=0, rsize=room.size();
+        for(int i=0;i<rsize;i++)
         {
             if( stoi(room[i].get_building_no()) >stoi(build_val))
             {
@@ -1144,7 +1152,7 @@ public:
         ofs.close();
         ofstream myFile;
         myFile.open("Room.csv");
-        for(int i=0;i<room.size();i++)
+        for(int i=0;i<rsize;i++)
         {
             string temp_ac,temp_project;
             if(room[i].get_ac())
@@ -1249,7 +1257,8 @@ public:
         std::ofstream file;
         file.open("Admin.csv",std::ios_base::app);
         string temp_ac;
-        for(int i=0;i<f_list.size();i++)
+        int fsize=f_list.size();
+        for(int i=0;i<fsize;i++)
         {
             file<<f_list[i].get_username()<<","<<f_list[i].get_password()<<","<<f_list[i].get_contact_no()<<","<<f_list[i].get_email()<<endl;
         }
@@ -1260,8 +1269,8 @@ public:
     vector<Student>create_student_file(string path)
     {
         vector<Student>f_list;
-	     fstream fin;
-	     int counti=0;
+         fstream fin;
+         //int counti=0;
 
     fin.open(path);
     string line,word;;
@@ -1341,7 +1350,8 @@ public:
       std::ofstream file;
         file.open("Student.csv",std::ios_base::app);
         string temp_ac;
-        for(int i=0;i<f_list.size();i++)
+        int fsize=f_list.size();
+        for(int i=0;i<fsize;i++)
         {
             string temp;
             if(f_list[i].get_cr())
@@ -1363,8 +1373,8 @@ public:
     {
         //checks the student doesn't prexist in the student.txt file
         //appends a new student_user in the room.txt file
-        int check_exist=0;
-        for(int i=0;i<student.size();i++)
+        int check_exist=0, ssize=student.size();
+        for(int i=0;i<ssize;i++)
         {
             if(stoi(student[i].get_student_id() )==stoi(val_std_id))
             {
@@ -1398,8 +1408,8 @@ public:
     vector<Staff>create_staff_file(string path)
     {
         vector<Staff>f_list;
-	     fstream fin;
-	     int counti=0;
+         fstream fin;
+         //int counti=0;
 
     fin.open(path);
     string line,word;;
@@ -1470,7 +1480,8 @@ public:
       std::ofstream file;
         file.open("Staff.csv",std::ios_base::app);
         string temp_ac;
-        for(int i=0;i<f_list.size();i++)
+        int fsize=f_list.size();
+        for(int i=0;i<fsize;i++)
         {
             file<<f_list[i].get_name()<<","<<f_list[i].get_password()<<","<<f_list[i].get_staff_id()<<endl;
         }
@@ -1479,8 +1490,8 @@ public:
     void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
     {
 
-        int check_exist=0;
-        for(int i=0;i<staff.size();i++)
+        int check_exist=0, ssize=staff.size();
+        for(int i=0;i<ssize;i++)
         {
             if(stoi(staff[i].get_staff_id() )==stoi(val_staff_id))
             {
@@ -1521,8 +1532,8 @@ public:
     //and then upload that array in the file
     void remove_student(vector<Student>student,string val_std_id)
     {
-        int value;
-        for(int i=0;i<student.size();i++)
+        int value, ssize=student.size();
+        for(int i=0;i<ssize;i++)
         {
             if(student[i].get_student_id()==val_std_id)
             {
@@ -1536,7 +1547,7 @@ public:
         ofs.close();
         ofstream myFile;
         myFile.open("Student.csv");
-        for(int i=0;i<student.size();i++)
+        for(int i=0;i<ssize;i++)
         {
             string temp_cr;
             if(student[i].get_cr())
@@ -1557,8 +1568,8 @@ public:
     }
     void remove_staff(vector<Staff>&staff ,string val_staff_id  )
     {
-        int value;
-        for(int i=0;i<staff.size();i++)
+        int value, ssize=staff.size();
+        for(int i=0;i<ssize;i++)
         {
             if(staff[i].get_staff_id()==val_staff_id)
             {
@@ -1572,7 +1583,7 @@ public:
         ofs.close();
         ofstream myFile;
         myFile.open("Staff.csv");
-        for(int i=0;i<staff.size();i++)
+        for(int i=0;i<ssize;i++)
         {
             myFile<<staff[i].get_name()<<","<<staff[i].get_password()<<","<<staff[i].get_staff_id()<<endl;
         }
@@ -1584,8 +1595,8 @@ public:
     }
     void remove_admin(vector<Admin>admin,string user_val)
     {
-        int value;
-        for(int i=0;i<admin.size();i++)
+        int value, asize=admin.size();
+        for(int i=0;i<asize;i++)
         {
             if(admin[i].get_username()==user_val)
             {
@@ -1599,7 +1610,7 @@ public:
         ofs.close();
         ofstream myFile;
         myFile.open("Admin.csv");
-        for(int i=0;i<admin.size();i++)
+        for(int i=0;i<asize;i++)
         {
             myFile<<admin[i].get_username()<<","<<admin[i].get_password()<<","<<admin[i].get_contact_no()<<","<<admin[i].get_email()<<endl;
         }
@@ -1612,8 +1623,8 @@ public:
     void remove_room(vector<Room>room,string building_no,string room_no)
     {
 
-        int value;
-        for(int i=0;i<room.size();i++)
+        int value, rsize=room.size();
+        for(int i=0;i<rsize;i++)
         {
 
             if(room[i].get_building_no()==building_no && room[i].get_room_no()==room_no)
@@ -1631,7 +1642,7 @@ public:
         ofstream myFile;
 
         myFile.open("Room.csv");
-        for(int i=0;i<room.size();i++)
+        for(int i=0;i<rsize;i++)
         {
             string temp_ac,temp_project;
             if(room[i].get_ac())
@@ -2006,17 +2017,11 @@ public:
 
     }
 };
-
-//create a log class
-//{
-//log.txt file
-//log class will contain all functions that will append the log file whenever anything is done in the program
-//all the functions should be accessed by User and Admin classes
-//}
-
-int main()
+int main(int argc, char *argv[])
 {
-
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
     vector<Admin>ad;
     ad = System_intializer::read_admin();
 
@@ -2031,8 +2036,5 @@ int main()
 
     vector<Record>record;
     record = System_intializer::read_record();
-
-    //all the files (room.txt, student.txt, staff.txt, admin.txt, records.txt
-    //will be read and stored in memory (class arrays) in the beginning of the function
-
+    return a.exec();
 }
