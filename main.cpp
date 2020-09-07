@@ -762,6 +762,78 @@ public:
 
 };
 
+vector<Room> search_record(vector<Record>record, string build_val, string room_val, int hour_val, int min_val, string form_val,
+                int dur_val, int day_val, int mon_val, int year_val)
+{
+
+    vector<Room>record_give;
+    int length=record.size();
+
+    for(int i=0;i<length;i++)
+    {
+      if( record[i].get_building_no()==build_val &&
+            record[i].get_room_no()==room_val &&
+            record[i].get_hour()==hour_val &&
+            record[i].get_minute()==min_val&&
+            record[i].get_format()==form_val &&
+            record[i].get_duration()==dur_val &&
+            record[i].get_day() == day_val &&
+            record[i].get_month() == mon_val &&
+            record[i].get_year() == year_val )
+        {
+            record_give.push_back(record[i]);
+            break;
+        }
+
+    }
+    return record_give;
+}
+
+bool clash(vector<Record>record, string build_val, string room_val, int hour_val, int min_val, string form_val,
+                int dur_val, int day_val, int mon_val, int year_val)
+{
+
+    vector<Room>record_give;
+    int length=record.size();
+    for(int i=0;i<length;i++)
+    {
+      if( record[i].get_building_no()==build_val &&
+            record[i].get_room_no()==room_val &&
+            record[i].get_day() == day_val &&
+            record[i].get_month() == mon_val &&
+            record[i].get_year() == year_val )
+        {
+            int temp_hour=record[i].get_hour();
+            int temp_minute=record[i].get_minute();
+            int temp_duration=record[i].get_duration();
+            if(form_val=="PM")
+            {
+                hour_val+=12;
+            }
+
+            int record_total_minute=temp_hour*60 +temp_minute;
+            int check_total_minute=hour_val*60 +min_val;
+
+            if(record_total_minute+temp_duration<hour_val*60 || check_total_minute+dur_val<temp_hour*60 )
+            {
+               continue;
+            }
+            else
+            {
+                return false;
+
+            }
+        }
+
+
+    }
+
+    return true;
+
+
+}
+
+
 void add_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
                 int dur_val, int day_val, int mon_val, int year_val)
 {
