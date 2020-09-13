@@ -4,13 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "D:/Academics  - Current/Classroom Management System/Admin.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Admin.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Date.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Date.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Equipments.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Metadata.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Physical_location.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Record.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Record.cpp.obj"
+  "D:/Academics  - Current/Classroom Management System/Room.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Room.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Staff.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Staff.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Student.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Student.cpp.obj"
+  "D:/Academics  - Current/Classroom Management System/System_intializer.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/Time.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/Time.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/User.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/User.cpp.obj"
   "D:/Academics  - Current/Classroom Management System/main.cpp" "D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir/main.cpp.obj"

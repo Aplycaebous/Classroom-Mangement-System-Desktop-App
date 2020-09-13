@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/Academics  - Current/Classroom Management System/Admin.cpp">
+			<Option target="Classroom_Management_System"/>
+		</Unit>
+		<Unit filename="D:/Academics  - Current/Classroom Management System/Admin.h">
+			<Option target="Classroom_Management_System"/>
+		</Unit>
 		<Unit filename="D:/Academics  - Current/Classroom Management System/Date.cpp">
 			<Option target="Classroom_Management_System"/>
 		</Unit>
@@ -110,6 +116,12 @@
 		<Unit filename="D:/Academics  - Current/Classroom Management System/Record.h">
 			<Option target="Classroom_Management_System"/>
 		</Unit>
+		<Unit filename="D:/Academics  - Current/Classroom Management System/Room.cpp">
+			<Option target="Classroom_Management_System"/>
+		</Unit>
+		<Unit filename="D:/Academics  - Current/Classroom Management System/Room.h">
+			<Option target="Classroom_Management_System"/>
+		</Unit>
 		<Unit filename="D:/Academics  - Current/Classroom Management System/Staff.cpp">
 			<Option target="Classroom_Management_System"/>
 		</Unit>
@@ -120,6 +132,12 @@
 			<Option target="Classroom_Management_System"/>
 		</Unit>
 		<Unit filename="D:/Academics  - Current/Classroom Management System/Student.h">
+			<Option target="Classroom_Management_System"/>
+		</Unit>
+		<Unit filename="D:/Academics  - Current/Classroom Management System/System_intializer.cpp">
+			<Option target="Classroom_Management_System"/>
+		</Unit>
+		<Unit filename="D:/Academics  - Current/Classroom Management System/System_intializer.h">
 			<Option target="Classroom_Management_System"/>
 		</Unit>
 		<Unit filename="D:/Academics  - Current/Classroom Management System/Time.cpp">

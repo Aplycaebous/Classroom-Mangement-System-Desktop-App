@@ -122,6 +122,33 @@ Classroom_Management_System/fast:
 	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/build
 .PHONY : Classroom_Management_System/fast
 
+Admin.obj: Admin.cpp.obj
+
+.PHONY : Admin.obj
+
+# target to build an object file
+Admin.cpp.obj:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Admin.cpp.obj
+.PHONY : Admin.cpp.obj
+
+Admin.i: Admin.cpp.i
+
+.PHONY : Admin.i
+
+# target to preprocess a source file
+Admin.cpp.i:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Admin.cpp.i
+.PHONY : Admin.cpp.i
+
+Admin.s: Admin.cpp.s
+
+.PHONY : Admin.s
+
+# target to generate assembly for a file
+Admin.cpp.s:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Admin.cpp.s
+.PHONY : Admin.cpp.s
+
 Date.obj: Date.cpp.obj
 
 .PHONY : Date.obj
@@ -257,6 +284,33 @@ Record.cpp.s:
 	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Record.cpp.s
 .PHONY : Record.cpp.s
 
+Room.obj: Room.cpp.obj
+
+.PHONY : Room.obj
+
+# target to build an object file
+Room.cpp.obj:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Room.cpp.obj
+.PHONY : Room.cpp.obj
+
+Room.i: Room.cpp.i
+
+.PHONY : Room.i
+
+# target to preprocess a source file
+Room.cpp.i:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Room.cpp.i
+.PHONY : Room.cpp.i
+
+Room.s: Room.cpp.s
+
+.PHONY : Room.s
+
+# target to generate assembly for a file
+Room.cpp.s:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Room.cpp.s
+.PHONY : Room.cpp.s
+
 Staff.obj: Staff.cpp.obj
 
 .PHONY : Staff.obj
@@ -310,6 +364,33 @@ Student.s: Student.cpp.s
 Student.cpp.s:
 	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/Student.cpp.s
 .PHONY : Student.cpp.s
+
+System_intializer.obj: System_intializer.cpp.obj
+
+.PHONY : System_intializer.obj
+
+# target to build an object file
+System_intializer.cpp.obj:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.obj
+.PHONY : System_intializer.cpp.obj
+
+System_intializer.i: System_intializer.cpp.i
+
+.PHONY : System_intializer.i
+
+# target to preprocess a source file
+System_intializer.cpp.i:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.i
+.PHONY : System_intializer.cpp.i
+
+System_intializer.s: System_intializer.cpp.s
+
+.PHONY : System_intializer.s
+
+# target to generate assembly for a file
+System_intializer.cpp.s:
+	$(MAKE) -f CMakeFiles\Classroom_Management_System.dir\build.make CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.s
+.PHONY : System_intializer.cpp.s
 
 Time.obj: Time.cpp.obj
 
@@ -401,6 +482,9 @@ help:
 	@echo ... Classroom_Management_System
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Admin.obj
+	@echo ... Admin.i
+	@echo ... Admin.s
 	@echo ... Date.obj
 	@echo ... Date.i
 	@echo ... Date.s
@@ -416,12 +500,18 @@ help:
 	@echo ... Record.obj
 	@echo ... Record.i
 	@echo ... Record.s
+	@echo ... Room.obj
+	@echo ... Room.i
+	@echo ... Room.s
 	@echo ... Staff.obj
 	@echo ... Staff.i
 	@echo ... Staff.s
 	@echo ... Student.obj
 	@echo ... Student.i
 	@echo ... Student.s
+	@echo ... System_intializer.obj
+	@echo ... System_intializer.i
+	@echo ... System_intializer.s
 	@echo ... Time.obj
 	@echo ... Time.i
 	@echo ... Time.s
