@@ -1,0 +1,54 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Academics  - Current/Classroom Management System/Date.h
+iostream
+-
+ctime
+-
+
+D:/Academics  - Current/Classroom Management System/Physical_location.h
+iostream
+-
+
+D:/Academics  - Current/Classroom Management System/Record.h
+iostream
+-
+Time.h
+D:/Academics  - Current/Classroom Management System/Time.h
+Physical_location.h
+D:/Academics  - Current/Classroom Management System/Physical_location.h
+Date.h
+D:/Academics  - Current/Classroom Management System/Date.h
+bits/stdc++.h
+-
+
+D:/Academics  - Current/Classroom Management System/Time.h
+iostream
+-
+algorithm
+-
+
+D:/Academics  - Current/Classroom Management System/User.cpp
+User.h
+D:/Academics  - Current/Classroom Management System/User.h
+
+D:/Academics  - Current/Classroom Management System/User.h
+Physical_location.h
+D:/Academics  - Current/Classroom Management System/Physical_location.h
+Date.h
+D:/Academics  - Current/Classroom Management System/Date.h
+Time.h
+D:/Academics  - Current/Classroom Management System/Time.h
+Record.h
+D:/Academics  - Current/Classroom Management System/Record.h
+bits/stdc++.h
+-
+iostream
+-
+
