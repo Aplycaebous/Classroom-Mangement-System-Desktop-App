@@ -1,8 +1,8 @@
 #include "System_initializer.h"
 
-static vector<Admin> read_admin()
+static vector<Admin*> read_admin()
 {
-    vector<Admin>f_list;
+    vector<Admin*>f_list;
     fstream fin;
     int counti=0;
 
@@ -46,9 +46,9 @@ static vector<Admin> read_admin()
     f_list.pop_back();
     return f_list;
 }
-static vector<Room> read_room()
+static vector<Room*> read_room()
 {
-    vector<Room>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
+    vector<Room*>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
     fstream fin;
     int counti=0;
     fin.open("Room.csv", ios::in);
@@ -113,7 +113,11 @@ static vector<Room> read_room()
                 second_count++;
             }
         }
-        r.push_back(Room(Physical_location(building_val,room_val),Equipments(ac_val,board_no,proj_val),capacity)) ;
+        Physical_location pl(building_val,room_val);
+        Equipments eq(ac_val,board_no,proj_val);
+        
+        
+        r.push_back(Room(pl,eq,capacity)) ;
         counti++;
     }
     number_of_room--;
@@ -188,9 +192,9 @@ static vector<Student> read_student()
 
 
 }
-static vector<Staff> read_staff()
+static vector<Staff*> read_staff()
 {
-    vector<Staff>f_list;
+    vector<Staff*>f_list;
     fstream fin;
     int counti=0;
 
@@ -238,9 +242,9 @@ static vector<Staff> read_staff()
 
 
 }
-static vector<Record>read_record()
+static vector<Record*>read_record()
 {
-    vector<Record>f_list;
+    vector<Record*>f_list;
     fstream fin;
     int counti=0;
 
@@ -288,29 +292,23 @@ static vector<Record>read_record()
             }
             else if(second_count==5)
             {
-                format=word;
+                duration=stoi(word);
 
                 second_count++;
             }
             else if(second_count==6)
             {
-                duration=stoi(word);
+                day=stoi(word);
 
                 second_count++;
             }
             else if(second_count==7)
             {
-                day=stoi(word);
-
-                second_count++;
-            }
-            else if(second_count==8)
-            {
                 month=stoi(word);
 
                 second_count++;
             }
-            else if(second_count==9)
+            else if(second_count==8)
             {
                 year=stoi(word);
 
@@ -319,7 +317,12 @@ static vector<Record>read_record()
 
 
         }
-        f_list.push_back(Record(user_val,build_val,room_val,hour,minute,format,duration,day,month,year) );
+        Physical_location pl(build_val,room_val);
+        Time t(hour,minute);
+        Date d(day,month,year);
+        
+        
+        f_list.push_back(Record(user_val,pl,t,duration,d) );
 
         counti++;
 
