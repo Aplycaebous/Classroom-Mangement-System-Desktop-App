@@ -49,7 +49,7 @@ string User::get_password(void)
     return password;
 }
 
-static bool login(vector<User*> user_vec, string id, string password)
+bool User::login(vector<User*> user_vec, string id, string password)
 {
     for(int i=0;i<user_vec.size();i++)
     {
@@ -64,34 +64,21 @@ static bool login(vector<User*> user_vec, string id, string password)
     return false;
 }
 
-/*
-static void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
+void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
     int cross=0, rsize = record.size();
     for(int i=0;i<rsize;i++)
     {
-        if( stoi(record[i]->get_building_no()) >stoi(phy_val.get_building_no()))
+        if( record[i]->get_phy_loc_obj() > phy_val)
         {
             break;
         }
-        else if(stoi(record[i]->get_building_no() ) <stoi(phy_val.get_building_no()))
+        else if( record[i]->get_phy_loc_obj() < phy_val)
         {
             cross++;
         }
-        else if(stoi(record[i]->get_building_no())==stoi(phy_val.get_building_no()))
-        {
-            if(stoi(record[i]->get_room_no()) >stoi(phy_val.get_room_no()))
-            {
-                break;
-            }
-            else
-            {
-                cross++;
-            }
-        }
     }
-
-    record.insert((record.begin()+cross),Record(id, phy_val,time_val, dur_val,date_val));
+    record.insert((record.begin() + cross), new Record(id, phy_val, time_val, dur_val, date_val));
     std::ofstream ofs;
     ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
@@ -100,31 +87,19 @@ static void add_record(vector<User*> &user,vector<Record*> &record,string id, Ph
     for(int i=0;i<rsize;i++)
     {
         int hour;
-        myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<
-        record[i].get_minute()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+        myFile<<record[i]->get_user_ID()<<","<<record[i]->get_building_no()<<","<<record[i]->get_room_no()<<","<<record[i]->get_hour()<<","<<
+        record[i]->get_minute()<<","<<record[i]->get_duration()<<","<<record[i]->get_day()<<","<<record[i]->get_month()<<","<<record[i]->get_year()<<endl;
     }
     fstream file("log.txt",ios::in|ios::out|ios::app );
-    file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was added by the Student"<<endl;
+    file<<"Record "<<phy_val.get_physical_location()<<" at "<<time_val.get_time_24()<<" on "<<date_val.get_date()<<" was added by id: "<<id<<endl;
 }
 
-void delete_record(vector<Student>&student,vector<Record>&record,int student_number, string build_val, string room_val, int hour_val, int min_val, string form_val,
-                   int dur_val, int day_val, int mon_val, int year_val)
+void delete_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
-
-    //int cross=0;
-    int rsize=record.size();
-    for(int i=0;i<rsize;i++)
+    for(int i=0;i<record.size();i++)
     {
-        int hour;
-        if( record[i].get_user_ID() == student[student_number].student_id &&
-            record[i].get_building_no()==build_val &&
-            record[i].get_room_no()==room_val &&
-            record[i].get_hour() == hour_val &&
-            record[i].get_minute()==min_val&&
-            record[i].get_duration()==dur_val &&
-            record[i].get_day() == day_val &&
-            record[i].get_month() == mon_val &&
-            record[i].get_year() == year_val )
+        if( record[i]->get_user_ID() == id && record[i]->get_phy_loc_obj() == phy_val && record[i]->get_time_obj() == time_val &&
+            record[i]->get_duration() == dur_val && record[i]->get_date_obj() == date_val )
         {
             record.erase(record.begin()+i);
             break;
@@ -135,18 +110,15 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
     ofs.close();
     ofstream myFile;
     myFile.open("Record.csv");
-
-    for(int i=0;i<rsize;i++)
+    for(int i=0;i<record.size();i++)
     {
-        int hour;
-        myFile<<record[i].get_user_ID()<<","<<record[i].get_building_no()<<","<<record[i].get_room_no()<<","<<hour<<","<<record[i].get_minute()<<","<<record[i].get_duration()<<","<<record[i].get_day()<<","<<record[i].get_month()<<","<<record[i].get_year()<<endl;
+        myFile<<record[i]->get_user_ID()<<","<<record[i]->get_building_no()<<","<<record[i]->get_room_no()<<","<<record[i]->get_hour()<<","<<record[i]->get_minute()<<","
+        <<record[i]->get_duration()<<","<<record[i]->get_day()<<","<<record[i]->get_month()<<","<<record[i]->get_year()<<endl;
     }
-
     fstream file("log.txt",ios::in|ios::out|ios::app );
-    file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was removed by the Student"<<endl;
+    file<<"Record "<<phy_val.get_physical_location()<<" at "<<time_val.get_time_24()<<" on "<<date_val.get_date()<<" was removed by id: "<<id<<endl;
 }
-
-
+/*
  vector<Room*> search_record(vector<Record*> record_list, Physical_location phy_val, Time time_val, Date date_val, int dur_val)
 {
     vector<Room*> record_give;
@@ -163,7 +135,8 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
     }
     return record_give;
 }
-  */
+ */
+
  bool clash(vector<Record*> record, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
     vector<Room*> record_give;
@@ -171,16 +144,11 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
     {
         if( record[i]->get_phy_loc_obj() == phy_val && record[i]->get_date_obj() == date_val)
         {
-            int temp_hour=record[i].get_hour();
-            int temp_minute=record[i].get_minute();
-            int temp_duration=record[i].get_duration();
-            if(form_val=="PM")
-            {
-                hour_val+=12;
-            }
-            int record_total_minute=temp_hour*60 +temp_minute;
-            int check_total_minute = hour_val*60 +min_val;
-            if(record_total_minute+temp_duration<check_total_minute || check_total_minute+dur_val<record_total_minute )
+            Time rec_time = record[i]->get_time_obj();
+            Time rec_end_time = (Time::convert_duration(record[i]->get_duration())+ rec_time);
+            Time in_end_time = (Time::convert_duration(dur_val) + time_val);
+
+            if(rec_time > in_end_time || rec_end_time < time_val )
             {
                 continue;
             }

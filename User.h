@@ -27,8 +27,8 @@ public:
     virtual bool set_id(string val) = 0;
     virtual string get_id(void) = 0;
     static bool login(vector<User*> user_vec, string id, string password);
-    static void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
-    static void delete_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
+    friend void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
+    friend void delete_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
 
     //vector<Room*> search_record(vector<Record*> record_list, Physical_location phy_val, Time time_val, Date date_val, int dur_val);
     //bool clash(vector<Record*> record, Physical_location phy_val, Date date_val, Time time_val, int dur_val);

@@ -20,6 +20,8 @@ public:
     string get_physical_location(void); //for displaying the physical location
     bool operator == (Physical_location phy_val);
     bool operator != (Physical_location phy_val);
+    bool operator < (Physical_location phy_val);
+    bool operator > (Physical_location phy_val);
 };
 
 

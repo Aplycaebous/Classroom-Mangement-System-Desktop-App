@@ -91,3 +91,35 @@ bool Physical_location::operator != (Physical_location phy_val)
         return false;
     else return true;
 }
+
+bool Physical_location::operator < (Physical_location phy_val)
+{
+    if(phy_val.get_building_no()<phy_val.get_building_no())
+    {
+        return true;
+    }
+    else if(phy_val.get_building_no()==phy_val.get_building_no())
+    {
+        if(phy_val.get_room_no()<phy_val.get_room_no())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Physical_location::operator > (Physical_location phy_val)
+{
+    if(phy_val.get_building_no()>phy_val.get_building_no())
+    {
+        return true;
+    }
+    else if(phy_val.get_building_no()==phy_val.get_building_no())
+    {
+        if(phy_val.get_room_no()>phy_val.get_room_no())
+        {
+            return true;
+        }
+    }
+    return false;
+}

@@ -6,7 +6,7 @@
 #include "Physical_location.h"
 #include "Date.h"
 #include <bits/stdc++.h>
-#include<fstream>
+#include <fstream>
 #include "Student.h"
 #include "Staff.h"
 using namespace std;
@@ -28,6 +28,8 @@ public:
     Date get_date_obj(void);
     bool operator == (Record record_val);
     static vector<Record*> list_user_records(string id, vector<Record*> rec_in);
+    friend void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
+    friend void delete_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
 };
 
 

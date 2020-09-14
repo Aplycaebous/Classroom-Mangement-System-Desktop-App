@@ -1,0 +1,166 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Projects - GitHub/Project Classroom Mangement System/Admin.cpp
+Admin.h
+D:/Projects - GitHub/Project Classroom Mangement System/Admin.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Admin.h
+iostream
+-
+Room.h
+D:/Projects - GitHub/Project Classroom Mangement System/Room.h
+Staff.h
+D:/Projects - GitHub/Project Classroom Mangement System/Staff.h
+Student.h
+D:/Projects - GitHub/Project Classroom Mangement System/Student.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Date.cpp
+Date.h
+D:/Projects - GitHub/Project Classroom Mangement System/Date.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Date.h
+iostream
+-
+ctime
+-
+
+D:/Projects - GitHub/Project Classroom Mangement System/Equipments.cpp
+Equipments.h
+D:/Projects - GitHub/Project Classroom Mangement System/Equipments.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Equipments.h
+iostream
+-
+
+D:/Projects - GitHub/Project Classroom Mangement System/Metadata.cpp
+Metadata.h
+D:/Projects - GitHub/Project Classroom Mangement System/Metadata.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Metadata.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Physical_location.cpp
+Physical_location.h
+D:/Projects - GitHub/Project Classroom Mangement System/Physical_location.h
+Metadata.h
+D:/Projects - GitHub/Project Classroom Mangement System/Metadata.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Physical_location.h
+iostream
+-
+
+D:/Projects - GitHub/Project Classroom Mangement System/Record.cpp
+Record.h
+D:/Projects - GitHub/Project Classroom Mangement System/Record.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Record.h
+iostream
+-
+Time.h
+D:/Projects - GitHub/Project Classroom Mangement System/Time.h
+Physical_location.h
+D:/Projects - GitHub/Project Classroom Mangement System/Physical_location.h
+Date.h
+D:/Projects - GitHub/Project Classroom Mangement System/Date.h
+bits/stdc++.h
+-
+fstream
+-
+Student.h
+D:/Projects - GitHub/Project Classroom Mangement System/Student.h
+Staff.h
+D:/Projects - GitHub/Project Classroom Mangement System/Staff.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Room.cpp
+Room.h
+D:/Projects - GitHub/Project Classroom Mangement System/Room.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Room.h
+iostream
+-
+Physical_location.h
+D:/Projects - GitHub/Project Classroom Mangement System/Physical_location.h
+Equipments.h
+D:/Projects - GitHub/Project Classroom Mangement System/Equipments.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Staff.cpp
+Staff.h
+D:/Projects - GitHub/Project Classroom Mangement System/Staff.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Staff.h
+iostream
+-
+User.h
+D:/Projects - GitHub/Project Classroom Mangement System/User.h
+Metadata.h
+D:/Projects - GitHub/Project Classroom Mangement System/Metadata.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Student.cpp
+Student.h
+D:/Projects - GitHub/Project Classroom Mangement System/Student.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Student.h
+Metadata.h
+D:/Projects - GitHub/Project Classroom Mangement System/Metadata.h
+User.h
+D:/Projects - GitHub/Project Classroom Mangement System/User.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/System_intializer.cpp
+System_intializer.h
+D:/Projects - GitHub/Project Classroom Mangement System/System_intializer.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/System_intializer.h
+Room.h
+D:/Projects - GitHub/Project Classroom Mangement System/Room.h
+Record.h
+D:/Projects - GitHub/Project Classroom Mangement System/Record.h
+Admin.h
+D:/Projects - GitHub/Project Classroom Mangement System/Admin.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Time.cpp
+Time.h
+D:/Projects - GitHub/Project Classroom Mangement System/Time.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/Time.h
+iostream
+-
+algorithm
+-
+
+D:/Projects - GitHub/Project Classroom Mangement System/User.cpp
+User.h
+D:/Projects - GitHub/Project Classroom Mangement System/User.h
+
+D:/Projects - GitHub/Project Classroom Mangement System/User.h
+Physical_location.h
+D:/Projects - GitHub/Project Classroom Mangement System/Physical_location.h
+Date.h
+D:/Projects - GitHub/Project Classroom Mangement System/Date.h
+Time.h
+D:/Projects - GitHub/Project Classroom Mangement System/Time.h
+Record.h
+D:/Projects - GitHub/Project Classroom Mangement System/Record.h
+Room.h
+D:/Projects - GitHub/Project Classroom Mangement System/Room.h
+bits/stdc++.h
+-
+iostream
+-
+fstream
+-
+
+D:/Projects - GitHub/Project Classroom Mangement System/main.cpp
+mainwindow.h
+D:/Projects - GitHub/Project Classroom Mangement System/mainwindow.h
+QApplication
+-
+bits/stdc++.h
+-
+fstream
+-
+

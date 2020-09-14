@@ -92,7 +92,7 @@ bool compare_record(Record rec1, Record rec2)
 }
 
 
-static vector<Record*> list_user_records(string id, vector<Record*> rec_in)
+vector<Record*> Record::list_user_records(string id, vector<Record*> rec_in)
 {
     vector<Record*> rec_out;
     for(int i=0;i<rec_in.size();i++)
