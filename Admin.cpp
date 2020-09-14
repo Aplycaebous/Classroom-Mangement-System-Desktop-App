@@ -182,89 +182,86 @@ void add_room(vector<Room>&room,Physical_location phy_val,Equipments equip_val,i
     fstream file("log.txt",ios::in|ios::out|ios::app );
     file<<"Room "<<phy_val.get_building_no()<<" "<<phy_val.get_room_no()<<" was added by the Admin"<<endl;
 }
+
 vector<Admin>create_admin_file(string path)
 {
-vector<Admin>f_list;
-fstream fin;
-fin.open(path);
-string line,word;
-string Username, Password, Contact_no, Email_address;
-while (fin.good()) {
-getline(fin, line);
-stringstream s(line);
-int second_count=0;
-Admin temp;
-int valid_flag=0;
-
-while (getline(s, word, ',')) {
-if(second_count==0)
-{
-if( temp.set_username(word) )
-{
-Username=word;
-second_count++;
-
-}
-else
-{
-valid_flag=1;
-cout<<"UserName "<<word<<" is invalid"<<endl;
-break;
-}
-}
-else if(second_count==1)
-{
-if( temp.set_password(word) )
-{
-Password=word;
-second_count++;
-}
-else
-{
-valid_flag=1;
-cout<<"Password "<<word<<" is invalid"<<endl;
-break;
-}
-}
-else if(second_count==2)
-{
-if( temp.set_contact_no(word) )
-{
-Contact_no=word;
-second_count++;
-}
-else
-{
-valid_flag=1;
-cout<<"Contact No "<<word<<" is invalid"<<endl;
-break;
-}
-}
-else if(second_count==3)
-{
-Email_address=word;
-second_count++;
-}
-}
-if(valid_flag==1)
-{
-continue;
-}
-
-f_list.push_back( Admin(Username,Password,Contact_no,Email_address) ) ;
-
-}
-
-std::ofstream file;
-file.open("Admin.csv",std::ios_base::app);
-string temp_ac;
-int fsize=f_list.size();
-for(int i=0;i<fsize;i++)
-{
-file<<f_list[i].get_username()<<","<<f_list[i].get_password()<<","<<f_list[i].get_contact_no()<<","<<f_list[i].get_email()<<endl;
-}
-
-return f_list;
+    vector<Admin>f_list;
+    fstream fin;
+    fin.open(path);
+    string line,word;
+    string Username, Password, Contact_no, Email_address;
+    while (fin.good())
+    {
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+        Admin temp;
+        int valid_flag=0;
+        while (getline(s, word, ','))
+        {
+            if(second_count==0)
+            {
+                if( temp.set_username(word) )
+                    {
+                        Username=word;
+                        second_count++;
+                    }
+                else
+                {
+                    valid_flag=1;
+                    cout<<"UserName "<<word<<" is invalid"<<endl;
+                    break;
+                }
+            }
+            else if(second_count==1)
+            {
+                if( temp.set_password(word) )
+                {
+                    Password=word;
+                    second_count++;
+                }
+                else
+                {
+                    valid_flag=1;
+                    //cout<<"Password "<<word<<" is invalid"<<endl;
+                    break;
+                }
+            }
+            else if(second_count==2)
+            {
+                if( temp.set_contact_no(word) )
+                {
+                    Contact_no=word;
+                    second_count++;
+                }
+                else
+                {
+                    valid_flag=1;
+                    //cout<<"Contact No "<<word<<" is invalid"<<endl;
+                    break;
+                }
+            }
+            else if(second_count==3)
+            {
+                Email_address=word;
+                second_count++;
+            }
+        }
+        if(valid_flag==1)
+        {
+            continue;
+        }
+        f_list.push_back( Admin(Username,Password,Contact_no,Email_address) ) ;
+    }
+    std::ofstream file;
+    file.open("Admin.csv",std::ios_base::app);
+    string temp_ac;
+    int fsize=f_list.size();
+    for(int i=0;i<fsize;i++)
+    {
+        file<<f_list[i].get_username()<<","<<f_list[i].get_password()<<","<<f_list[i].get_contact_no()<<","<<f_list[i].get_email()<<endl;
+    }
+    return f_list;
 }
 
 vector<Student>create_student_file(string path)
