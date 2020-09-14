@@ -181,3 +181,27 @@ bool Time::operator != (Time time_val)
         return false;
     else return true;
 }
+
+bool Time::operator >(Time val)
+{
+    if(this->get_hour()>val.get_hour())
+        return true;
+    else if(this->get_hour()==val.get_hour())
+    {
+        if(this->get_minute()>val.get_minute())
+            return true;
+    }
+    return false;
+}
+
+bool Time::operator <(Time val)
+{
+    if(this->get_hour()<val.get_hour())
+        return true;
+    else if(this->get_hour()==val.get_hour())
+    {
+        if(this->get_minute()<val.get_minute())
+            return true;
+    }
+    return false;
+}

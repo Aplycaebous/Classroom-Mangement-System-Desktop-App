@@ -70,7 +70,29 @@ bool Record::operator == (Record record_val)
     else return false;
 }
 
-static vector<Record *> list_user_records(string id, vector<Record*> rec_in)
+bool compare_record(Record rec1, Record rec2)
+{
+    if (rec1.get_date_obj() < rec2.get_date_obj())
+    {
+        return true;
+    }
+    else if(rec1.get_date_obj() == rec2.get_date_obj())
+    {
+        if(rec1.get_time_obj() < rec2.get_time_obj())
+        {
+            return true;
+        }
+        else if(rec1.get_time_obj() == rec2.get_time_obj())
+        {
+            if(rec1.get_duration()<rec2.get_duration())
+                return true;
+        }
+    }
+    return false;
+}
+
+
+static vector<Record*> list_user_records(string id, vector<Record*> rec_in)
 {
     vector<Record*> rec_out;
     for(int i=0;i<rec_in.size();i++)
@@ -80,28 +102,6 @@ static vector<Record *> list_user_records(string id, vector<Record*> rec_in)
             rec_out.push_back(rec_in[i]);
         }
     }
-    for (int i = 0; i < rec_out.size()-1; i++)
-    {
-        for (int j = 0; j < rec_out.size() - i - 1; j++)
-        {
-            if (rec_out[j]->get_physical_location() > rec_out[j + 1]->get_physical_location())
-            {
-                swap(rec_out[j], rec_out[j + 1]);
-                if(rec_out[j]->get_date() > rec_out[j + 1]->get_date())
-                {
-                    swap(rec_out[j], rec_out[j + 1]);
-                    if(rec_out[j]->get_time_24()>rec_out[j]->get_time_24())
-                    {
-                        swap(rec_out[j], rec_out[j + 1]);
-                        if(rec_out[j]->get_duration()>rec_out[j]->get_duration())
-                        {
-                            swap(rec_out[j], rec_out[j + 1]);
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-    return rec_out;
+    sort(rec_out.begin(),rec_out.end(),compare_record);
+    return rec_out; //Order by physical_location, date, time, duration
 }

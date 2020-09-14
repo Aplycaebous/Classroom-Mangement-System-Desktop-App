@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.1.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "D:\Academics  - Current\Classroom Management System"
+CMAKE_SOURCE_DIR = "D:\Projects - GitHub\Project Classroom Mangement System"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "D:\Academics  - Current\Classroom Management System\cmake-build-debug"
+CMAKE_BINARY_DIR = "D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Classroom_Management_System.dir/depend.make
@@ -58,172 +58,172 @@ include CMakeFiles/Classroom_Management_System.dir/flags.make
 
 CMakeFiles/Classroom_Management_System.dir/main.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Classroom_Management_System.dir/main.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\main.cpp.obj -c "D:\Academics  - Current\Classroom Management System\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Classroom_Management_System.dir/main.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\main.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\main.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/main.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\main.cpp" > CMakeFiles\Classroom_Management_System.dir\main.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\main.cpp" > CMakeFiles\Classroom_Management_System.dir\main.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/main.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\main.cpp" -o CMakeFiles\Classroom_Management_System.dir\main.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\main.cpp" -o CMakeFiles\Classroom_Management_System.dir\main.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.obj: ../Metadata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Metadata.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Metadata.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Metadata.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Metadata.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Metadata.cpp" > CMakeFiles\Classroom_Management_System.dir\Metadata.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Metadata.cpp" > CMakeFiles\Classroom_Management_System.dir\Metadata.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Metadata.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Metadata.cpp" -o CMakeFiles\Classroom_Management_System.dir\Metadata.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Metadata.cpp" -o CMakeFiles\Classroom_Management_System.dir\Metadata.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.obj: ../Physical_location.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Physical_location.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Physical_location.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Physical_location.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Physical_location.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Physical_location.cpp" > CMakeFiles\Classroom_Management_System.dir\Physical_location.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Physical_location.cpp" > CMakeFiles\Classroom_Management_System.dir\Physical_location.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Physical_location.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Physical_location.cpp" -o CMakeFiles\Classroom_Management_System.dir\Physical_location.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Physical_location.cpp" -o CMakeFiles\Classroom_Management_System.dir\Physical_location.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Time.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Time.cpp.obj: ../Time.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Time.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Time.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Time.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Time.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Time.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Time.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Time.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Time.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Time.cpp" > CMakeFiles\Classroom_Management_System.dir\Time.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Time.cpp" > CMakeFiles\Classroom_Management_System.dir\Time.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Time.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Time.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Time.cpp" -o CMakeFiles\Classroom_Management_System.dir\Time.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Time.cpp" -o CMakeFiles\Classroom_Management_System.dir\Time.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Date.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Date.cpp.obj: ../Date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Date.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Date.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Date.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Date.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Date.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Date.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Date.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Date.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Date.cpp" > CMakeFiles\Classroom_Management_System.dir\Date.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Date.cpp" > CMakeFiles\Classroom_Management_System.dir\Date.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Date.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Date.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Date.cpp" -o CMakeFiles\Classroom_Management_System.dir\Date.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Date.cpp" -o CMakeFiles\Classroom_Management_System.dir\Date.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/User.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/User.cpp.obj: ../User.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Classroom_Management_System.dir/User.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\User.cpp.obj -c "D:\Academics  - Current\Classroom Management System\User.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Classroom_Management_System.dir/User.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\User.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\User.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/User.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/User.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\User.cpp" > CMakeFiles\Classroom_Management_System.dir\User.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\User.cpp" > CMakeFiles\Classroom_Management_System.dir\User.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/User.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/User.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\User.cpp" -o CMakeFiles\Classroom_Management_System.dir\User.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\User.cpp" -o CMakeFiles\Classroom_Management_System.dir\User.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Record.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Record.cpp.obj: ../Record.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Record.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Record.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Record.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Record.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Record.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Record.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Record.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Record.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Record.cpp" > CMakeFiles\Classroom_Management_System.dir\Record.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Record.cpp" > CMakeFiles\Classroom_Management_System.dir\Record.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Record.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Record.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Record.cpp" -o CMakeFiles\Classroom_Management_System.dir\Record.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Record.cpp" -o CMakeFiles\Classroom_Management_System.dir\Record.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Student.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Student.cpp.obj: ../Student.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Student.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Student.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Student.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Student.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Student.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Student.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Student.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Student.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Student.cpp" > CMakeFiles\Classroom_Management_System.dir\Student.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Student.cpp" > CMakeFiles\Classroom_Management_System.dir\Student.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Student.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Student.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Student.cpp" -o CMakeFiles\Classroom_Management_System.dir\Student.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Student.cpp" -o CMakeFiles\Classroom_Management_System.dir\Student.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Staff.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Staff.cpp.obj: ../Staff.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Staff.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Staff.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Staff.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Staff.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Staff.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Staff.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Staff.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Staff.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Staff.cpp" > CMakeFiles\Classroom_Management_System.dir\Staff.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Staff.cpp" > CMakeFiles\Classroom_Management_System.dir\Staff.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Staff.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Staff.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Staff.cpp" -o CMakeFiles\Classroom_Management_System.dir\Staff.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Staff.cpp" -o CMakeFiles\Classroom_Management_System.dir\Staff.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.obj: ../Equipments.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Equipments.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Equipments.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Equipments.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Equipments.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Equipments.cpp" > CMakeFiles\Classroom_Management_System.dir\Equipments.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Equipments.cpp" > CMakeFiles\Classroom_Management_System.dir\Equipments.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Equipments.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Equipments.cpp" -o CMakeFiles\Classroom_Management_System.dir\Equipments.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Equipments.cpp" -o CMakeFiles\Classroom_Management_System.dir\Equipments.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Admin.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Admin.cpp.obj: ../Admin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Admin.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Admin.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Admin.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Admin.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Admin.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Admin.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Admin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Admin.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Admin.cpp" > CMakeFiles\Classroom_Management_System.dir\Admin.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Admin.cpp" > CMakeFiles\Classroom_Management_System.dir\Admin.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Admin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Admin.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Admin.cpp" -o CMakeFiles\Classroom_Management_System.dir\Admin.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Admin.cpp" -o CMakeFiles\Classroom_Management_System.dir\Admin.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/Room.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/Room.cpp.obj: ../Room.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Room.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Room.cpp.obj -c "D:\Academics  - Current\Classroom Management System\Room.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Classroom_Management_System.dir/Room.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\Room.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\Room.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/Room.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/Room.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\Room.cpp" > CMakeFiles\Classroom_Management_System.dir\Room.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\Room.cpp" > CMakeFiles\Classroom_Management_System.dir\Room.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/Room.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/Room.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\Room.cpp" -o CMakeFiles\Classroom_Management_System.dir\Room.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\Room.cpp" -o CMakeFiles\Classroom_Management_System.dir\Room.cpp.s
 
 CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.obj: CMakeFiles/Classroom_Management_System.dir/flags.make
 CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.obj: ../System_intializer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.obj"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\System_intializer.cpp.obj -c "D:\Academics  - Current\Classroom Management System\System_intializer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Classroom_Management_System.dir\System_intializer.cpp.obj -c "D:\Projects - GitHub\Project Classroom Mangement System\System_intializer.cpp"
 
 CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.i"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Academics  - Current\Classroom Management System\System_intializer.cpp" > CMakeFiles\Classroom_Management_System.dir\System_intializer.cpp.i
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Projects - GitHub\Project Classroom Mangement System\System_intializer.cpp" > CMakeFiles\Classroom_Management_System.dir\System_intializer.cpp.i
 
 CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classroom_Management_System.dir/System_intializer.cpp.s"
-	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Academics  - Current\Classroom Management System\System_intializer.cpp" -o CMakeFiles\Classroom_Management_System.dir\System_intializer.cpp.s
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Projects - GitHub\Project Classroom Mangement System\System_intializer.cpp" -o CMakeFiles\Classroom_Management_System.dir\System_intializer.cpp.s
 
 # Object files for target Classroom_Management_System
 Classroom_Management_System_OBJECTS = \
@@ -261,7 +261,7 @@ Classroom_Management_System.exe: CMakeFiles/Classroom_Management_System.dir/buil
 Classroom_Management_System.exe: CMakeFiles/Classroom_Management_System.dir/linklibs.rsp
 Classroom_Management_System.exe: CMakeFiles/Classroom_Management_System.dir/objects1.rsp
 Classroom_Management_System.exe: CMakeFiles/Classroom_Management_System.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Classroom_Management_System.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Classroom_Management_System.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Classroom_Management_System.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -274,6 +274,6 @@ CMakeFiles/Classroom_Management_System.dir/clean:
 .PHONY : CMakeFiles/Classroom_Management_System.dir/clean
 
 CMakeFiles/Classroom_Management_System.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Academics  - Current\Classroom Management System" "D:\Academics  - Current\Classroom Management System" "D:\Academics  - Current\Classroom Management System\cmake-build-debug" "D:\Academics  - Current\Classroom Management System\cmake-build-debug" "D:\Academics  - Current\Classroom Management System\cmake-build-debug\CMakeFiles\Classroom_Management_System.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Projects - GitHub\Project Classroom Mangement System" "D:\Projects - GitHub\Project Classroom Mangement System" "D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug" "D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug" "D:\Projects - GitHub\Project Classroom Mangement System\cmake-build-debug\CMakeFiles\Classroom_Management_System.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Classroom_Management_System.dir/depend
 

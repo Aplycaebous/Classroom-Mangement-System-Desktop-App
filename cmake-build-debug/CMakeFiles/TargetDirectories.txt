@@ -1,3 +1,3 @@
-D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir
-D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Academics  - Current/Classroom Management System/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/Projects - GitHub/Project Classroom Mangement System/cmake-build-debug/CMakeFiles/Classroom_Management_System.dir
+D:/Projects - GitHub/Project Classroom Mangement System/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Projects - GitHub/Project Classroom Mangement System/cmake-build-debug/CMakeFiles/rebuild_cache.dir

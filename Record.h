@@ -7,6 +7,8 @@
 #include "Date.h"
 #include <bits/stdc++.h>
 #include<fstream>
+#include "Student.h"
+#include "Staff.h"
 using namespace std;
 
 class Record: public Time, public Physical_location, public Date

@@ -28,6 +28,8 @@ public:
     Time operator + (Time val);
     bool operator == (Time time_val);
     bool operator != (Time time_val);
+    bool operator >(Time val);
+    bool operator <(Time val);
 };
 
 
