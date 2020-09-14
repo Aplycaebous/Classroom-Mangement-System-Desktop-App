@@ -24,7 +24,9 @@ public:
     bool set_password(string val);
     string get_name(void);
     string get_password(void);
-    virtual bool login(string id_val, string pass_val) = 0; //Make user an abstract class
+    virtual bool set_id(string val) = 0;
+    virtual string get_id(void) = 0;
+    static bool login(vector<User*> user_vec, string id, string password);
     static void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
     static void delete_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val);
 

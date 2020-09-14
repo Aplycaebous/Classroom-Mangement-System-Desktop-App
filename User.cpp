@@ -49,6 +49,21 @@ string User::get_password(void)
     return password;
 }
 
+static bool login(vector<User*> user_vec, string id, string password)
+{
+    for(int i=0;i<user_vec.size();i++)
+    {
+        if(user_vec[i]->get_id() == id)
+        {
+            if(user_vec[i]->get_password()==password)
+                return true;
+            else return false; //cout<<"Password didn't match"<<endl;
+        }
+    }
+    //cout<<"ID not found"<<endl;
+    return false;
+}
+
 /*
 static void add_record(vector<User*> &user,vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
@@ -130,36 +145,31 @@ void delete_record(vector<Student>&student,vector<Record>&record,int student_num
     fstream file("log.txt",ios::in|ios::out|ios::app );
     file<<"Record "<<build_val<<" "<<room_val<<" at "<<hour_val<<" "<<min_val<<" "<<form_val<<" was removed by the Student"<<endl;
 }
- */
+
 
  vector<Room*> search_record(vector<Record*> record_list, Physical_location phy_val, Time time_val, Date date_val, int dur_val)
 {
     vector<Room*> record_give;
-    int length = record_list.size();
-
-    for(int i=0;i<length;i++)
+    for(int i=0;i<record_list.size();i++)
     {
         if( record_list[i]->get_phy_loc_obj() == phy_val &&
             record_list[i]->get_time_obj() == time_val &&
             record_list[i]->get_date_obj() == date_val &&
             record_list[i]->get_duration() == dur_val )
             {
-                record_give.push_back(record[i]);
+                record_give.push_back(record_list[i]);
                 break;
              }
     }
     return record_give;
 }
+  */
  bool clash(vector<Record*> record, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
     vector<Room*> record_give;
-    int length=record.size();
-    for(int i=0;i<length;i++)
+    for(int i=0;i<record.size();i++)
     {
-        if( record[i]->get_building_no() == phy_val.get_building_no() && record[i]->get_room_no() == phy_val.get_room_no() &&
-            record[i]->get_day() == day_val &&
-            record[i]->get_month() == mon_val &&
-            record[i]->get_year() == year_val )
+        if( record[i]->get_phy_loc_obj() == phy_val && record[i]->get_date_obj() == date_val)
         {
             int temp_hour=record[i].get_hour();
             int temp_minute=record[i].get_minute();

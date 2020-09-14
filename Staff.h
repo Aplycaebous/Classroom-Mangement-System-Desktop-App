@@ -14,9 +14,8 @@ public:
     Staff(string val_name, string val_pass, string val_staff_id);
     Staff(User user_val, string staff_id_val);
     static bool check_staff_id(string val);
-    bool set_staff_id(string val);
-    string get_staff_id(void);
-    bool login(string id_val, string pass_val);
+    bool set_id(string val);
+    string get_id(void);
 };
 
 

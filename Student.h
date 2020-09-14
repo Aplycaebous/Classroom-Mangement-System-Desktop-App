@@ -12,11 +12,10 @@ public:
     Student(string val_name, string val_pass, string val_std_id, bool val_cr);
     Student(User user_val, string std_id_val, bool val_cr);
     static bool check_student_id(string val);
-    bool set_student_id(string val);
+    bool set_id(string val);
     void set_cr(bool val);
-    string get_student_id(void);
+    string get_id(void);
     bool get_cr(void);
-    bool login(string id_val, string pass_val);
 };
 
 #endif //CLASSROOM_MANAGEMENT_SYSTEM_STUDENT_H

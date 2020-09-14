@@ -117,7 +117,7 @@ static vector<Room> read_room()
                 second_count++;
             }
         }
-        r.push_back(Room(building_val,room_val,ac_val,board_no,proj_val,capacity)) ;
+        r.push_back(Room(Physical_location(building_val,room_val),Equipments(ac_val,board_no,proj_val),capacity)) ;
         counti++;
     }
     number_of_room--;

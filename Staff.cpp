@@ -40,7 +40,7 @@ bool Staff::check_staff_id(string val)
      }
 }
 
-bool Staff::set_staff_id(string val)
+bool Staff::set_id(string val)
 {
     if(check_staff_id(val))
     {
@@ -50,16 +50,9 @@ bool Staff::set_staff_id(string val)
     else return false;
 }
 
-string Staff::get_staff_id(void)
+string Staff::get_id(void)
 {
     return staff_id;
 }
 
-bool Staff::login(string id_val, string pass_val)
-{
-    if(id_val == get_staff_id() && pass_val == get_password())
-    {
-        return true;
-    }
-    else return false;
-}
+

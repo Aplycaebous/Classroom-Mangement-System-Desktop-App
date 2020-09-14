@@ -34,7 +34,7 @@ bool Student::check_student_id(string val)
     }
 }
 
-bool Student::set_student_id(string val)
+bool Student::set_id(string val)
 {
     if(check_student_id(val))
     {
@@ -49,7 +49,7 @@ void Student::set_cr(bool val)
     cr = val;
 }
 
-string Student::get_student_id(void)
+string Student::get_id(void)
 {
     return student_id;
 }
@@ -59,11 +59,3 @@ bool Student::get_cr(void)
     return  cr;
 }
 
-bool Student::login(string id_val, string pass_val)
-{
-    if(id_val == get_student_id() && pass_val == get_password())
-    {
-        return true;
-    }
-    else return false;
-}
