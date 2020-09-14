@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/img/Background.svg</file>
+        <file>res/img/LoginButtonClicked.svg</file>
+        <file>res/img/LoginButtonHover.svg</file>
+        <file>res/img/LoginButtonNormal.svg</file>
+        <file>res/img/LoginMenu.svg</file>
+        <file>res/img/ButtonFrame.png</file>
+        <file>res/img/BookingFrame.svg</file>
+    </qresource>
+</RCC>

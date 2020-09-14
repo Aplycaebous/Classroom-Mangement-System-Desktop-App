@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1366</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1366</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1366</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>RMS</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="animated">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <widget class="QLabel" name="Background">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1366</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Images.qrc">:/res/img/Background.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="loginFrame">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1366</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>-1</number>
+    </property>
+    <widget class="QLabel" name="loginImg">
+     <property name="geometry">
+      <rect>
+       <x>422</x>
+       <y>70</y>
+       <width>544</width>
+       <height>617</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>762</width>
+       <height>864</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/res/img/LoginMenu.svg);</string>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Username">
+     <property name="geometry">
+      <rect>
+       <x>589</x>
+       <y>281</y>
+       <width>278</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>390</width>
+       <height>79</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{color:white;}
+QLineEdit{ background-color: rgba(0, 0, 0, 0);}
+</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Password">
+     <property name="geometry">
+      <rect>
+       <x>589</x>
+       <y>362</y>
+       <width>278</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>390</width>
+       <height>79</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{color:white;}
+QLineEdit{ background-color: rgba(0, 0, 0, 0);}</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="loginError">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>604</x>
+       <y>500</y>
+       <width>180</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>252</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{ color:white; }</string>
+     </property>
+     <property name="text">
+      <string>*Login credentials not valid</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="loginButton">
+     <property name="geometry">
+      <rect>
+       <x>607</x>
+       <y>520</y>
+       <width>173</width>
+       <height>62</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>243</width>
+       <height>88</height>
+      </size>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/res/img/LoginButtonNormal.svg) }
+QPushButton:pressed{border-image: url(:/res/img/LoginButtonClicked.svg) }
+QPushButton:hover:hover{border-image: url(:/res/img/LoginButtonHover.svg) }
+QPushButton:hover:pressed{border-image: url(:/res/img/LoginButtonClicked.svg) }
+QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>173</width>
+       <height>62</height>
+      </size>
+     </property>
+     <property name="autoRepeat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="mainFrame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1366</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="buttonFrame">
+     <property name="geometry">
+      <rect>
+       <x>533</x>
+       <y>10</y>
+       <width>300</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/res/img/ButtonFrame.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="RoomBook">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Room Booking</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Records">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Records</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ChangePassword">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Change
+Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Logout">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Logout</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="bookingFrame">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>1366</width>
+       <height>668</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <widget class="QLabel" name="timetoLabel">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>330</y>
+        <width>16</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>to</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bkbtn">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>450</y>
+        <width>80</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Book Room</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="boardspin">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>265</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="bkbkgnd">
+      <property name="geometry">
+       <rect>
+        <x>218</x>
+        <y>50</y>
+        <width>930</width>
+        <height>523</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/res/img/BookingFrame.svg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="roomtypSelec">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>195</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="boardLabel">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>265</y>
+        <width>47</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Boards</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="roomtypLabel">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>195</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Room Type:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="capspin">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>230</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCalendarWidget" name="calendarRMBK">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>230</y>
+        <width>312</width>
+        <height>183</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>101</red>
+            <green>110</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="AlternateBase">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>223</red>
+            <green>223</green>
+            <blue>223</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>101</red>
+            <green>110</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="AlternateBase">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>223</red>
+            <green>223</green>
+            <blue>223</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>101</red>
+            <green>110</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="AlternateBase">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>223</red>
+            <green>223</green>
+            <blue>223</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">alternate-background-color: rgb(223, 223, 223);
+selection-background-color: rgb(101, 110, 255);</string>
+      </property>
+      <property name="gridVisible">
+       <bool>false</bool>
+      </property>
+      <property name="horizontalHeaderFormat">
+       <enum>QCalendarWidget::ShortDayNames</enum>
+      </property>
+      <property name="verticalHeaderFormat">
+       <enum>QCalendarWidget::NoVerticalHeader</enum>
+      </property>
+      <property name="navigationBarVisible">
+       <bool>true</bool>
+      </property>
+      <property name="dateEditEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="timeend">
+      <property name="geometry">
+       <rect>
+        <x>584</x>
+        <y>330</y>
+        <width>118</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="rommnoSelec">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>365</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="roomnoLabel">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>365</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Room No.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="equipLabel">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>265</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Equipments:</string>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="timestart">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>330</y>
+        <width>118</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeLabel">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>330</y>
+        <width>47</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Time:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="capLabel">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>230</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Capacity:</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="ACchkbx">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>265</y>
+        <width>70</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>AC</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="buildLabel">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>160</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Building:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="buildSelec">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>160</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="projchkbx">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>295</y>
+        <width>70</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Projector</string>
+      </property>
+     </widget>
+     <zorder>bkbkgnd</zorder>
+     <zorder>timetoLabel</zorder>
+     <zorder>bkbtn</zorder>
+     <zorder>boardspin</zorder>
+     <zorder>roomtypSelec</zorder>
+     <zorder>boardLabel</zorder>
+     <zorder>roomtypLabel</zorder>
+     <zorder>capspin</zorder>
+     <zorder>calendarRMBK</zorder>
+     <zorder>timeend</zorder>
+     <zorder>rommnoSelec</zorder>
+     <zorder>roomnoLabel</zorder>
+     <zorder>equipLabel</zorder>
+     <zorder>timestart</zorder>
+     <zorder>timeLabel</zorder>
+     <zorder>capLabel</zorder>
+     <zorder>ACchkbx</zorder>
+     <zorder>buildLabel</zorder>
+     <zorder>buildSelec</zorder>
+     <zorder>projchkbx</zorder>
+    </widget>
+    <widget class="QFrame" name="recordsFrame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>1366</width>
+       <height>668</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="recbkgnd">
+      <property name="geometry">
+       <rect>
+        <x>218</x>
+        <y>50</y>
+        <width>930</width>
+        <height>523</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/res/img/BookingFrame.svg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="recordTable">
+      <property name="geometry">
+       <rect>
+        <x>283</x>
+        <y>140</y>
+        <width>800</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::SolidLine</enum>
+      </property>
+      <property name="cornerButtonEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="rowCount">
+       <number>2</number>
+      </property>
+      <property name="columnCount">
+       <number>3</number>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>231</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <row/>
+      <row/>
+      <column>
+       <property name="text">
+        <string>Date</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Time</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Location</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="recTitle">
+      <property name="geometry">
+       <rect>
+        <x>543</x>
+        <y>90</y>
+        <width>280</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>19</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Room Booking Records</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="delrecbtn">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>510</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="passwordFrame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>1366</width>
+       <height>668</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="passbkgnd">
+      <property name="geometry">
+       <rect>
+        <x>363</x>
+        <y>80</y>
+        <width>640</width>
+        <height>350</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/res/img/BookingFrame.svg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="currPassLabel">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>150</y>
+        <width>121</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Current Password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="newPassLabel">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>200</y>
+        <width>121</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>New Password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="confirmPassLabel">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>250</y>
+        <width>121</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Confirm Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="changePassbtn">
+      <property name="geometry">
+       <rect>
+        <x>638</x>
+        <y>342</y>
+        <width>90</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Submit</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="currPassinput">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>150</y>
+        <width>291</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="newPassinput">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>200</y>
+        <width>291</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="confirmPassinput">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>250</y>
+        <width>291</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+     </widget>
+    </widget>
+    <zorder>buttonFrame</zorder>
+    <zorder>passwordFrame</zorder>
+    <zorder>bookingFrame</zorder>
+    <zorder>recordsFrame</zorder>
+   </widget>
+   <widget class="QFrame" name="adminFrame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1366</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="adminbuttonFrame">
+     <property name="geometry">
+      <rect>
+       <x>533</x>
+       <y>10</y>
+       <width>300</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/res/img/ButtonFrame.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="AddRoom">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Add Room</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Users">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Users</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="adminChangePassword">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Change
+Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="adminLogout">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>70</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background-color:rgba(0, 0, 0, 0)}</string>
+      </property>
+      <property name="text">
+       <string>Logout</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="addRoomframe">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>1366</width>
+       <height>668</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <widget class="QLabel" name="timetoLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>330</y>
+        <width>16</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>to</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addbtn">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>435</y>
+        <width>80</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Room</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="boardspin_2">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>320</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="bkbkgnd_2">
+      <property name="geometry">
+       <rect>
+        <x>453</x>
+        <y>50</y>
+        <width>460</width>
+        <height>523</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/res/img/BookingFrame.svg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="roomtypSelec_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>190</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="boardLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>320</y>
+        <width>47</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Boards</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="roomtypLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>190</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Room Type:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="capspin_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>225</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="rommnoSelec_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>355</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="roomnoLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>355</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Room No.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="equipLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>260</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Equipments:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="capLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>225</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Capacity:</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="ACchkbx_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>260</y>
+        <width>70</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>AC</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="buildLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>155</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Building:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="buildSelec_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>155</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="projchkbx_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>290</y>
+        <width>70</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Projector</string>
+      </property>
+     </widget>
+     <zorder>timetoLabel_2</zorder>
+     <zorder>bkbkgnd_2</zorder>
+     <zorder>roomtypSelec_2</zorder>
+     <zorder>boardLabel_2</zorder>
+     <zorder>roomtypLabel_2</zorder>
+     <zorder>capspin_2</zorder>
+     <zorder>rommnoSelec_2</zorder>
+     <zorder>roomnoLabel_2</zorder>
+     <zorder>equipLabel_2</zorder>
+     <zorder>capLabel_2</zorder>
+     <zorder>ACchkbx_2</zorder>
+     <zorder>buildLabel_2</zorder>
+     <zorder>buildSelec_2</zorder>
+     <zorder>projchkbx_2</zorder>
+     <zorder>addbtn</zorder>
+     <zorder>boardspin_2</zorder>
+    </widget>
+    <widget class="QFrame" name="adminpasswordFrame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>1366</width>
+       <height>668</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="passbkgnd_2">
+      <property name="geometry">
+       <rect>
+        <x>363</x>
+        <y>80</y>
+        <width>640</width>
+        <height>350</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/res/img/BookingFrame.svg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="currPassLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>150</y>
+        <width>121</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Current Password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="newPassLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>200</y>
+        <width>121</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>New Password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="confirmPassLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>250</y>
+        <width>121</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Confirm Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="changePassbtn_2">
+      <property name="geometry">
+       <rect>
+        <x>638</x>
+        <y>342</y>
+        <width>90</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Submit</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="currPassinput_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>150</y>
+        <width>291</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="newPassinput_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>200</y>
+        <width>291</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="confirmPassinput_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>250</y>
+        <width>291</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="addUserframe">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>1366</width>
+       <height>668</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="passbkgnd_5">
+      <property name="geometry">
+       <rect>
+        <x>353</x>
+        <y>170</y>
+        <width>640</width>
+        <height>350</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/res/img/BookingFrame.svg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="geometry">
+       <rect>
+        <x>374</x>
+        <y>190</y>
+        <width>600</width>
+        <height>310</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="addUsertab">
+       <attribute name="title">
+        <string>Add User</string>
+       </attribute>
+       <widget class="QLineEdit" name="usernamePassinput">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>10</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="confirmPassinput_5">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>110</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="usertypbox">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>160</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLabel" name="confirmPassLabel_5">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>110</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Confirm Password</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="adduserbtn">
+        <property name="geometry">
+         <rect>
+          <x>268</x>
+          <y>220</y>
+          <width>90</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Submit</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="passLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>60</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Password</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="usrtypLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>160</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>User Type</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="usernameLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>10</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Username</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="passinput">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>60</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="changeUsertab">
+       <attribute name="title">
+        <string>Change User</string>
+       </attribute>
+       <widget class="QComboBox" name="usrtypbox_2">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>150</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="remvUserbtn">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>210</y>
+          <width>90</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Remove
+User</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="usrpassLabel">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>90</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Password</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="usrtypLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>150</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>User Type</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="usernameLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>30</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Username</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="usrpassinput">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>90</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="chngUsrPass">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>210</y>
+          <width>90</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Change
+Password</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="usernamebox">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>30</y>
+          <width>291</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <zorder>adminbuttonFrame</zorder>
+    <zorder>adminpasswordFrame</zorder>
+    <zorder>addRoomframe</zorder>
+    <zorder>addUserframe</zorder>
+   </widget>
+   <zorder>Background</zorder>
+   <zorder>loginFrame</zorder>
+   <zorder>adminFrame</zorder>
+   <zorder>mainFrame</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
