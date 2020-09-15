@@ -31,6 +31,7 @@ public:
     bool operator != (Time time_val);
     bool operator >(Time val);
     bool operator <(Time val);
+    int operator -(Time time);
 };
 
 #endif // TIME_H

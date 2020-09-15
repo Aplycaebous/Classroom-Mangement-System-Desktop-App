@@ -50,9 +50,9 @@ public:
     void add_admin(vector<Admin>&admin,string user,string pass,string contact,string email);
     //for the remove functions we pass an array of rooms. Then we remove from array of rooms
     //and then upload that array in the file
-    void remove_student(vector<Student>student,string val_std_id);
+    void remove_student(vector<Student>&student,string val_std_id);
     void remove_staff(vector<Staff>&staff ,string val_staff_id  );
-    void remove_admin(vector<Admin>admin,string user_val);
+    void remove_admin(vector<Admin>&admin,string user_val);
     void remove_room(vector<Room>room,string building_no,string room_no);
     void read_log(void);
 };

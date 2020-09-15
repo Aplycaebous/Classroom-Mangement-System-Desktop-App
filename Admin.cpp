@@ -15,7 +15,7 @@ Admin::Admin(string user_val, string pass_val, string cont_val,string email_val)
 bool Admin::check_username(string val)
 {
     int vsize=val.size();
-    if(val.size()>24 || val.size()<8)
+    if(val.size()>24 || val.size()<4)
     {
         return false;
     }
@@ -128,64 +128,9 @@ string Admin::get_contact_no(void)
 
 
 }*/
-void add_room(vector<Room>&room,Physical_location phy_val,Equipments equip_val,int capacity)//paramenter list for rooms
-{
-    int cross=0, rsize=room.size();
-    for(int i=0;i<rsize;i++)
-    {
-        if( stoi(room[i].get_building_no()) >stoi(phy_val.get_building_no()))
-        {
-            break;
-        }
-        else if(stoi(room[i].get_building_no() ) <stoi(phy_val.get_building_no()))
-        {
-            cross++;
-        }
-        else if(stoi(room[i].get_building_no())==stoi(phy_val.get_building_no()))
-        {
-            if(stoi(room[i].get_room_no()) >stoi(phy_val.get_room_no()))
-            {
-                break;
-            }
-            else
-            {
-                cross++;
-            }
-        }
-    }
-    room.insert(room.begin()+cross,Room(phy_val,equip_val,capacity));
-    std::ofstream ofs;
-    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv", std::ofstream::out | std::ofstream::trunc);
-    ofs.close();
-    ofstream myFile;
-    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv");
-    for(int i=0;i<rsize;i++)
-    {
-        string temp_ac,temp_project;
-        if(room[i].get_ac())
-        {
-            temp_ac="YES";
-        }
-        else
-        {
-            temp_ac="NO";
-        }
-        if(room[i].get_projector())
-        {
-            temp_project="YES";
-        }
-        else
-        {
-            temp_project="NO";
-        }
-        myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
-    }
 
-    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
-    file<<"Room "<<phy_val.get_building_no()<<" "<<phy_val.get_room_no()<<" was added by the Admin"<<endl;
-}
 
-vector<Admin>create_admin_file(string path)
+vector<Admin> Admin::create_admin_file(string path)
 {
     vector<Admin>f_list;
     fstream fin;
@@ -266,7 +211,7 @@ vector<Admin>create_admin_file(string path)
     return f_list;
 }
 
-vector<Student>create_student_file(string path)
+vector<Student> Admin::create_student_file(string path)
 {
     vector<Student>f_list;
     fstream fin;
@@ -369,7 +314,7 @@ vector<Student>create_student_file(string path)
 
     return f_list;
 }
-void add_student(vector<Student>&student,string val_name,string val_pass,string val_std_id,bool val_cr)
+void Admin::add_student(vector<Student>&student,string val_name,string val_pass,string val_std_id,bool val_cr)
 {
     //checks the student doesn't prexist in the student.txt file
     //appends a new student_user in the room.txt file
@@ -405,7 +350,7 @@ void add_student(vector<Student>&student,string val_name,string val_pass,string 
 
     myfile<<"Student "<<val_std_id<<" was added by the Admin"<<endl;
 }
-vector<Staff>create_staff_file(string path)
+vector<Staff> Admin::create_staff_file(string path)
 {
     vector<Staff>f_list;
     fstream fin;
@@ -487,7 +432,7 @@ vector<Staff>create_staff_file(string path)
     }
     return f_list;
 }
-void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
+void Admin::add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
 {
 
     int check_exist=0, ssize=staff.size();
@@ -514,7 +459,7 @@ void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_s
     myfile<<"Staff "<<val_staff_id<<" was added by the Admin"<<endl;
 
 }
-void add_admin(vector<Admin>&admin,string user,string pass,string contact,string email)
+void Admin::add_admin(vector<Admin>&admin,string user,string pass,string contact,string email)
 {
 
     std::ofstream file;
@@ -530,7 +475,7 @@ void add_admin(vector<Admin>&admin,string user,string pass,string contact,string
 }
 //for the remove functions we pass an array of rooms. Then we remove from array of rooms
 //and then upload that array in the file
-void remove_student(vector<Student>student,string val_std_id)
+void Admin::remove_student(vector<Student>&student,string val_std_id)
 {
     int value=0, ssize=student.size();
     for(int i=0;i<ssize;i++)
@@ -542,6 +487,7 @@ void remove_student(vector<Student>student,string val_std_id)
         }
     }
     student.erase(student.begin()+value);
+    ssize--;
     std::ofstream ofs;
     ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Student.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
@@ -566,7 +512,7 @@ void remove_student(vector<Student>student,string val_std_id)
 
     file<<"Student "<<val_std_id<<" was removed by the Admin"<<endl;
 }
-void remove_staff(vector<Staff>&staff ,string val_staff_id  )
+void Admin::remove_staff(vector<Staff>&staff ,string val_staff_id  )
 {
     int value=0, ssize=staff.size();
     for(int i=0;i<ssize;i++)
@@ -578,6 +524,7 @@ void remove_staff(vector<Staff>&staff ,string val_staff_id  )
         }
     }
     staff.erase(staff.begin()+value);
+    ssize--;
     std::ofstream ofs;
     ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Staff.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
@@ -593,7 +540,7 @@ void remove_staff(vector<Staff>&staff ,string val_staff_id  )
 
 
 }
-void remove_admin(vector<Admin>admin,string user_val)
+void Admin::remove_admin(vector<Admin>&admin,string user_val)
 {
     int value=0, asize=admin.size();
     for(int i=0;i<asize;i++)
@@ -605,6 +552,7 @@ void remove_admin(vector<Admin>admin,string user_val)
         }
     }
     admin.erase(admin.begin()+value);
+    asize--;
     std::ofstream ofs;
     ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
@@ -620,7 +568,7 @@ void remove_admin(vector<Admin>admin,string user_val)
     file<<"Admin "<<user_val<<" was removed by the Admin"<<endl;
 
 }
-void remove_room(vector<Room>room,string building_no,string room_no)
+void Admin::remove_room(vector<Room>room,string building_no,string room_no)
 {
 
     int value=0, rsize=room.size();
@@ -669,7 +617,7 @@ void remove_room(vector<Room>room,string building_no,string room_no)
     file<<"Room "<<building_no<<" "<<room_no<<" was removed by the Admin"<<endl;
 
 }
-void read_log(void)
+void Admin::read_log(void)
 {
     //shows the log_file on the screen
     //Present the data in a user friendly way (optional)
