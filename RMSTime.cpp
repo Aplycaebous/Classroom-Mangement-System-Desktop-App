@@ -205,3 +205,10 @@ bool Time::operator <(Time val)
     }
     return false;
 }
+
+int Time::operator -(Time time)
+{
+    int total_time_one=this->get_hour()*60 +this->get_minute();
+    int total_time_two=time.get_hour()*60 +time.get_minute();
+    return total_time_one-total_time_two;
+}

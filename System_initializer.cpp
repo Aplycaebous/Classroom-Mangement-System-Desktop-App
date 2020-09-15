@@ -1,15 +1,12 @@
 #include "System_initializer.h"
-#include <qfile.h>
-#include <QTextStream>
 
 vector<Admin> System_initializer::read_admin()
 {
     vector<Admin>f_list;
     fstream fin;
     int counti=0;
-    //QFile f(":/Admin.csv");
     fin.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv", ios::in);
-    string line,word;;
+    string line,word;
     string username,password,contact_no,email_address;
 
     while (fin.good()) {
