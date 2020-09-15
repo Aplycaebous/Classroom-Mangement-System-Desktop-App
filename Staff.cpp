@@ -10,10 +10,10 @@ Staff::Staff(string val_name, string val_pass, string val_staff_id):User(val_nam
     set_id(val_staff_id);
 }
 
-Staff::Staff(User user_val, string staff_id_val):User(user_val)
+/*Staff::Staff(User user_val, string staff_id_val):User(user_val)
 {
     set_id(staff_id_val);
-}
+}*/
 
 bool Staff::check_staff_id(string val)
 {

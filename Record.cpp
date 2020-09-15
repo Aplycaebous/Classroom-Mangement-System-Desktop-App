@@ -69,43 +69,16 @@ bool Record::operator == (Record record_val)
     else return false;
 }
 
-bool compare_record(Record rec1, Record rec2)
+string Record::get_time_string(void)
 {
-    if (rec1.get_date_obj() < rec2.get_date_obj())
-    {
-        return true;
-    }
-    else if(rec1.get_date_obj() == rec2.get_date_obj())
-    {
-        if(rec1.get_time_obj() < rec2.get_time_obj())
-        {
-            return true;
-        }
-        else if(rec1.get_time_obj() == rec2.get_time_obj())
-        {
-            if(rec1.get_duration()<rec2.get_duration())
-                return true;
-        }
-    }
-    return false;
+    string s="";
+    s+=this->get_time_12()+" to ";
+    Time last_time=this->get_time_obj()+convert_duration(this->get_duration());
+
+    s+=last_time.get_time_12();
+    return s;
 }
-
-
-vector<Record*> Record::list_user_records(string id, vector<Record*> rec_in)
-{
-    vector<Record*> rec_out;
-    int rsize=rec_in.size();
-    for(int i=0;i<rsize;i++)
-    {
-        if(rec_in[i]->get_user_ID() == id)
-        {
-            rec_out.push_back(rec_in[i]);
-        }
-    }
-    sort(rec_out.begin(),rec_out.end(),compare_record);
-    return rec_out; //Order by physical_location, date, time, duration
-}
-
+/*
 void add_record(vector<Record*> &record,string id, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
     int cross=0, rsize = record.size();
@@ -122,16 +95,16 @@ void add_record(vector<Record*> &record,string id, Physical_location phy_val, Da
     }
     record.insert((record.begin() + cross), new Record(id, phy_val, time_val, dur_val, date_val));
     std::ofstream ofs;
-    ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Record.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
-    myFile.open("Record.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Record.csv");
     for(int i=0;i<rsize;i++)
     {
         myFile<<record[i]->get_user_ID()<<","<<record[i]->get_building_no()<<","<<record[i]->get_room_no()<<","<<record[i]->get_hour()<<","<<
         record[i]->get_minute()<<","<<record[i]->get_duration()<<","<<record[i]->get_day()<<","<<record[i]->get_month()<<","<<record[i]->get_year()<<endl;
     }
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
     file<<"Record "<<phy_val.get_physical_location()<<" at "<<time_val.get_time_24()<<" on "<<date_val.get_date()<<" was added by id: "<<id<<endl;
 }
 
@@ -148,18 +121,19 @@ void delete_record(vector<Record*> &record,string id, Physical_location phy_val,
         }
     }
     std::ofstream ofs;
-    ofs.open("Record.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Record.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
-    myFile.open("Record.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Record.csv");
     for(int i=0;i<rsize;i++)
     {
         myFile<<record[i]->get_user_ID()<<","<<record[i]->get_building_no()<<","<<record[i]->get_room_no()<<","<<record[i]->get_hour()<<","<<record[i]->get_minute()<<","
         <<record[i]->get_duration()<<","<<record[i]->get_day()<<","<<record[i]->get_month()<<","<<record[i]->get_year()<<endl;
     }
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
     file<<"Record "<<phy_val.get_physical_location()<<" at "<<time_val.get_time_24()<<" on "<<date_val.get_date()<<" was removed by id: "<<id<<endl;
-}
+}*/
+
 /*
  vector<Room*> search_record(vector<Record*> record_list, Physical_location phy_val, Time time_val, Date date_val, int dur_val)
 {
@@ -179,7 +153,7 @@ void delete_record(vector<Record*> &record,string id, Physical_location phy_val,
 }
  */
 
- bool clash(vector<Record*> record, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
+/*bool clash(vector<Record*> record, Physical_location phy_val, Date date_val, Time time_val, int dur_val)
 {
     vector<Room*> record_give;
     int rsize=record.size();
@@ -199,4 +173,4 @@ void delete_record(vector<Record*> &record,string id, Physical_location phy_val,
         }
     }
     return true;
-}
+}*/

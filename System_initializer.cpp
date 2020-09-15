@@ -1,12 +1,14 @@
 #include "System_initializer.h"
+#include <qfile.h>
+#include <QTextStream>
 
-static vector<Admin*> read_admin()
+vector<Admin> System_initializer::read_admin()
 {
-    vector<Admin*>f_list;
+    vector<Admin>f_list;
     fstream fin;
     int counti=0;
-
-    fin.open("Admin.csv", ios::in);
+    //QFile f(":/Admin.csv");
+    fin.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv", ios::in);
     string line,word;;
     string username,password,contact_no,email_address;
 
@@ -46,12 +48,12 @@ static vector<Admin*> read_admin()
     f_list.pop_back();
     return f_list;
 }
-static vector<Room*> read_room()
+vector<Room> System_initializer::read_room()
 {
-    vector<Room*>r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
+    vector<Room> r; // I WORKED WITH VECTOR FOR CONVENIENCE< I'LL CHANGE IT LATER AT THE END .
     fstream fin;
     int counti=0;
-    fin.open("Room.csv", ios::in);
+    fin.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv", ios::in);
     string line,word;;
     string building_val,room_val;
     bool ac_val,proj_val;
@@ -115,8 +117,7 @@ static vector<Room*> read_room()
         }
         Physical_location pl(building_val,room_val);
         Equipments eq(ac_val,board_no,proj_val);
-        
-        
+
         r.push_back(Room(pl,eq,capacity)) ;
         counti++;
     }
@@ -129,14 +130,14 @@ static vector<Room*> read_room()
 
     return r;
 }
-static vector<Student> read_student()
+vector<Student> System_initializer::read_student()
 {
 
     vector<Student>f_list;
     fstream fin;
     int counti=0;
 
-    fin.open("Student.csv", ios::in);
+    fin.open("C:\\Users\\tasni\\Documents\\RMS\\Student.csv", ios::in);
     string line,word;;
     string username,password,student_id;
     bool cr;
@@ -192,13 +193,13 @@ static vector<Student> read_student()
 
 
 }
-static vector<Staff*> read_staff()
+vector<Staff> System_initializer::read_staff()
 {
-    vector<Staff*>f_list;
+    vector<Staff>f_list;
     fstream fin;
     int counti=0;
 
-    fin.open("Staff.csv", ios::in);
+    fin.open("C:\\Users\\tasni\\Documents\\RMS\\Staff.csv", ios::in);
     string line,word;;
     string username,password,student_id;
 
@@ -242,13 +243,13 @@ static vector<Staff*> read_staff()
 
 
 }
-static vector<Record*>read_record()
+vector<Record> System_initializer::read_record()
 {
-    vector<Record*>f_list;
+    vector<Record>f_list;
     fstream fin;
     int counti=0;
 
-    fin.open("Record.csv", ios::in);
+    fin.open("C:\\Users\\tasni\\Documents\\RMS\\Record.csv", ios::in);
     string line,word;;
     string user_val,build_val,room_val,format;
     int hour,minute,duration,day,month,year;
@@ -320,8 +321,8 @@ static vector<Record*>read_record()
         Physical_location pl(build_val,room_val);
         Time t(hour,minute);
         Date d(day,month,year);
-        
-        
+
+
         f_list.push_back(Record(user_val,pl,t,duration,d) );
 
         counti++;

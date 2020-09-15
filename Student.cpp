@@ -12,11 +12,11 @@ Student::Student(string val_name, string val_pass, string val_std_id, bool val_c
     set_cr(val_cr);
 }
 
-Student::Student(User user_val, string val_std_id, bool val_cr):User(user_val)
+/*Student::Student(User user_val, string val_std_id, bool val_cr):User(user_val)
 {
     if(!set_id(val_std_id)) student_id = "";
     set_cr(val_cr);
-}
+}*/
 
 bool Student::check_student_id(string val)
 {

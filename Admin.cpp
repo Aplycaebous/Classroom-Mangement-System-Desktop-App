@@ -40,9 +40,9 @@ bool Admin::check_password(string val)
     }
     else
     {
-    //check password complexity
-    //must contain at least one character and one digit or something like that
-    //admin password must be stronger than user password; make sure of that
+        //check password complexity
+        //must contain at least one character and one digit or something like that
+        //admin password must be stronger than user password; make sure of that
         return true;
     }
 }
@@ -155,10 +155,10 @@ void add_room(vector<Room>&room,Physical_location phy_val,Equipments equip_val,i
     }
     room.insert(room.begin()+cross,Room(phy_val,equip_val,capacity));
     std::ofstream ofs;
-    ofs.open("Room.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
-    myFile.open("Room.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv");
     for(int i=0;i<rsize;i++)
     {
         string temp_ac,temp_project;
@@ -181,7 +181,7 @@ void add_room(vector<Room>&room,Physical_location phy_val,Equipments equip_val,i
         myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
     }
 
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
     file<<"Room "<<phy_val.get_building_no()<<" "<<phy_val.get_room_no()<<" was added by the Admin"<<endl;
 }
 
@@ -204,10 +204,10 @@ vector<Admin>create_admin_file(string path)
             if(second_count==0)
             {
                 if( temp.set_username(word) )
-                    {
-                        Username=word;
-                        second_count++;
-                    }
+                {
+                    Username=word;
+                    second_count++;
+                }
                 else
                 {
                     valid_flag=1;
@@ -256,7 +256,7 @@ vector<Admin>create_admin_file(string path)
         f_list.push_back( Admin(Username,Password,Contact_no,Email_address) ) ;
     }
     std::ofstream file;
-    file.open("Admin.csv",std::ios_base::app);
+    file.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv",std::ios_base::app);
     string temp_ac;
     int fsize=f_list.size();
     for(int i=0;i<fsize;i++)
@@ -348,7 +348,7 @@ vector<Student>create_student_file(string path)
     // counti--;
     //   f_list.pop_back();
     std::ofstream file;
-    file.open("Student.csv",std::ios_base::app);
+    file.open("C:\\Users\\tasni\\Documents\\RMS\\Student.csv",std::ios_base::app);
     string temp_ac;
     int fsize=f_list.size();
     for(int i=0;i<fsize;i++)
@@ -367,7 +367,7 @@ vector<Student>create_student_file(string path)
     }
 
 
-return f_list;
+    return f_list;
 }
 void add_student(vector<Student>&student,string val_name,string val_pass,string val_std_id,bool val_cr)
 {
@@ -388,7 +388,7 @@ void add_student(vector<Student>&student,string val_name,string val_pass,string 
     }
 
     std::ofstream file;
-    file.open("Student.csv",std::ios_base::app);
+    file.open("C:\\Users\\tasni\\Documents\\RMS\\Student.csv",std::ios_base::app);
     string temp_cr;
     if(val_cr)
     {
@@ -401,91 +401,91 @@ void add_student(vector<Student>&student,string val_name,string val_pass,string 
     file<<val_name<<","<<val_pass<<","<<val_std_id<<","<<temp_cr<<endl;
     student.push_back( Student(val_name,val_pass,val_std_id,val_cr) );
 
-    fstream myfile("log.txt",ios::in | ios::out | ios::app );
+    fstream myfile("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in | ios::out | ios::app );
 
     myfile<<"Student "<<val_std_id<<" was added by the Admin"<<endl;
 }
 vector<Staff>create_staff_file(string path)
 {
-vector<Staff>f_list;
-fstream fin;
-//int counti=0;
+    vector<Staff>f_list;
+    fstream fin;
+    //int counti=0;
 
-fin.open(path);
-string line,word;;
-string username,password,staff_id;
-
-
-while (fin.good()) {
-// cout<<"nana"<<endl;
-getline(fin, line);
-stringstream s(line);
-int second_count=0;
-Staff temp;
-int valid_flag=0;
-
-while (getline(s, word, ',')) {
-if(second_count==0)
-{
-
-username=word;
-second_count++;
-
-}
-else if(second_count==1)
-{
-if(temp.set_password(word))
-{
-password=word;
-}
-else
-{
-valid_flag=1;
-cout<<"Password "<<word<<" is not valid"<<endl;
-break;
-}
-
-second_count++;
-}
-else if(second_count==2)
-{
-if(temp.set_id(word))
-{
-staff_id=word;
-}
-else
-{
-valid_flag=1;
-cout<<"Staff ID "<<word<<" is not valid"<<endl;
-break;
-}
-second_count++;
-}
-
-}
-if(valid_flag)
-{
-continue;
-}
-
-f_list.push_back(Staff(username,password,staff_id) );
-
-//counti++;
-
-}
+    fin.open(path);
+    string line,word;;
+    string username,password,staff_id;
 
 
-// counti--;
-//   f_list.pop_back();
-std::ofstream file;
-file.open("Staff.csv",std::ios_base::app);
-string temp_ac;
-int fsize=f_list.size();
-for(int i=0;i<fsize;i++)
-{
-file<<f_list[i].get_name()<<","<<f_list[i].get_password()<<","<<f_list[i].get_id()<<endl;
-}
-return f_list;
+    while (fin.good()) {
+        // cout<<"nana"<<endl;
+        getline(fin, line);
+        stringstream s(line);
+        int second_count=0;
+        Staff temp;
+        int valid_flag=0;
+
+        while (getline(s, word, ',')) {
+            if(second_count==0)
+            {
+
+                username=word;
+                second_count++;
+
+            }
+            else if(second_count==1)
+            {
+                if(temp.set_password(word))
+                {
+                    password=word;
+                }
+                else
+                {
+                    valid_flag=1;
+                    cout<<"Password "<<word<<" is not valid"<<endl;
+                    break;
+                }
+
+                second_count++;
+            }
+            else if(second_count==2)
+            {
+                if(temp.set_id(word))
+                {
+                    staff_id=word;
+                }
+                else
+                {
+                    valid_flag=1;
+                    cout<<"Staff ID "<<word<<" is not valid"<<endl;
+                    break;
+                }
+                second_count++;
+            }
+
+        }
+        if(valid_flag)
+        {
+            continue;
+        }
+
+        f_list.push_back(Staff(username,password,staff_id) );
+
+        //counti++;
+
+    }
+
+
+    // counti--;
+    //   f_list.pop_back();
+    std::ofstream file;
+    file.open("C:\\Users\\tasni\\Documents\\RMS\\Staff.csv",std::ios_base::app);
+    string temp_ac;
+    int fsize=f_list.size();
+    for(int i=0;i<fsize;i++)
+    {
+        file<<f_list[i].get_name()<<","<<f_list[i].get_password()<<","<<f_list[i].get_id()<<endl;
+    }
+    return f_list;
 }
 void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_staff_id  )
 {
@@ -505,11 +505,11 @@ void add_staff( vector<Staff>&staff,string val_name,string val_pass,string val_s
     }
 
     std::ofstream file;
-    file.open("Staff.csv",std::ios_base::app);
+    file.open("C:\\Users\\tasni\\Documents\\RMS\\Staff.csv",std::ios_base::app);
     file<<val_name<<","<<val_pass<<","<<val_staff_id<<endl;
     staff.push_back( Staff(val_name,val_pass,val_staff_id) );
 
-    fstream myfile("log.txt",ios::in|ios::out|ios::app );
+    fstream myfile("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
 
     myfile<<"Staff "<<val_staff_id<<" was added by the Admin"<<endl;
 
@@ -518,12 +518,12 @@ void add_admin(vector<Admin>&admin,string user,string pass,string contact,string
 {
 
     std::ofstream file;
-    file.open("Admin.csv",std::ios_base::app);
+    file.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv",std::ios_base::app);
     string temp_ac;
 
     file<<user<<","<<pass<<","<<contact<<","<<email<<endl;
     admin.push_back( Admin(user,pass,contact,email));
-    fstream myfile("log.txt",ios::in|ios::out|ios::app );
+    fstream myfile("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
 
     myfile<<"Admin "<<user<<" was added by the Admin"<<endl;
 
@@ -543,10 +543,10 @@ void remove_student(vector<Student>student,string val_std_id)
     }
     student.erase(student.begin()+value);
     std::ofstream ofs;
-    ofs.open("Student.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Student.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
-    myFile.open("Student.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Student.csv");
     for(int i=0;i<ssize;i++)
     {
         string temp_cr;
@@ -562,7 +562,7 @@ void remove_student(vector<Student>student,string val_std_id)
         myFile<<student[i].get_name()<<","<<student[i].get_password()<<","<<student[i].get_id()<<","<<temp_cr<<endl;
     }
 
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
 
     file<<"Student "<<val_std_id<<" was removed by the Admin"<<endl;
 }
@@ -579,15 +579,15 @@ void remove_staff(vector<Staff>&staff ,string val_staff_id  )
     }
     staff.erase(staff.begin()+value);
     std::ofstream ofs;
-    ofs.open("Staff.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Staff.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
-    myFile.open("Staff.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Staff.csv");
     for(int i=0;i<ssize;i++)
     {
         myFile<<staff[i].get_name()<<","<<staff[i].get_password()<<","<<staff[i].get_id()<<endl;
     }
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
 
     file<<"Staff "<<val_staff_id<<" was removed by the Admin"<<endl;
 
@@ -606,16 +606,16 @@ void remove_admin(vector<Admin>admin,string user_val)
     }
     admin.erase(admin.begin()+value);
     std::ofstream ofs;
-    ofs.open("Admin.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
-    myFile.open("Admin.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Admin.csv");
     for(int i=0;i<asize;i++)
     {
         myFile<<admin[i].get_username()<<","<<admin[i].get_password()<<","<<admin[i].get_contact_no()<<","<<admin[i].get_email()<<endl;
     }
 
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
 
     file<<"Admin "<<user_val<<" was removed by the Admin"<<endl;
 
@@ -637,11 +637,11 @@ void remove_room(vector<Room>room,string building_no,string room_no)
     room.erase(room.begin()+value);
 
     std::ofstream ofs;
-    ofs.open("Room.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ofstream myFile;
 
-    myFile.open("Room.csv");
+    myFile.open("C:\\Users\\tasni\\Documents\\RMS\\Room.csv");
     for(int i=0;i<rsize;i++)
     {
         string temp_ac,temp_project;
@@ -664,7 +664,7 @@ void remove_room(vector<Room>room,string building_no,string room_no)
         myFile<<room[i].get_building_no()<<","<<room[i].get_room_no()<<","<<temp_ac<<","<<room[i].get_boards()<<room[i].get_capacity()<<endl;
     }
 
-    fstream file("log.txt",ios::in|ios::out|ios::app );
+    fstream file("C:\\Users\\tasni\\Documents\\RMS\\log.txt",ios::in|ios::out|ios::app );
 
     file<<"Room "<<building_no<<" "<<room_no<<" was removed by the Admin"<<endl;
 

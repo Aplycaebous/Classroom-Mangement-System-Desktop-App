@@ -12,7 +12,7 @@ protected:
 public:
     Student();
     Student(string val_name, string val_pass, string val_std_id, bool val_cr);
-    Student(User user_val, string std_id_val, bool val_cr);
+    //Student(User user_val, string std_id_val, bool val_cr);
     static bool check_student_id(string val);
     bool set_id(string val);
     void set_cr(bool val);
