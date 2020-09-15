@@ -7,5 +7,10 @@
         <file>res/img/LoginMenu.svg</file>
         <file>res/img/ButtonFrame.png</file>
         <file>res/img/BookingFrame.svg</file>
+        <file>Admin.csv</file>
+        <file>Record.csv</file>
+        <file>Room.csv</file>
+        <file>Staff.csv</file>
+        <file>Student.csv</file>
     </qresource>
 </RCC>
